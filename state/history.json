@@ -7,7 +7,7 @@
   "why": "manual-first+queued",
   "views": 3,
   "likes": 0,
-  "age_min": 300,
+  "age_min": 362,
   "checks": [
    [
     67,
@@ -28,6 +28,10 @@
    [
     300,
     3
+   ],
+   [
+    362,
+    3
    ]
   ]
  },
@@ -39,7 +43,7 @@
   "why": "explore-untried",
   "views": 118,
   "likes": 1,
-  "age_min": 224,
+  "age_min": 287,
   "checks": [
    [
     42,
@@ -56,6 +60,10 @@
    [
     224,
     118
+   ],
+   [
+    287,
+    118
    ]
   ]
  },
@@ -67,7 +75,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 176,
+  "age_min": 239,
   "checks": [
    [
     58,
@@ -80,6 +88,10 @@
    [
     176,
     0
+   ],
+   [
+    239,
+    0
    ]
   ]
  },
@@ -91,7 +103,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 98,
+  "age_min": 161,
   "checks": [
    [
     36,
@@ -99,6 +111,10 @@
    ],
    [
     98,
+    0
+   ],
+   [
+    161,
     0
    ]
   ]
@@ -111,10 +127,14 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 41,
+  "age_min": 104,
   "checks": [
    [
     41,
+    0
+   ],
+   [
+    104,
     0
    ]
   ]
@@ -124,6 +144,22 @@
   "t": 1794336931.1832767,
   "format": "monster_society",
   "title": "He Adopted 10 Kaiju... Not One Is Still Alive... 😨",
+  "why": "exploit",
+  "views": 0,
+  "likes": 0,
+  "age_min": 58,
+  "checks": [
+   [
+    58,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "Bv2_6vUw2es",
+  "t": 1794340728.159854,
+  "format": "monster_society",
+  "title": "His House Ate 99 Memories... Then Asked For The Last One... 😨",
   "why": "exploit"
  }
 ]
