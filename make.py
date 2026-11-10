@@ -16,6 +16,8 @@ STATE = D / "state"
 FF = os.environ.get("FFMPEG", "ffmpeg")
 FP = os.environ.get("FFPROBE", "ffprobe")
 VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmpeg)
+    "christopher_hard": ("en-US-ChristopherNeural", "+40%", "-6Hz", 1.0),      # deep, hard-hitting narrator (default)
+    "guy_hard": ("en-US-GuyNeural", "+40%", "-8Hz", 1.0),
     "brian_fast": ("en-US-BrianMultilingualNeural", "+45%", "+0Hz", 1.0),       # ~220 wpm like the reference narrators
     "andrew_fast": ("en-US-AndrewMultilingualNeural", "+55%", "+0Hz", 1.0),
     "andrew_chipmunk": ("en-US-AndrewMultilingualNeural", "+10%", "+0Hz", 1.35),
@@ -23,7 +25,7 @@ VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmp
     "ana_kid": ("en-US-AnaNeural", "+10%", "+0Hz", 1.0),
     "ana_squeak": ("en-US-AnaNeural", "+8%", "+10Hz", 1.15),
 }
-VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "brian_fast")]
+VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "christopher_hard")]
 EDGE_SR = 24000  # edge-tts mp3 sample rate
 CHANNEL_ID = "UCczRwdCgEiEsXG-6Ji2mWew"  # Lil Bro Chaos (monkey connection); abort if Maton points elsewhere
 GW = "https://gateway.maton.ai/youtube"
@@ -403,8 +405,9 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     k = 0
     for st, mp3, tempo, sd in speech:
         ms = int(st * 1000); inputs += ["-i", mp3]
-        af.append(f"[{k}:a]asetrate={EDGE_SR * SHIFT:.0f},aresample=48000,atempo={tempo / SHIFT:.4f},aformat=channel_layouts=stereo,volume=1.8,adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
+        af.append(f"[{k}:a]asetrate={EDGE_SR * SHIFT:.0f},aresample=48000,atempo={tempo / SHIFT:.4f},bass=g=5:f=110,equalizer=f=3000:t=q:w=1:g=3,acompressor=threshold=-20dB:ratio=6:attack=3:release=60:makeup=4,aformat=channel_layouts=stereo,volume=1.5,adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
         mix.append(f"[a{k}]"); k += 1
+    sfx = [] if os.environ.get("SFX", "0") != "1" else sfx   # user wants music only, no sound effects
     for st, f, g in sfx:
         ms = int(st * 1000); inputs += ["-i", f]
         af.append(f"[{k}:a]aresample=48000,aformat=channel_layouts=stereo,volume={g},adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
@@ -417,7 +420,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         inputs += ["-stream_loop", "-1", "-i", random.choice(music)]
         duck = "+".join(f"between(t,{a - 0.05:.2f},{a + d + 0.1:.2f})" for a, _, _, d in speech) or "0"
         af.append(f"[{k}:a]atrim=0:{T},asetpts=N/SR/TB,aresample=48000,aformat=channel_layouts=stereo,"
-                  f"volume='if({duck},0.05,0.16)':eval=frame,afade=t=in:d=0.5,afade=t=out:st={T - 1}:d=1,apad=whole_dur={T}[a{k}]")
+                  f"volume='if({duck},0.17,0.34)':eval=frame,afade=t=in:d=0.5,afade=t=out:st={T - 1}:d=1,apad=whole_dur={T}[a{k}]")
         mix.append(f"[a{k}]"); k += 1
     af.append("".join(mix) + f"amix=inputs={len(mix)}:duration=longest:normalize=0,asetpts=N/SR/TB,atrim=duration={T},"
               "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]")
