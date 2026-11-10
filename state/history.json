@@ -5,13 +5,17 @@
   "format": "family_rule",
   "title": "In This World Siblings Swap Bodies When They Fight",
   "why": "manual-first+queued",
-  "views": 0,
+  "views": 1,
   "likes": 0,
-  "age_min": 67,
+  "age_min": 118,
   "checks": [
    [
     67,
     0
+   ],
+   [
+    118,
+    1
    ]
   ]
  },
@@ -20,6 +24,22 @@
   "t": 1794323180.7641926,
   "format": "monster_society",
   "title": "In This World Every Sneeze Hatches A Kaiju",
+  "why": "explore-untried",
+  "views": 106,
+  "likes": 1,
+  "age_min": 42,
+  "checks": [
+   [
+    42,
+    106
+   ]
+  ]
+ },
+ {
+  "id": "n2pIpVaDYeU",
+  "t": 1794326061.3883877,
+  "format": "living_things",
+  "title": "His House Packed Up And LEFT Him... 😨",
   "why": "explore-untried"
  }
 ]
