@@ -67,12 +67,21 @@ def llm_json(prompt, temp=1.0):
                                   headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
                                   json={"model": model, "temperature": temp, "response_format": {"type": "json_object"},
                                         "messages": [{"role": "user", "content": prompt}]})
-                if r.status_code != 200:
+                if r.status_code != 200 or not r.headers.get("content-type", "").startswith("application/json"):
                     last = f"{model} {r.status_code} {r.text[:200]}"; break
                 txt = r.json()["choices"][0]["message"]["content"]
                 return json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
             except Exception as e:
                 last = f"{model} {e}"; time.sleep(3)
+    print("GitHub Models failed:", last, "-> asking meta.ai")
+    for attempt in range(2):                      # fallback: meta.ai text chat with the same login
+        pf, of = D / "work" / "llm_prompt.txt", D / "work" / "llm_out.json"
+        pf.parent.mkdir(exist_ok=True)
+        pf.write_text(prompt + "\nReply with ONLY the JSON object, no markdown, no extra text.", encoding="utf-8")
+        of.unlink(missing_ok=True)
+        subprocess.run(["node", str(D / "ask_meta.mjs"), str(pf), str(of)], check=False, timeout=400)
+        if of.exists():
+            return json.loads(of.read_text(encoding="utf-8"))
     raise RuntimeError("LLM failed: " + str(last))
 
 

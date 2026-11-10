@@ -39,9 +39,8 @@ async function submit(b, i, text) {
   const p = await b.newPage();
   await p.setViewport({ width: 1280, height: 900 });
   for (let a = 0; a < 3; a++) {
-    await p.goto("https://www.meta.ai/", { waitUntil: "networkidle2", timeout: 90000 }).catch(() => {});
-    await sleep(4000);
-    if (await p.$("[contenteditable=true]")) break;
+    await p.goto("https://www.meta.ai/", { waitUntil: "domcontentloaded", timeout: 90000 }).catch(() => {});
+    if (await p.waitForSelector("[contenteditable=true]", { timeout: 30000 }).catch(() => null)) { await sleep(2500); break; }
   }
   if (!(await p.$("[contenteditable=true]"))) {
     fs.writeFileSync(path.join(outDir, `fail_${i}.html`), await p.content());
@@ -65,7 +64,7 @@ async function collect(p, i) {
     await sleep(15000); n++;
     let v = await videos(p);
     if (!v.length && n % 4 == 0) {          // finished videos sometimes only appear after a refresh
-      await p.goto(chat, { waitUntil: "networkidle2", timeout: 60000 }).catch(() => {});
+      await p.goto(chat, { waitUntil: "domcontentloaded", timeout: 60000 }).catch(() => {});
       await sleep(6000); v = await videos(p);
     }
     const txt = await p.evaluate(() => document.body.innerText.slice(-600)).catch(() => "");
@@ -93,12 +92,14 @@ try {
   const ck = JSON.parse(process.env.META_COOKIES || fs.readFileSync(process.env.META_COOKIES_FILE, "utf8"));
   await b.setCookie(...ck.map((c) => ({ name: c.name, value: c.value, domain: c.domain, path: c.path || "/",
     secure: !!c.secure, httpOnly: !!c.httpOnly, sameSite: c.sameSite, expires: c.expires > 0 ? c.expires : undefined })));
-  const pages = [];
-  for (let i = 0; i < scenes.length; i++) {          // stagger submits a little; meta rate-limits bursts
-    try { pages.push(await submit(b, i + 1, scenes[i])); } catch (e) { log(String(e)); pages.push(null); }
-    await sleep(3000);
+  const pages = [], jobs = [];
+  for (let i = 0; i < scenes.length; i++) {          // submit one by one, collect each in the background at once
+    let p = null;
+    try { p = await submit(b, i + 1, scenes[i]); } catch (e) { log(String(e)); }
+    pages.push(p); jobs.push(p ? collect(p, i + 1) : Promise.resolve(false));
+    await sleep(2000);
   }
-  const ok = await Promise.all(pages.map((p, i) => (p ? collect(p, i + 1) : false)));
+  const ok = await Promise.all(jobs);
   fs.writeFileSync(path.join(outDir, "gen_result.json"), JSON.stringify({ ok, chats: pages.map((p) => p && p.url()) }));
   log("done", ok);
 } finally { await b.close().catch(() => {}); }
