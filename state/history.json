@@ -5,9 +5,9 @@
   "format": "family_rule",
   "title": "In This World Siblings Swap Bodies When They Fight",
   "why": "manual-first+queued",
-  "views": 3,
+  "views": 8,
   "likes": 0,
-  "age_min": 362,
+  "age_min": 415,
   "checks": [
    [
     67,
@@ -32,6 +32,10 @@
    [
     362,
     3
+   ],
+   [
+    415,
+    8
    ]
   ]
  },
@@ -43,7 +47,7 @@
   "why": "explore-untried",
   "views": 118,
   "likes": 1,
-  "age_min": 287,
+  "age_min": 339,
   "checks": [
    [
     42,
@@ -64,6 +68,10 @@
    [
     287,
     118
+   ],
+   [
+    339,
+    118
    ]
   ]
  },
@@ -75,7 +83,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 239,
+  "age_min": 291,
   "checks": [
    [
     58,
@@ -92,6 +100,10 @@
    [
     239,
     0
+   ],
+   [
+    291,
+    0
    ]
   ]
  },
@@ -103,7 +115,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 161,
+  "age_min": 213,
   "checks": [
    [
     36,
@@ -116,6 +128,10 @@
    [
     161,
     0
+   ],
+   [
+    213,
+    0
    ]
   ]
  },
@@ -127,7 +143,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 104,
+  "age_min": 156,
   "checks": [
    [
     41,
@@ -135,6 +151,10 @@
    ],
    [
     104,
+    0
+   ],
+   [
+    156,
     0
    ]
   ]
@@ -147,10 +167,14 @@
   "why": "exploit",
   "views": 0,
   "likes": 0,
-  "age_min": 58,
+  "age_min": 110,
   "checks": [
    [
     58,
+    0
+   ],
+   [
+    110,
     0
    ]
   ]
@@ -160,6 +184,15 @@
   "t": 1794340728.159854,
   "format": "monster_society",
   "title": "His House Ate 99 Memories... Then Asked For The Last One... 😨",
-  "why": "exploit"
+  "why": "exploit",
+  "views": 0,
+  "likes": 0,
+  "age_min": 47,
+  "checks": [
+   [
+    47,
+    0
+   ]
+  ]
  }
 ]
