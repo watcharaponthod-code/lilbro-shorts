@@ -1,7 +1,8 @@
-"""One ~55s Roblox 2D cartoon Short per run: pick a format (test & learn), write an HPC script, make 5 meta.ai
-clips, Microsoft Edge voice-over + word captions + SFX + music, upload to YouTube through Maton, log for learning.
+"""One 1-2 minute Roblox story Short per run ("In this world, ..." format, modeled on ItsGuestCap / playit hits):
+pick a theme (test & learn), write the story, make 8-12 meta.ai clips that look like real 3D Roblox footage, fast Microsoft
+Edge narration + 2-4 word captions + SFX + music, upload to YouTube through Maton, log for learning.
 
-Run (Actions):  python make.py            env: GITHUB_TOKEN (models), META_COOKIES, MATON_API_KEY, MATON_YT_MONKEY_CONNECTION
+Run (Actions):  python make.py            env: META_COOKIES, MATON_API_KEY, MATON_YT_MONKEY_CONNECTION
 Local test:     python make.py --script test/script.json --clips test/clips --no-upload
 """
 import argparse, asyncio, datetime as dt, json, math, os, random, re, shutil, subprocess, sys, time, wave
@@ -14,30 +15,23 @@ D = Path(__file__).parent
 STATE = D / "state"
 FF = os.environ.get("FFMPEG", "ffmpeg")
 FP = os.environ.get("FFPROBE", "ffprobe")
-VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmpeg -> small funny voice)
+VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmpeg)
+    "brian_fast": ("en-US-BrianMultilingualNeural", "+45%", "+0Hz", 1.0),       # ~220 wpm like the reference narrators
+    "andrew_fast": ("en-US-AndrewMultilingualNeural", "+55%", "+0Hz", 1.0),
     "andrew_chipmunk": ("en-US-AndrewMultilingualNeural", "+10%", "+0Hz", 1.35),
     "guy_squeaky": ("en-US-GuyNeural", "+12%", "+20Hz", 1.25),
     "ana_kid": ("en-US-AnaNeural", "+10%", "+0Hz", 1.0),
     "ana_squeak": ("en-US-AnaNeural", "+8%", "+10Hz", 1.15),
 }
-VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "andrew_chipmunk")]
+VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "brian_fast")]
 EDGE_SR = 24000  # edge-tts mp3 sample rate
 CHANNEL_ID = "UCczRwdCgEiEsXG-6Ji2mWew"  # Lil Bro Chaos (monkey connection); abort if Maton points elsewhere
 GW = "https://gateway.maton.ai/youtube"
-FONT = os.environ.get("FONT_NAME", "Luckiest Guy")
+FONT = os.environ.get("FONT_NAME", "Archivo Black")
 
-STYLE = ("Modern 2D TV cartoon style (no channel logos, no watermark): thick uniform black outlines, flat bright cel "
-         "colors, smooth hand-animated motion, soft painted background. All characters are ROBLOX avatars drawn as 2D "
-         "cartoons: blocky square heads, blocky rectangular bodies and limbs, simple Roblox faces.")
-CAST = {
-    "Noob": "Noob: the classic Roblox noob, yellow blocky head with a simple black smile, bright blue blocky torso, green blocky legs, yellow arms",
-    "Bacon": "Bacon: Roblox boy with brown 'bacon hair', default smile, plain black t-shirt, blue jeans",
-    "Guest": "Guest: Roblox guest avatar, black baseball cap with white G, white t-shirt, dark blue pants",
-    "Pro": "Pro: cool Roblox pro player, spiky purple hair, black hoodie, sunglasses, glowing sword",
-    "Hacker": "Hacker: Roblox hacker, black hood over a dark face with glowing red eyes, green code on his shirt",
-    "Mom": "Mom: Roblox mom avatar, long brown hair, pink sweater, angry eyebrows when mad",
-    "Admin": "Admin: giant Roblox admin, golden crown, red cape, glowing white eyes, holds a ban hammer",
-}
+STYLE = ("It must look exactly like real ROBLOX gameplay footage recorded in Roblox Studio: 3D blocky Roblox R15 avatars "
+         "with smooth plastic shading, Roblox faces and hair accessories, simple bright Roblox maps (school, town, houses, "
+         "obbys) with default Roblox sky and lighting. No channel logos, no watermark.")
 SFXLIB = D / "assets" / "sfxlib"
 CATALOG = jload_early = json.loads((SFXLIB / "catalog.json").read_text(encoding="utf-8")) if (SFXLIB / "catalog.json").exists() else []
 CATALOG += [{"id": f.stem, "cat": "meme", "dur": 1, "file": str(f)} for f in sorted((D / "assets" / "sfx").glob("*.wav"))]
@@ -61,12 +55,14 @@ def sfx_file(name):
     c = random.choice(hit)
     p = Path(c["file"])
     return p if p.is_absolute() else SFXLIB / p
-CHAN_RULES = """Audience: kids and young teens (8-16) who play Roblox and scroll Shorts.
-HPC formula (from a creator with 3M-9M view shorts):
-- HOOK (scene 1, first 5 s): fast, introduces the topic but leaves big questions open; first spoken line names the situation in <= 9 words.
-- PROGRESSION (scenes 2-4): deliver exactly what the hook promised, escalate each scene, small jokes, no early payoff.
-- CLIMAX (scene 5): the payoff/twist the viewer waited for, happens only at the very end. End on a punchline that makes people rewatch.
-Never reveal the answer early. Every scene must show clear ACTION (movement, chase, fall, explosion, transformation), not talking heads."""
+CHAN_RULES = """Audience: kids and teens (8-16) who play Roblox. Format = the viral Roblox story Shorts "In this world..." (ItsGuestCap
+'In this world everyone can see your lies' 36M views, playit 'Step On A Crack Break Your Moms BACK' 15M views):
+- Line 1 states the world's one strange RULE: "In this world, ..." (e.g. everyone sees a number of lies above your head; stepping
+  on a crack really bends your mom's back). Then 3-5 fast, funny examples of how everyday life works under that rule.
+- Then a main kid (named, e.g. Dylan) and his situation under the rule; a rival or outsider; a problem/conflict that escalates.
+- A twist that flips what we believed (the 'liar' was taking the blame for everyone), and a payoff: emotional or hilarious,
+  with a callback to an early joke in the last line. Never reveal the twist early.
+- Narration is fast, plain spoken, short sentences, concrete numbers and details, some dialogue in quotes. No moralizing speech."""
 
 
 def sh(*a, **k):
@@ -108,7 +104,7 @@ def llm_json(prompt, temp=1.0):
         pf.parent.mkdir(exist_ok=True)
         pf.write_text(prompt + "\nReply with ONLY the JSON object, no markdown, no extra text.", encoding="utf-8")
         of.unlink(missing_ok=True)
-        subprocess.run(["node", str(D / "ask_meta.mjs"), str(pf), str(of)], check=False, timeout=400)
+        subprocess.run(["node.exe" if os.name == "nt" else "node", str(D / "ask_meta.mjs"), str(pf), str(of)], check=False, timeout=400)
         if of.exists():
             return json.loads(of.read_text(encoding="utf-8"))
     raise RuntimeError("LLM failed: " + str(last))
@@ -239,49 +235,49 @@ def pick_format(formats, hist):
 
 def invent_format(formats, hist):
     top = sorted([h for h in hist if h.get("views") is not None], key=lambda h: -h["views"])[:5]
-    j = llm_json(f"""You run a YouTube Shorts channel of 2D cartoon ROBLOX animations for kids. {CHAN_RULES}
+    j = llm_json(f"""You run a YouTube Shorts channel of Roblox story videos. {CHAN_RULES}
 Existing formats (id: idea): {json.dumps({f['id']: f['idea'] for f in formats})}
 Our best videos so far: {json.dumps([{k: h.get(k) for k in ('title', 'format', 'views', 'age_min')} for h in top])}
-Invent ONE new short format that is different from the existing ones, proven on Shorts for this audience in 2025-2026
-(think: trending Roblox games like Steal a Brainrot, 99 Nights in the Forest, Grow a Garden, Escape Tsunami, Doors;
-'POV', 'Noob vs Pro vs Hacker', '1% vs 1000%', relatable school/family moments, satisfying transformations, survival).
-Return JSON {{"id": "snake_case_id", "idea": "one sentence format description", "title_pattern": "e.g. Noob vs Pro vs Hacker: ___ 💀"}}""")
+Invent ONE new THEME family of "In this world..." rules, different from the existing ones, that kids 8-16 would find
+irresistible (school, family, siblings, money, popularity, superstitions, body, phones, trending Roblox games like Steal An Egg).
+Return JSON {{"id": "snake_case_id", "idea": "one sentence describing the kind of rule and story, with an example rule", "title_pattern": "example title"}}""")
     j["id"] = re.sub(r"[^a-z0-9_]", "", j["id"].lower())[:40] or f"fmt{len(formats)}"
     j["invented"] = dt.datetime.utcnow().isoformat()[:16]
     return j
 
 
 def write_script(fmt, hist):
-    recent = [h["title"] for h in hist[-30:]]
-    cast_txt = "\n".join(CAST.values())
-    j = llm_json(f"""Write a 55-second YouTube Short: a 2D cartoon ROBLOX animation. Format: {fmt['idea']} Title pattern: {fmt.get('title_pattern', '')}
+    recent = [h["title"] for h in hist[-40:]]
+    n = random.choice([8, 9, 10, 11])      # ~10 s per scene -> 80-110 s videos
+    j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
 {CHAN_RULES}
-Recurring cast you may use (pick 2-3, keep their looks exactly): {cast_txt}
-It is told by a fast, funny NARRATOR voice-over (the characters do not lip-sync), like a kid storyteller roasting what happens.
-Exactly 5 scenes, each ~10-11 seconds of video:
-- "video": a vivid description of what HAPPENS on screen in this 10 s: who, where, the action in order, with 3 hard camera cuts
-  written as [0-3s] ... [3-6s] ... [6-10s] .... Visual only: no on-screen text, no speech bubbles. Mention each character's look in short.
-- "say": the narrator line for this scene, 20-26 words, punchy, present tense, simple words a 10-year-old gets. Scene 1 starts with the hook.
-- "sfx": 2-3 meme/cartoon sound effects for the funny or big moments of this scene, as [{{"name": "...", "at": seconds 0-10}}].
-  Use an exact name from this library, or a category name for a random one of it:
-{sfx_menu()}
-- "keywords": 1-3 words from "say" to highlight in yellow.
-Do NOT repeat these recent titles/ideas: {json.dumps(recent)}
-Return JSON: {{"title": "max 60 chars, ends with 💀, never the word AI", "hook_text": "3-5 word on-screen hook for the first 2 s",
-"description": "2 lines: a hook sentence + a question for viewers, then 6 hashtags incl #shorts #roblox #robloxanimation",
-"tags": ["15 search tags"], "scenes": [{{"video": "...", "say": "...", "sfx": [{{"name": "vineboom", "at": 6.5}}], "keywords": ["..."]}}]}}""")
-    assert len(j["scenes"]) >= 5, "need 5 scenes"
-    j["scenes"] = j["scenes"][:5]
+Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
+- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). Scene 1 starts with "In this world,".
+  All scenes together must read as one continuous story.
+- "video": what is SEEN in this 10 s as Roblox footage: location, which characters (by name), the action in order, and
+  2-3 camera cuts written as [0-4s] ... [4-7s] ... [7-10s] .... Show the rule visually (e.g. floating numbers above heads).
+  No speech bubbles, no captions.
+- "sfx": 0-2 sound effects for big funny/dramatic moments, as [{{"name": "...", "at": seconds 0-10}}]; exact name or category from:
+{sfx_menu(6)}
+"characters": every named character with a FIXED look as Roblox avatar (age, hair, clothes, colors), so each separately generated
+scene keeps them identical.
+Do NOT reuse these recent titles/ideas: {json.dumps(recent)}
+Return JSON: {{"title": "the hook as a title, max 70 chars, like 'In this world everyone can see your lies' or 'Step On A Crack Break Your Moms BACK...', never the word AI",
+"description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
+"tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
+"scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""")
+    assert len(j["scenes"]) >= 6, "need 6+ scenes"
     j["title"] = re.sub(r"\bAI\b", "", j["title"]).strip()
     return j
 
 
-def video_prompt(sc):
-    # every scene is a separate chat, so repeat the exact look of each recurring character it mentions
-    who = [v for k, v in CAST.items() if re.search(rf"\b{k}\b", sc["video"], re.I)]
-    looks = (" Characters, exact looks (keep identical): " + "; ".join(who) + ".") if who else ""
-    return (f"Create a 10-second vertical 9:16 video. {STYLE}{looks} {sc['video']} Fast, smooth, energetic animation with lots of "
-            f"movement and the 3 camera cuts. No text, no captions, no speech bubbles. AUDIO: no dialogue, no music.")
+def video_prompt(sc, chars=None):
+    # every scene is generated in a separate chat, so repeat the exact look of each named character it shows
+    chars = {str(k).strip(): v for k, v in (chars or {}).items() if str(k).strip()}
+    who = [f"{k}: {v}" for k, v in chars.items() if re.search(rf"\b{re.escape(k)}\b", sc["video"], re.I)]
+    looks = (" Characters (keep these exact looks): " + "; ".join(who) + ".") if who else ""
+    return (f"Create a 10-second vertical 9:16 video. {STYLE}{looks} {sc['video']} Smooth Roblox animation with the camera "
+            f"cuts. No captions, no speech bubbles, no text except numbers or signs that are part of the story. AUDIO: no dialogue, no music.")
 
 
 # ---------------------------------------------------------------- audio: TTS, SFX, music
@@ -334,14 +330,15 @@ def assemble(s, clips, work):
     for i, (sc, clip) in enumerate(zip(s["scenes"], clips)):
         if clip is None:
             continue
-        cd = min(dur(clip), 11.0)
+        full = min(dur(clip), 10.5)
         mp3 = work / f"vo{i}.mp3"; W = tts(sc["say"], mp3); vd = dur(mp3)
-        tempo = min(1.3, max(1.0, vd / (cd - 0.5)))
+        tempo = min(1.12, max(1.0, vd / (full * 1.12)))  # narration drives the timing, like the reference shorts
         sd = vd / tempo
-        stretch = max(1.0, (sd + 0.5) / cd)          # slow the clip a bit if the line still runs long
-        seg_len = cd * stretch
+        seg_len = max(3.0, sd + 0.12)
+        cd = min(full, seg_len)
+        stretch = max(1.0, seg_len / cd)              # slow the clip a little if the line runs past it
         segs.append((clip, cd, stretch))
-        st = t + 0.15
+        st = t + 0.04
         speech.append((st, mp3, tempo, sd))
         sw = sc["say"].split()
         if len(W) != len(sw):
@@ -353,17 +350,21 @@ def assemble(s, clips, work):
         chunks, cur = [], []
         for wd in W:
             cur.append(wd)
-            if len(cur) == 3 or wd["w"][-1] in ".,!?" or (len(cur) == 2 and len(wd["w"]) > 6):
+            if len(cur) == 4 or wd["w"][-1] in ".,!?" or (len(cur) >= 3 and len(wd["w"]) > 5):
                 chunks.append(cur); cur = []
         if cur: chunks.append(cur)
         for k, ch in enumerate(chunks):
             s0 = st + ch[0]["s"] / tempo
             e0 = st + (chunks[k + 1][0]["s"] / tempo if k + 1 < len(chunks) else ch[-1]["e"] / tempo + 0.3)
-            txt = " ".join(("{\\c&H00E5FF&}" + x["w"].upper() + "{\\c&HFFFFFF&}") if x["w"].upper().strip(".,!?") in keys
-                           else x["w"].upper() for x in ch)
-            events.append((s0, e0, "Word", "{\\fscx118\\fscy118\\t(0,90,\\fscx100\\fscy100)}" + txt))
-        if i > 0:
-            sfx.append((max(0, t - 0.25), sfx_file("whoosh"), 0.45))
+            words = [x["w"] for x in ch]
+            if len(words) >= 3:                            # reference style: two short lines, last word in CAPS
+                words[-1] = words[-1].upper()
+                txt = " ".join(words[:len(words) // 2]) + "\\N" + " ".join(words[len(words) // 2:])
+            else:
+                txt = " ".join(words[:-1] + [words[-1].upper()])
+            events.append((s0, e0, "Word", txt))
+        if i > 0 and random.random() < 0.35:
+            sfx.append((max(0, t - 0.25), sfx_file("whoosh"), 0.25))
         cues = sc.get("sfx") or []
         if isinstance(cues, str):
             cues = [{"name": cues, "at": sc.get("sfx_at", 5)}]
@@ -372,10 +373,11 @@ def assemble(s, clips, work):
                 at = min(max(float(cue.get("at", 5)), 0.3), cd - 0.4) * stretch
             except Exception:
                 at = 5.0
-            sfx.append((t + at, sfx_file(cue.get("name")), 0.75))
+            if at < seg_len - 0.3:
+                sfx.append((t + at, sfx_file(cue.get("name")), 0.55))
         t += seg_len
     T = round(t, 3)
-    if s.get("hook_text"):
+    if s.get("hook_text") and os.environ.get("HOOK_TEXT"):
         sfx.append((0.0, sfx_file("pop"), 0.5))
         events.append((0.0, 2.2, "Hook", "{\\fscx130\\fscy130\\t(0,150,\\fscx100\\fscy100)}" + s["hook_text"].upper()))
     ass = f"""[Script Info]
@@ -386,7 +388,7 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Word,{FONT},104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,2,0,1,10,5,2,60,60,520,1
+Style: Word,{FONT},66,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,6,2,2,90,90,700,1
 Style: Hook,{FONT},120,&H0000E5FF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,2,0,1,12,6,8,60,60,230,1
 
 [Events]
@@ -410,7 +412,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         inputs += ["-stream_loop", "-1", "-i", random.choice(music)]
         duck = "+".join(f"between(t,{a - 0.05:.2f},{a + d + 0.1:.2f})" for a, _, _, d in speech) or "0"
         af.append(f"[{k}:a]atrim=0:{T},asetpts=N/SR/TB,aresample=48000,aformat=channel_layouts=stereo,"
-                  f"volume='if({duck},0.07,0.22)':eval=frame,afade=t=in:d=0.5,afade=t=out:st={T - 1}:d=1,apad=whole_dur={T}[a{k}]")
+                  f"volume='if({duck},0.05,0.16)':eval=frame,afade=t=in:d=0.5,afade=t=out:st={T - 1}:d=1,apad=whole_dur={T}[a{k}]")
         mix.append(f"[a{k}]"); k += 1
     af.append("".join(mix) + f"amix=inputs={len(mix)}:duration=longest:normalize=0,asetpts=N/SR/TB,atrim=duration={T},"
               "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]")
@@ -422,7 +424,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     for i, (clip, cd, stretch) in enumerate(segs):
         vin += ["-i", clip]
         L = cd * stretch
-        z = "1.08-0.08*min(t/0.35,1)"
+        z = "1.0+0.04*t/" + f"{L:.2f}"                 # slow push-in, no punch (story pacing)
         vf.append(f"[{i}:v]trim=0:{cd:.3f},setpts=(PTS-STARTPTS)*{stretch:.4f},fps=30,"
                   f"scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,"
                   f"scale=w='1080*({z})':h='1920*({z})':eval=frame,crop=1080:1920,setsar=1,trim=0:{L:.3f}[v{i}]")
@@ -471,13 +473,28 @@ def main():
         if a.clips:
             clips = [Path(a.clips) / f"clip{i + 1}.mp4" for i in range(5)]
         else:
-            (work / "prompts.json").write_text(json.dumps([video_prompt(sc) for sc in s["scenes"]]), encoding="utf-8")
-            subprocess.run(["node", str(D / "gen_meta.mjs"), str(work / "prompts.json"), str(work / "clips")], check=False)
-            clips = [work / "clips" / f"clip{i + 1}.mp4" for i in range(5)]
+            prompts = [video_prompt(sc, s.get("characters")) for sc in s["scenes"]]
+            (work / "prompts.json").write_text(json.dumps(prompts), encoding="utf-8")
+            subprocess.run(["node.exe" if os.name == "nt" else "node", str(D / "gen_meta.mjs"), str(work / "prompts.json"), str(work / "clips")], check=False)
+            clips = [work / "clips" / f"clip{i + 1}.mp4" for i in range(len(prompts))]
+            miss = [i for i, c in enumerate(clips) if not (c.exists() and dur(c) > 3)]
+            if miss and len(miss) <= len(prompts) // 2:          # one retry pass for the scenes that failed
+                (work / "retry.json").write_text(json.dumps([prompts[i] for i in miss]), encoding="utf-8")
+                subprocess.run(["node.exe" if os.name == "nt" else "node", str(D / "gen_meta.mjs"), str(work / "retry.json"), str(work / "clips_retry")], check=False)
+                for k, i in enumerate(miss):
+                    r = work / "clips_retry" / f"clip{k + 1}.mp4"
+                    if r.exists():
+                        shutil.copy(r, clips[i])
+        n = len(s["scenes"])
+        if a.clips:
+            clips = [Path(a.clips) / f"clip{i + 1}.mp4" for i in range(n)]
         clips = [c if c.exists() and dur(c) > 3 else None for c in clips]
         got = sum(c is not None for c in clips); result["clips"] = got
-        if got < 4 or clips[-1] is None:
-            raise RuntimeError(f"only {got}/5 clips (need 4+ incl. the climax)")
+        if got < max(5, n - 2) or clips[0] is None or clips[-1] is None:
+            raise RuntimeError(f"only {got}/{n} clips")
+        for i, c in enumerate(clips):                            # a missing middle scene reuses its neighbour's footage
+            if c is None:
+                clips[i] = clips[i - 1] or clips[i + 1]
         final, T = assemble(s, clips, work)
         result["dur"] = T
         if not a.no_upload:
