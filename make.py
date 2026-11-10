@@ -16,6 +16,7 @@ STATE = D / "state"
 FF = os.environ.get("FFMPEG", "ffmpeg")
 FP = os.environ.get("FFPROBE", "ffprobe")
 VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmpeg)
+    "guy_high": ("en-US-GuyNeural", "+30%", "+40Hz", 1.0),                    # matches the reference narrator (F0 ~190 Hz, bright)
     "christopher_hard": ("en-US-ChristopherNeural", "+40%", "-6Hz", 1.0),      # deep, hard-hitting narrator (default)
     "guy_hard": ("en-US-GuyNeural", "+40%", "-8Hz", 1.0),
     "brian_fast": ("en-US-BrianMultilingualNeural", "+45%", "+0Hz", 1.0),       # ~220 wpm like the reference narrators
@@ -25,7 +26,7 @@ VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmp
     "ana_kid": ("en-US-AnaNeural", "+10%", "+0Hz", 1.0),
     "ana_squeak": ("en-US-AnaNeural", "+8%", "+10Hz", 1.15),
 }
-VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "christopher_hard")]
+VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "guy_high")]
 EDGE_SR = 24000  # edge-tts mp3 sample rate
 CHANNEL_ID = "UCczRwdCgEiEsXG-6Ji2mWew"  # Lil Bro Chaos (monkey connection); abort if Maton points elsewhere
 GW = "https://gateway.maton.ai/youtube"
@@ -66,6 +67,9 @@ CHAN_RULES = """Audience: kids and teens (8-16) who play Roblox. Format = the vi
   "In this world, gravity belongs to whoever owns the most cats". Bad (too ordinary, never use): grades, lies, homework,
   siblings swapping, chores, phones, mom rules, superstitions everyone knows. Then 3-5 fast, absurd examples of daily life
   under that rule, each crazier than the last.
+- Hook style that goes viral (Tyler 'Every Kid He Takes Home D*ES...' 7.4M): the first line sounds dark, shocking and
+  mysterious ("This man adopted ten kids, and not a single one is still alive"), then the story slowly reveals a surprising
+  truth that flips it (often heartwarming). Keep the surreal rule, but tell it with this creepy-mystery tension.
 - Then a main kid (named, e.g. Dylan) and his situation under the rule; a rival or outsider; a problem/conflict that escalates.
 - A twist that flips what we believed (the 'liar' was taking the blame for everyone), and a payoff: emotional or hilarious,
   with a callback to an early joke in the last line. Never reveal the twist early.
@@ -260,7 +264,7 @@ def write_script(fmt, hist):
     j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
 {CHAN_RULES}
 Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
-- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). Scene 1 starts with "In this world,".
+- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). Scene 1 opens with the shocking mysterious hook line (it may start with "In this world,").
   All scenes together must read as one continuous story.
 - "video": what is SEEN in this 10 s as Roblox footage: location, which characters (by name), the action in order, and
   2-3 camera cuts written as [0-4s] ... [4-7s] ... [7-10s] .... Show the rule visually (e.g. floating numbers above heads).
@@ -270,7 +274,7 @@ Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken o
 "characters": every named character with a FIXED look as Roblox avatar (age, hair, clothes, colors), so each separately generated
 scene keeps them identical.
 Do NOT reuse these recent titles/ideas: {json.dumps(recent)}
-Return JSON: {{"title": "the hook as a title, max 70 chars, like 'In this world everyone can see your lies' or 'Step On A Crack Break Your Moms BACK...', never the word AI",
+Return JSON: {{"title": "a shocking mysterious hook title, max 70 chars, like 'Every Kid He Takes Home D*ES... 😨' or 'In this world your shadow can quit...', may censor one dark word with *, end with ... and one emoji, never the word AI",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
 "music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
@@ -330,7 +334,7 @@ def tts_cf(text, out):
 
 
 def tts(text, out):
-    if os.environ.get("TTS", "cf") == "cf":
+    if os.environ.get("TTS", "edge") == "cf":
         w = tts_cf(text, out)
         if w is not None:
             return w
@@ -372,7 +376,7 @@ def assemble(s, clips, work):
             continue
         full = min(dur(clip), 10.5)
         mp3 = work / f"vo{i}.mp3"; W = tts(sc["say"], mp3); vd = dur(mp3)
-        base = float(os.environ.get("VO_SPEED", "1.15"))   # Aura-2 zeus sped up ~15% (punchy, like the first channel voice)
+        base = float(os.environ.get("VO_SPEED", "1.15" if os.environ.get("TTS", "edge") == "cf" else "1.0"))   # Aura-2 zeus sped up ~15% (punchy, like the first channel voice)
         tempo = min(1.3, max(base, vd / (full * 1.12)))   # narration drives the timing, like the reference shorts
         sd = vd / tempo
         seg_len = max(3.0, sd + 0.12)
@@ -398,11 +402,13 @@ def assemble(s, clips, work):
             s0 = st + ch[0]["s"] / tempo
             e0 = st + (chunks[k + 1][0]["s"] / tempo if k + 1 < len(chunks) else ch[-1]["e"] / tempo + 0.3)
             words = [x["w"] for x in ch]
-            if len(words) >= 3:                            # reference style: two short lines, last word in CAPS
-                words[-1] = words[-1].upper()
+            col = ["{\\c&H00E5FF&}", "{\\c&H4CFF4C&}", "{\\c&HCC66FF&}", "{\\c&H3C3CFF&}"][len(events) % 4]
+            if len(words) >= 2 and (len(events) % 2 == 0 or words[-1][-1:] in ".!?"):   # key word in CAPS + color, like the reference
+                words[-1] = col + words[-1].upper() + "{\\c&HFFFFFF&}"
+            if len(words) >= 3:
                 txt = " ".join(words[:len(words) // 2]) + "\\N" + " ".join(words[len(words) // 2:])
             else:
-                txt = " ".join(words[:-1] + [words[-1].upper()])
+                txt = " ".join(words)
             events.append((s0, e0, "Word", txt))
         if i > 0 and random.random() < 0.35:
             sfx.append((max(0, t - 0.25), sfx_file("whoosh"), 0.25))
