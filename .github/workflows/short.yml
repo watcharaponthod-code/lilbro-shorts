@@ -1,0 +1,51 @@
+name: short
+on:
+  schedule:
+    - cron: "7 * * * *"     # every hour (GitHub may start it a few minutes late)
+  workflow_dispatch:
+permissions:
+  contents: write
+  models: read
+concurrency:
+  group: short
+  cancel-in-progress: false
+jobs:
+  short:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      META_COOKIES: ${{ secrets.META_COOKIES }}
+      MATON_API_KEY: ${{ secrets.MATON_API_KEY }}
+      MATON_YT_MONKEY_CONNECTION: ${{ secrets.MATON_YT_MONKEY_CONNECTION }}
+      FONTS_DIR: ${{ github.workspace }}/assets/fonts
+      META_MAX_MIN: "16"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - uses: astral-sh/setup-uv@v5
+      - name: tools
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          mkdir -p ~/.fonts && cp assets/fonts/*.ttf ~/.fonts/ && fc-cache -f >/dev/null
+          npm ci --silent
+      - name: make and upload one short
+        run: uv run -q --no-project --python 3.12 --with numpy --with requests --with "edge-tts>=7.3.1" python make.py
+      - name: save learning state
+        if: always()
+        run: |
+          git config user.name shorts-bot && git config user.email bot@users.noreply.github.com
+          git add state && git commit -qm "run $(date -u +%FT%TZ)" || exit 0
+          git pull -q --rebase && git push -q
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: run-${{ github.run_id }}
+          path: |
+            work/*/final.mp4
+            work/*/script.json
+            work/*/clips/gen_result.json
+            work/*/clips/fail_*.html
+          retention-days: 3
+          if-no-files-found: ignore
