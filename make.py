@@ -199,7 +199,7 @@ def pick_format(formats, hist):
             if len(v) >= 3 and np.mean(v) < 0.5 * med:
                 f["retired"] = True; print("retire format", f["id"])
     r = random.random()
-    if untried and r < 0.6:
+    if untried and (r < 0.6 or not stats):
         return random.choice(untried), "explore-untried"
     if r < 0.2 or not stats:
         return None, "invent"            # caller invents a brand-new format
