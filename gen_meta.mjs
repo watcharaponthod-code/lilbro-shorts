@@ -30,9 +30,12 @@ async function setInstant(p) {
   return "Instant(set)";
 }
 
-async function videos(p) {
-  return p.evaluate(() => [...document.querySelectorAll("video")]
-    .map((v) => v.currentSrc || v.src).filter((s) => s && s.startsWith("http")));
+let lock = Promise.resolve();
+function exclusive(fn) { const r = lock.then(fn, fn); lock = r.catch(() => {}); return r; }
+
+async function videos(p) {              // background tabs don't render finished videos: focus the tab first
+  return exclusive(async () => { await p.bringToFront().catch(() => {}); await sleep(2500); return p.evaluate(() => [...document.querySelectorAll("video")]
+    .map((v) => v.currentSrc || v.src).filter((s) => s && s.startsWith("http"))); });
 }
 
 async function submit(b, i, text) {
@@ -63,7 +66,7 @@ async function collect(p, i) {
   while (Date.now() < DEADLINE) {
     await sleep(15000); n++;
     let v = await videos(p);
-    if (!v.length && n % 4 == 0) {          // finished videos sometimes only appear after a refresh
+    if (!v.length && n % 3 == 0) {          // finished videos sometimes only appear after a refresh
       await p.goto(chat, { waitUntil: "domcontentloaded", timeout: 60000 }).catch(() => {});
       await sleep(6000); v = await videos(p);
     }
@@ -86,7 +89,8 @@ async function collect(p, i) {
 
 const b = await puppeteer.launch({
   executablePath: CHROME, headless: process.env.HEADLESS === "0" ? false : "new",
-  args: ["--no-sandbox", "--disable-dev-shm-usage", "--window-size=1280,900", "--lang=en-US"],
+  args: ["--no-sandbox", "--disable-dev-shm-usage", "--window-size=1280,900", "--lang=en-US",
+    "--disable-background-timer-throttling", "--disable-backgrounding-occluded-windows", "--disable-renderer-backgrounding"],
 });
 try {
   const ck = JSON.parse(process.env.META_COOKIES || fs.readFileSync(process.env.META_COOKIES_FILE, "utf8"));
@@ -95,7 +99,12 @@ try {
   const pages = [], jobs = [];
   for (let i = 0; i < scenes.length; i++) {          // submit one by one, collect each in the background at once
     let p = null;
-    try { p = await submit(b, i + 1, scenes[i]); } catch (e) { log(String(e)); }
+    try {
+      if (String(scenes[i]).startsWith("https://www.meta.ai/")) {       // collect-only: an existing chat url
+        p = await b.newPage(); await p.setViewport({ width: 1280, height: 900 });
+        await p.goto(scenes[i], { waitUntil: "domcontentloaded", timeout: 60000 }).catch(() => {});
+      } else p = await exclusive(() => submit(b, i + 1, scenes[i]));
+    } catch (e) { log(String(e)); }
     pages.push(p); jobs.push(p ? collect(p, i + 1) : Promise.resolve(false));
     await sleep(2000);
   }

@@ -122,9 +122,56 @@ def upload(final, s):
     r = requests.post(f"{GW}/upload/youtube/v3/videos?uploadType=multipart&part=snippet,status", data=body, timeout=600,
                       headers={**maton_h(), "Content-Type": f"multipart/related; boundary={bd}"})
     j = r.json() if r.headers.get("content-type", "").startswith("application/json") else {}
+    if "uploadLimitExceeded" in r.text:
+        raise UploadLimit("YouTube daily upload limit reached")
     if not j.get("id"):
-        raise SystemExit(f"upload failed {r.status_code} {r.text[:400]}")
+        raise RuntimeError(f"upload failed {r.status_code} {r.text[:400]}")
     return j["id"]
+
+
+class UploadLimit(Exception):
+    pass
+
+
+# ---------------------------------------------------------------- upload queue (GitHub releases "q-*")
+REPO = os.environ.get("GITHUB_REPOSITORY", "watcharaphon-dotcom/lilbro-shorts")
+
+
+def gh(*a, **k):
+    return subprocess.run(["gh", *map(str, a), "-R", REPO], capture_output=True, text=True, encoding="utf-8", **k)
+
+
+def queued():
+    r = gh("release", "list", "--limit", "50", "--json", "tagName")
+    return sorted(x["tagName"] for x in json.loads(r.stdout or "[]") if x["tagName"].startswith("q-"))
+
+
+def enqueue(final, s, why, stamp):
+    tag = f"q-{stamp}"
+    meta = Path(final).parent / "queue_meta.json"
+    meta.write_text(json.dumps({"script": s, "why": why}, ensure_ascii=False), encoding="utf-8")
+    r = gh("release", "create", tag, str(final), str(meta), "--title", tag, "--notes", s["title"], "--prerelease")
+    print("queued", tag, r.returncode, r.stderr[:200])
+
+
+def drain_queue(hist):
+    """upload queued videos oldest first; returns True if YouTube is still limiting uploads."""
+    for tag in queued():
+        d = D / "work" / tag; d.mkdir(parents=True, exist_ok=True)
+        gh("release", "download", tag, "-D", str(d), "--clobber")
+        m = jload(d / "queue_meta.json", None)
+        if not m or not (d / "final.mp4").exists():
+            gh("release", "delete", tag, "--yes", "--cleanup-tag"); continue
+        try:
+            vid = upload(d / "final.mp4", m["script"])
+        except UploadLimit:
+            print("still limited; queue:", tag); return True
+        print("UPLOADED from queue", vid, m["script"]["title"])
+        hist.append({"id": vid, "t": time.time(), "format": m["script"]["format"], "title": m["script"]["title"],
+                     "why": m.get("why", "") + "+queued"})
+        gh("release", "delete", tag, "--yes", "--cleanup-tag")
+        return True        # one upload per run is enough; keeps the hourly pace
+    return False
 
 
 # ---------------------------------------------------------------- format choice (test & learn)
@@ -199,7 +246,10 @@ Return JSON: {{"title": "max 60 chars, ends with 💀, never the word AI", "hook
 
 
 def video_prompt(sc):
-    return (f"Create a 10-second vertical 9:16 video. {STYLE} {sc['video']} Fast, smooth, energetic animation with lots of "
+    # every scene is a separate chat, so repeat the exact look of each recurring character it mentions
+    who = [v for k, v in CAST.items() if re.search(rf"\b{k}\b", sc["video"], re.I)]
+    looks = (" Characters, exact looks (keep identical): " + "; ".join(who) + ".") if who else ""
+    return (f"Create a 10-second vertical 9:16 video. {STYLE}{looks} {sc['video']} Fast, smooth, energetic animation with lots of "
             f"movement and the 3 camera cuts. No text, no captions, no speech bubbles. AUDIO: no dialogue, no music.")
 
 
@@ -370,6 +420,9 @@ def main():
     try:
         if not a.no_upload:
             refresh_stats(hist)
+            if drain_queue(hist):
+                result["note"] = "uploaded/limited from queue, no new episode this run"
+                print(result["note"]); return
         if a.script:
             s = jload(a.script, None); fmt = {"id": s.get("format", "test")}; why = "manual"
         else:
@@ -393,7 +446,10 @@ def main():
         final, T = assemble(s, clips, work)
         result["dur"] = T
         if not a.no_upload:
-            vid = upload(final, s)
+            try:
+                vid = upload(final, s)
+            except UploadLimit:
+                enqueue(final, s, why, stamp); result["note"] = "upload limit: queued"; print(result["note"]); return
             result.update(id=vid, url=f"https://youtube.com/shorts/{vid}")
             print("UPLOADED", result["url"])
             hist.append({"id": vid, "t": time.time(), "format": fmt["id"], "title": s["title"], "why": why})
