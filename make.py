@@ -158,8 +158,8 @@ def upload(final, s):
     r = requests.post(f"{GW}/upload/youtube/v3/videos?uploadType=multipart&part=snippet,status", data=body, timeout=600,
                       headers={**maton_h(), "Content-Type": f"multipart/related; boundary={bd}"})
     j = r.json() if r.headers.get("content-type", "").startswith("application/json") else {}
-    if "uploadLimitExceeded" in r.text:
-        raise UploadLimit("YouTube daily upload limit reached")
+    if "uploadLimitExceeded" in r.text or (r.status_code == 429 and "quota" in r.text.lower()):
+        raise UploadLimit(f"upload limited ({r.status_code}): {r.text[:160]}")
     if not j.get("id"):
         raise RuntimeError(f"upload failed {r.status_code} {r.text[:400]}")
     return j["id"]
@@ -290,14 +290,16 @@ Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken o
 "characters": every named character with a FIXED look as Roblox avatar (age, hair, clothes, colors), so each separately generated
 scene keeps them identical.
 Do NOT reuse these recent titles/ideas: {json.dumps(recent)}
-Return JSON: {{"title": "a shocking mysterious hook title, max 70 chars, like 'Every Kid He Takes Home D*ES... 😨' or 'In this world your shadow can quit...', may censor one dark word with *, end with ... and one emoji, never the word AI",
+Return JSON: {{"title": "Title Case title that starts with 'In This World' and states the strange rule plainly, max 70 chars, like 'In This World Every Sneeze Hatches A Kaiju' or 'In This World Siblings Swap Bodies When They Fight'; no emoji, no ellipsis, never the word AI",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
 "th_title": "the same title in natural Thai (for Thai viewers)", "th_description": "the description in natural Thai, same hashtags",
 "music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
 "scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""")
     assert len(j["scenes"]) >= 6, "need 6+ scenes"
-    j["title"] = re.sub(r"\bAI\b", "", j["title"]).strip()
+    j["title"] = re.sub(r"\bAI\b", "", j["title"])
+    j["title"] = re.sub(r"[^\x00-\u024F]+", "", j["title"]).replace("...", " ").strip(" .")
+    j["title"] = re.sub(r"\s+", " ", j["title"])
     return j
 
 
