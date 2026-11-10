@@ -14,7 +14,14 @@ D = Path(__file__).parent
 STATE = D / "state"
 FF = os.environ.get("FFMPEG", "ffmpeg")
 FP = os.environ.get("FFPROBE", "ffprobe")
-VOICE, RATE, PITCH = os.environ.get("VOICE", "en-US-AndrewMultilingualNeural"), "+12%", "+0Hz"
+VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmpeg -> small funny voice)
+    "andrew_chipmunk": ("en-US-AndrewMultilingualNeural", "+10%", "+0Hz", 1.35),
+    "guy_squeaky": ("en-US-GuyNeural", "+12%", "+20Hz", 1.25),
+    "ana_kid": ("en-US-AnaNeural", "+10%", "+0Hz", 1.0),
+    "ana_squeak": ("en-US-AnaNeural", "+8%", "+10Hz", 1.15),
+}
+VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "andrew_chipmunk")]
+EDGE_SR = 24000  # edge-tts mp3 sample rate
 CHANNEL_ID = "UCczRwdCgEiEsXG-6Ji2mWew"  # Lil Bro Chaos (monkey connection); abort if Maton points elsewhere
 GW = "https://gateway.maton.ai/youtube"
 FONT = os.environ.get("FONT_NAME", "Luckiest Guy")
@@ -31,7 +38,29 @@ CAST = {
     "Mom": "Mom: Roblox mom avatar, long brown hair, pink sweater, angry eyebrows when mad",
     "Admin": "Admin: giant Roblox admin, golden crown, red cape, glowing white eyes, holds a ban hammer",
 }
-SFX_FILES = ["vineboom", "bruh", "badgas1", "phonejingle", "mentality", "whoosh", "pop", "ding", "boom", "riser"]
+SFXLIB = D / "assets" / "sfxlib"
+CATALOG = jload_early = json.loads((SFXLIB / "catalog.json").read_text(encoding="utf-8")) if (SFXLIB / "catalog.json").exists() else []
+CATALOG += [{"id": f.stem, "cat": "meme", "dur": 1, "file": str(f)} for f in sorted((D / "assets" / "sfx").glob("*.wav"))]
+SFX_CATS = sorted({c["cat"] for c in CATALOG} - {"whoosh"})
+
+
+def sfx_menu(k=10):
+    rnd = random.Random(7)
+    out = []
+    for cat in SFX_CATS:
+        ids = [c["id"] for c in CATALOG if c["cat"] == cat]
+        out.append(f"{cat}: " + ", ".join(rnd.sample(ids, min(k, len(ids)))))
+    return "\n".join(out)
+
+
+def sfx_file(name):
+    """exact id -> that file; category -> random file of it; else fuzzy contains; else a pop."""
+    name = (name or "").strip().lower()
+    hit = [c for c in CATALOG if c["id"] == name] or [c for c in CATALOG if c["cat"] == name] or \
+          [c for c in CATALOG if name and (name in c["id"] or c["id"] in name)] or [c for c in CATALOG if c["cat"] == "pop"]
+    c = random.choice(hit)
+    p = Path(c["file"])
+    return p if p.is_absolute() else SFXLIB / p
 CHAN_RULES = """Audience: kids and young teens (8-16) who play Roblox and scroll Shorts.
 HPC formula (from a creator with 3M-9M view shorts):
 - HOOK (scene 1, first 5 s): fast, introduces the topic but leaves big questions open; first spoken line names the situation in <= 9 words.
@@ -233,12 +262,14 @@ Exactly 5 scenes, each ~10-11 seconds of video:
 - "video": a vivid description of what HAPPENS on screen in this 10 s: who, where, the action in order, with 3 hard camera cuts
   written as [0-3s] ... [3-6s] ... [6-10s] .... Visual only: no on-screen text, no speech bubbles. Mention each character's look in short.
 - "say": the narrator line for this scene, 20-26 words, punchy, present tense, simple words a 10-year-old gets. Scene 1 starts with the hook.
-- "sfx": one of {SFX_FILES} that fits the key moment of this scene, and "sfx_at": seconds into the scene (0-10) when it hits.
+- "sfx": 2-3 meme/cartoon sound effects for the funny or big moments of this scene, as [{{"name": "...", "at": seconds 0-10}}].
+  Use an exact name from this library, or a category name for a random one of it:
+{sfx_menu()}
 - "keywords": 1-3 words from "say" to highlight in yellow.
 Do NOT repeat these recent titles/ideas: {json.dumps(recent)}
 Return JSON: {{"title": "max 60 chars, ends with 💀, never the word AI", "hook_text": "3-5 word on-screen hook for the first 2 s",
 "description": "2 lines: a hook sentence + a question for viewers, then 6 hashtags incl #shorts #roblox #robloxanimation",
-"tags": ["15 search tags"], "scenes": [{{"video": "...", "say": "...", "sfx": "...", "sfx_at": 4.0, "keywords": ["..."]}}]}}""")
+"tags": ["15 search tags"], "scenes": [{{"video": "...", "say": "...", "sfx": [{{"name": "vineboom", "at": 6.5}}], "keywords": ["..."]}}]}}""")
     assert len(j["scenes"]) >= 5, "need 5 scenes"
     j["scenes"] = j["scenes"][:5]
     j["title"] = re.sub(r"\bAI\b", "", j["title"]).strip()
@@ -299,10 +330,6 @@ def ts(x):
 # ---------------------------------------------------------------- assemble
 def assemble(s, clips, work):
     work.mkdir(parents=True, exist_ok=True)
-    sfxd = work / "sfx"; sfxd.mkdir(exist_ok=True)
-    for f in (D / "assets" / "sfx").glob("*.wav"):
-        shutil.copy(f, sfxd / f.name)
-    synth_sfx(sfxd)
     segs, events, speech, sfx, t = [], [], [], [], 0.0
     for i, (sc, clip) in enumerate(zip(s["scenes"], clips)):
         if clip is None:
@@ -336,12 +363,20 @@ def assemble(s, clips, work):
                            else x["w"].upper() for x in ch)
             events.append((s0, e0, "Word", "{\\fscx118\\fscy118\\t(0,90,\\fscx100\\fscy100)}" + txt))
         if i > 0:
-            sfx.append((max(0, t - 0.2), "whoosh", 0.35))
-        name = sc.get("sfx") if sc.get("sfx") in SFX_FILES else "pop"
-        sfx.append((t + min(max(float(sc.get("sfx_at", 5)), 0.5), cd - 0.5) * stretch, name, 0.8))
+            sfx.append((max(0, t - 0.25), sfx_file("whoosh"), 0.45))
+        cues = sc.get("sfx") or []
+        if isinstance(cues, str):
+            cues = [{"name": cues, "at": sc.get("sfx_at", 5)}]
+        for cue in cues[:3]:
+            try:
+                at = min(max(float(cue.get("at", 5)), 0.3), cd - 0.4) * stretch
+            except Exception:
+                at = 5.0
+            sfx.append((t + at, sfx_file(cue.get("name")), 0.75))
         t += seg_len
     T = round(t, 3)
     if s.get("hook_text"):
+        sfx.append((0.0, sfx_file("pop"), 0.5))
         events.append((0.0, 2.2, "Hook", "{\\fscx130\\fscy130\\t(0,150,\\fscx100\\fscy100)}" + s["hook_text"].upper()))
     ass = f"""[Script Info]
 ScriptType: v4.00+
@@ -364,10 +399,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     k = 0
     for st, mp3, tempo, sd in speech:
         ms = int(st * 1000); inputs += ["-i", mp3]
-        af.append(f"[{k}:a]atempo={tempo:.4f},aresample=48000,aformat=channel_layouts=stereo,volume=1.8,adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
+        af.append(f"[{k}:a]asetrate={EDGE_SR * SHIFT:.0f},aresample=48000,atempo={tempo / SHIFT:.4f},aformat=channel_layouts=stereo,volume=1.8,adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
         mix.append(f"[a{k}]"); k += 1
-    for st, name, g in sfx:
-        ms = int(st * 1000); inputs += ["-i", sfxd / f"{name}.wav"]
+    for st, f, g in sfx:
+        ms = int(st * 1000); inputs += ["-i", f]
         af.append(f"[{k}:a]aresample=48000,aformat=channel_layouts=stereo,volume={g},adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
         mix.append(f"[a{k}]"); k += 1
     music = sorted((D / "assets" / "music").glob("*.mp3"))

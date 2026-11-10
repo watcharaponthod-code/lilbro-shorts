@@ -1,0 +1,3020 @@
+[
+{
+"id": "alien_giggle",
+"cat": "laugh",
+"dur": 2.08,
+"file": "alien_giggle.mp3"
+},
+{
+"id": "anime_oh_my_god",
+"cat": "shock",
+"dur": 2.04,
+"file": "anime_oh_my_god.mp3"
+},
+{
+"id": "asian_huh",
+"cat": "shock",
+"dur": 0.62,
+"file": "asian_huh.mp3"
+},
+{
+"id": "ayo_chill",
+"cat": "shock",
+"dur": 1.25,
+"file": "ayo_chill.mp3"
+},
+{
+"id": "bamboo_hit_anime_bonk",
+"cat": "impact",
+"dur": 0.6,
+"file": "bamboo_hit_anime_bonk.mp3"
+},
+{
+"id": "blink_1",
+"cat": "pop",
+"dur": 0.67,
+"file": "blink_1.mp3"
+},
+{
+"id": "blink_2",
+"cat": "pop",
+"dur": 0.7,
+"file": "blink_2.mp3"
+},
+{
+"id": "boing",
+"cat": "bounce",
+"dur": 1.93,
+"file": "boing.mp3"
+},
+{
+"id": "boing_2",
+"cat": "bounce",
+"dur": 0.53,
+"file": "boing_2.mp3"
+},
+{
+"id": "bonk",
+"cat": "impact",
+"dur": 1.63,
+"file": "bonk.mp3"
+},
+{
+"id": "boom",
+"cat": "impact",
+"dur": 1.9,
+"file": "boom.mp3"
+},
+{
+"id": "bounce_2",
+"cat": "bounce",
+"dur": 0.94,
+"file": "bounce_2.mp3"
+},
+{
+"id": "bounce",
+"cat": "bounce",
+"dur": 0.82,
+"file": "bounce.mp3"
+},
+{
+"id": "bruh_what_the_hell",
+"cat": "bruh",
+"dur": 1.07,
+"file": "bruh_what_the_hell.mp3"
+},
+{
+"id": "bruh",
+"cat": "bruh",
+"dur": 2.07,
+"file": "bruh.mp3"
+},
+{
+"id": "buttonplate_click_minecraft_for_editing",
+"cat": "pop",
+"dur": 0.88,
+"file": "buttonplate_click_minecraft_for_editing.mp3"
+},
+{
+"id": "cartoon_splat",
+"cat": "bounce",
+"dur": 0.95,
+"file": "cartoon_splat.mp3"
+},
+{
+"id": "cartoon_boing_7vrwdlc",
+"cat": "bounce",
+"dur": 1.56,
+"file": "cartoon_boing_7vrwdlc.mp3"
+},
+{
+"id": "cat_huh",
+"cat": "shock",
+"dur": 2.46,
+"file": "cat_huh.mp3"
+},
+{
+"id": "cat_meow",
+"cat": "animal",
+"dur": 0.81,
+"file": "cat_meow.mp3"
+},
+{
+"id": "cat_screaming",
+"cat": "shock",
+"dur": 1.67,
+"file": "cat_screaming.mp3"
+},
+{
+"id": "clash_royal_laugh",
+"cat": "laugh",
+"dur": 1.95,
+"file": "clash_royal_laugh.mp3"
+},
+{
+"id": "clash_laugh",
+"cat": "laugh",
+"dur": 1.9,
+"file": "clash_laugh.mp3"
+},
+{
+"id": "cat_scream",
+"cat": "shock",
+"dur": 2.22,
+"file": "cat_scream.mp3"
+},
+{
+"id": "cr_king_cry",
+"cat": "fail",
+"dur": 3.13,
+"file": "cr_king_cry.mp3"
+},
+{
+"id": "crowd_gaspshock",
+"cat": "shock",
+"dur": 1.67,
+"file": "crowd_gaspshock.mp3"
+},
+{
+"id": "ding",
+"cat": "ding",
+"dur": 1.04,
+"file": "ding.mp3"
+},
+{
+"id": "dramatic_thud_edit_roblox_mobileapp_audi",
+"cat": "impact",
+"dur": 1.86,
+"file": "dramatic_thud_edit_roblox_mobileapp_audi.mp3"
+},
+{
+"id": "duck",
+"cat": "animal",
+"dur": 0.8,
+"file": "duck.mp3"
+},
+{
+"id": "easy",
+"cat": "voice_meme",
+"dur": 1.78,
+"file": "easy.mp3"
+},
+{
+"id": "error",
+"cat": "fail",
+"dur": 0.99,
+"file": "error.mp3"
+},
+{
+"id": "evil_laugh",
+"cat": "laugh",
+"dur": 2.62,
+"file": "evil_laugh.mp3"
+},
+{
+"id": "fart",
+"cat": "fart",
+"dur": 1.9,
+"file": "fart.mp3"
+},
+{
+"id": "fast_whoosh",
+"cat": "whoosh",
+"dur": 1.2,
+"file": "fast_whoosh.mp3"
+},
+{
+"id": "fornite_death",
+"cat": "game",
+"dur": 0.98,
+"file": "fornite_death.mp3"
+},
+{
+"id": "glitch",
+"cat": "magic",
+"dur": 2.38,
+"file": "glitch.mp3"
+},
+{
+"id": "goofy_run_2",
+"cat": "fail",
+"dur": 1.76,
+"file": "goofy_run_2.mp3"
+},
+{
+"id": "heavy_hit",
+"cat": "impact",
+"dur": 2.07,
+"file": "heavy_hit.mp3"
+},
+{
+"id": "hello_there",
+"cat": "voice_meme",
+"dur": 1.02,
+"file": "hello_there.mp3"
+},
+{
+"id": "hey_what_happened_vanoss",
+"cat": "shock",
+"dur": 2.12,
+"file": "hey_what_happened_vanoss.mp3"
+},
+{
+"id": "hit",
+"cat": "impact",
+"dur": 1.0,
+"file": "hit.mp3"
+},
+{
+"id": "hogrider_scream",
+"cat": "shock",
+"dur": 2.07,
+"file": "hogrider_scream.mp3"
+},
+{
+"id": "huh_cat",
+"cat": "shock",
+"dur": 0.3,
+"file": "huh_cat.mp3"
+},
+{
+"id": "huh",
+"cat": "shock",
+"dur": 1.16,
+"file": "huh.mp3"
+},
+{
+"id": "huhhh",
+"cat": "shock",
+"dur": 0.3,
+"file": "huhhh.mp3"
+},
+{
+"id": "jump",
+"cat": "bounce",
+"dur": 2.97,
+"file": "jump.mp3"
+},
+{
+"id": "laugh",
+"cat": "laugh",
+"dur": 1.74,
+"file": "laugh.mp3"
+},
+{
+"id": "lego_death",
+"cat": "game",
+"dur": 1.88,
+"file": "lego_death.mp3"
+},
+{
+"id": "lets_go",
+"cat": "voice_meme",
+"dur": 1.14,
+"file": "lets_go.mp3"
+},
+{
+"id": "mario_jump",
+"cat": "bounce",
+"dur": 0.59,
+"file": "mario_jump.mp3"
+},
+{
+"id": "meowrgh",
+"cat": "animal",
+"dur": 1.24,
+"file": "meowrgh.mp3"
+},
+{
+"id": "minecraft_damage_oof",
+"cat": "fail",
+"dur": 3.02,
+"file": "minecraft_damage_oof.mp3"
+},
+{
+"id": "minecraft_door_open_and_close",
+"cat": "fail",
+"dur": 2.02,
+"file": "minecraft_door_open_and_close.mp3"
+},
+{
+"id": "minecraft_grox_ayo_chill",
+"cat": "shock",
+"dur": 3.39,
+"file": "minecraft_grox_ayo_chill.mp3"
+},
+{
+"id": "minecraft_firework",
+"cat": "game",
+"dur": 2.39,
+"file": "minecraft_firework.mp3"
+},
+{
+"id": "minecraft_mob_villager_hit_2_gaming_mine",
+"cat": "impact",
+"dur": 1.18,
+"file": "minecraft_mob_villager_hit_2_gaming_mine.mp3"
+},
+{
+"id": "mission_failed",
+"cat": "fail",
+"dur": 3.3,
+"file": "mission_failed.mp3"
+},
+{
+"id": "mouse_click",
+"cat": "pop",
+"dur": 3.07,
+"file": "mouse_click.mp3"
+},
+{
+"id": "mrbeast_correct",
+"cat": "ding",
+"dur": 0.52,
+"file": "mrbeast_correct.mp3"
+},
+{
+"id": "nice",
+"cat": "voice_meme",
+"dur": 2.28,
+"file": "nice.mp3"
+},
+{
+"id": "nope",
+"cat": "voice_meme",
+"dur": 1.05,
+"file": "nope.mp3"
+},
+{
+"id": "oh_my_god_1",
+"cat": "shock",
+"dur": 2.17,
+"file": "oh_my_god_1.mp3"
+},
+{
+"id": "oh_my_goddd",
+"cat": "shock",
+"dur": 1.64,
+"file": "oh_my_goddd.mp3"
+},
+{
+"id": "oh_knuckles",
+"cat": "fail",
+"dur": 1.02,
+"file": "oh_knuckles.mp3"
+},
+{
+"id": "okay_qyvlkpz",
+"cat": "voice_meme",
+"dur": 1.27,
+"file": "okay_qyvlkpz.mp3"
+},
+{
+"id": "oof",
+"cat": "fail",
+"dur": 1.72,
+"file": "oof.mp3"
+},
+{
+"id": "bye",
+"cat": "voice_meme",
+"dur": 0.57,
+"file": "bye.mp3"
+},
+{
+"id": "cheer",
+"cat": "win",
+"dur": 0.74,
+"file": "cheer.mp3"
+},
+{
+"id": "cry",
+"cat": "fail",
+"dur": 1.17,
+"file": "cry.mp3"
+},
+{
+"id": "evil_laugh_2",
+"cat": "laugh",
+"dur": 2.15,
+"file": "evil_laugh_2.mp3"
+},
+{
+"id": "laugh_2",
+"cat": "laugh",
+"dur": 0.91,
+"file": "laugh_2.mp3"
+},
+{
+"id": "scream",
+"cat": "shock",
+"dur": 0.83,
+"file": "scream.mp3"
+},
+{
+"id": "shocked",
+"cat": "shock",
+"dur": 0.91,
+"file": "shocked.mp3"
+},
+{
+"id": "pop",
+"cat": "pop",
+"dur": 0.81,
+"file": "pop.mp3"
+},
+{
+"id": "pop_2",
+"cat": "pop",
+"dur": 0.77,
+"file": "pop_2.mp3"
+},
+{
+"id": "power_up",
+"cat": "magic",
+"dur": 0.99,
+"file": "power_up.mp3"
+},
+{
+"id": "punch_gaming_rzlg1ge",
+"cat": "impact",
+"dur": 1.53,
+"file": "punch_gaming_rzlg1ge.mp3"
+},
+{
+"id": "punch",
+"cat": "impact",
+"dur": 1.53,
+"file": "punch.mp3"
+},
+{
+"id": "rehehehe",
+"cat": "laugh",
+"dur": 1.33,
+"file": "rehehehe.mp3"
+},
+{
+"id": "roblox_speed_up",
+"cat": "game",
+"dur": 1.65,
+"file": "roblox_speed_up.mp3"
+},
+{
+"id": "rocket_explosion",
+"cat": "impact",
+"dur": 1.58,
+"file": "rocket_explosion.mp3"
+},
+{
+"id": "simple_whoosh",
+"cat": "whoosh",
+"dur": 0.57,
+"file": "simple_whoosh.mp3"
+},
+{
+"id": "super_mario_power_down",
+"cat": "magic",
+"dur": 0.91,
+"file": "super_mario_power_down.mp3"
+},
+{
+"id": "swoosh",
+"cat": "whoosh",
+"dur": 1.06,
+"file": "swoosh.mp3"
+},
+{
+"id": "swoosh_06",
+"cat": "whoosh",
+"dur": 1.1,
+"file": "swoosh_06.mp3"
+},
+{
+"id": "swoosh_one",
+"cat": "whoosh",
+"dur": 0.74,
+"file": "swoosh_one.mp3"
+},
+{
+"id": "tip_toe",
+"cat": "run",
+"dur": 1.27,
+"file": "tip_toe.mp3"
+},
+{
+"id": "tom_and_jerry_scream",
+"cat": "shock",
+"dur": 2.41,
+"file": "tom_and_jerry_scream.mp3"
+},
+{
+"id": "what_the_dog_doing",
+"cat": "shock",
+"dur": 1.14,
+"file": "what_the_dog_doing.mp3"
+},
+{
+"id": "what",
+"cat": "shock",
+"dur": 3.13,
+"file": "what.mp3"
+},
+{
+"id": "whoosh_blow_flutter_shortwav",
+"cat": "whoosh",
+"dur": 0.89,
+"file": "whoosh_blow_flutter_shortwav.mp3"
+},
+{
+"id": "whoosh_cinematic",
+"cat": "whoosh",
+"dur": 3.03,
+"file": "whoosh_cinematic.mp3"
+},
+{
+"id": "whoosh",
+"cat": "whoosh",
+"dur": 3.08,
+"file": "whoosh.mp3"
+},
+{
+"id": "wrong_answer",
+"cat": "fail",
+"dur": 1.18,
+"file": "wrong_answer.mp3"
+},
+{
+"id": "zombie_scream_1",
+"cat": "shock",
+"dur": 3.62,
+"file": "zombie_scream_1.mp3"
+},
+{
+"id": "zombie_scream_2",
+"cat": "shock",
+"dur": 0.55,
+"file": "zombie_scream_2.mp3"
+},
+{
+"id": "zombie_scream_3",
+"cat": "shock",
+"dur": 0.5,
+"file": "zombie_scream_3.mp3"
+},
+{
+"id": "zombie_scream_4",
+"cat": "shock",
+"dur": 0.63,
+"file": "zombie_scream_4.mp3"
+},
+{
+"id": "zombie_scream_5",
+"cat": "shock",
+"dur": 0.76,
+"file": "zombie_scream_5.mp3"
+},
+{
+"id": "zombie_scream_6",
+"cat": "shock",
+"dur": 1.0,
+"file": "zombie_scream_6.mp3"
+},
+{
+"id": "08_rewinding",
+"cat": "ding",
+"dur": 2.33,
+"file": "08_rewinding.mp3"
+},
+{
+"id": "29_swing_a",
+"cat": "win",
+"dur": 1.0,
+"file": "29_swing_a.mp3"
+},
+{
+"id": "apple_notification",
+"cat": "ding",
+"dur": 1.9,
+"file": "apple_notification.mp3"
+},
+{
+"id": "bloop_cartoon_160k_1",
+"cat": "bounce",
+"dur": 3.0,
+"file": "bloop_cartoon_160k_1.mp3"
+},
+{
+"id": "boom_2",
+"cat": "impact",
+"dur": 1.32,
+"file": "boom_2.mp3"
+},
+{
+"id": "build_up",
+"cat": "riser",
+"dur": 1.92,
+"file": "build_up.mp3"
+},
+{
+"id": "cartoon_fart",
+"cat": "fart",
+"dur": 1.12,
+"file": "cartoon_fart.mp3"
+},
+{
+"id": "cash_register_kaching",
+"cat": "win",
+"dur": 3.09,
+"file": "cash_register_kaching.mp3"
+},
+{
+"id": "cash_register_sounds_use",
+"cat": "win",
+"dur": 2.32,
+"file": "cash_register_sounds_use.mp3"
+},
+{
+"id": "cash_register",
+"cat": "win",
+"dur": 3.07,
+"file": "cash_register.mp3"
+},
+{
+"id": "cash_ting",
+"cat": "win",
+"dur": 1.4,
+"file": "cash_ting.mp3"
+},
+{
+"id": "cash_register_purchase",
+"cat": "win",
+"dur": 2.81,
+"file": "cash_register_purchase.mp3"
+},
+{
+"id": "clean_fast_swooshaiff",
+"cat": "whoosh",
+"dur": 0.98,
+"file": "clean_fast_swooshaiff.mp3"
+},
+{
+"id": "click",
+"cat": "pop",
+"dur": 0.91,
+"file": "click.mp3"
+},
+{
+"id": "click_by_90_creators",
+"cat": "pop",
+"dur": 1.57,
+"file": "click_by_90_creators.mp3"
+},
+{
+"id": "click_2",
+"cat": "pop",
+"dur": 1.94,
+"file": "click_2.mp3"
+},
+{
+"id": "correct",
+"cat": "ding",
+"dur": 1.45,
+"file": "correct.mp3"
+},
+{
+"id": "crowd_shocked",
+"cat": "shock",
+"dur": 1.5,
+"file": "crowd_shocked.mp3"
+},
+{
+"id": "ding_2",
+"cat": "ding",
+"dur": 2.81,
+"file": "ding_2.mp3"
+},
+{
+"id": "ding_3",
+"cat": "ding",
+"dur": 0.55,
+"file": "ding_3.mp3"
+},
+{
+"id": "es_jump_swish_producer",
+"cat": "whoosh",
+"dur": 1.16,
+"file": "es_jump_swish_producer.mp3"
+},
+{
+"id": "es_riser_suction_5_producer",
+"cat": "riser",
+"dur": 2.9,
+"file": "es_riser_suction_5_producer.mp3"
+},
+{
+"id": "es_suction_pop_5_producer",
+"cat": "pop",
+"dur": 0.61,
+"file": "es_suction_pop_5_producer.mp3"
+},
+{
+"id": "fart_2",
+"cat": "fart",
+"dur": 0.37,
+"file": "fart_2.mp3"
+},
+{
+"id": "fast_whoosh_2",
+"cat": "whoosh",
+"dur": 1.88,
+"file": "fast_whoosh_2.mp3"
+},
+{
+"id": "game_menu_select",
+"cat": "game",
+"dur": 1.73,
+"file": "game_menu_select.mp3"
+},
+{
+"id": "glitch_2",
+"cat": "magic",
+"dur": 3.02,
+"file": "glitch_2.mp3"
+},
+{
+"id": "heavy_object_hit_and_body_thud",
+"cat": "impact",
+"dur": 2.88,
+"file": "heavy_object_hit_and_body_thud.mp3"
+},
+{
+"id": "lens_flare_transition",
+"cat": "whoosh",
+"dur": 0.86,
+"file": "lens_flare_transition.mp3"
+},
+{
+"id": "mario_coin",
+"cat": "win",
+"dur": 1.78,
+"file": "mario_coin.mp3"
+},
+{
+"id": "microsoft_windows_xp_error_0lhhruuw2n8_1",
+"cat": "fail",
+"dur": 3.07,
+"file": "microsoft_windows_xp_error_0lhhruuw2n8_1.mp3"
+},
+{
+"id": "mixkit_arrow_whoosh",
+"cat": "whoosh",
+"dur": 1.1,
+"file": "mixkit_arrow_whoosh.mp3"
+},
+{
+"id": "mixkit_cartoon_strong_fart",
+"cat": "fart",
+"dur": 1.38,
+"file": "mixkit_cartoon_strong_fart.mp3"
+},
+{
+"id": "mixkit_cartoon_toy_whistle",
+"cat": "bounce",
+"dur": 1.21,
+"file": "mixkit_cartoon_toy_whistle.mp3"
+},
+{
+"id": "mixkit_cinematic_transition_wind_swoosh",
+"cat": "whoosh",
+"dur": 1.32,
+"file": "mixkit_cinematic_transition_wind_swoosh.mp3"
+},
+{
+"id": "mixkit_cinematic_wind_swoosh",
+"cat": "whoosh",
+"dur": 1.45,
+"file": "mixkit_cinematic_wind_swoosh.mp3"
+},
+{
+"id": "mixkit_dog_barking_twice_1",
+"cat": "animal",
+"dur": 1.62,
+"file": "mixkit_dog_barking_twice_1.mp3"
+},
+{
+"id": "mixkit_electricity_static_power_up",
+"cat": "magic",
+"dur": 2.81,
+"file": "mixkit_electricity_static_power_up.mp3"
+},
+{
+"id": "mixkit_fast_tape_rewind_cinematic_transi",
+"cat": "whoosh",
+"dur": 1.92,
+"file": "mixkit_fast_tape_rewind_cinematic_transi.mp3"
+},
+{
+"id": "mixkit_gun_click",
+"cat": "pop",
+"dur": 0.87,
+"file": "mixkit_gun_click.mp3"
+},
+{
+"id": "mixkit_gun_metal_click",
+"cat": "pop",
+"dur": 0.96,
+"file": "mixkit_gun_metal_click.mp3"
+},
+{
+"id": "mixkit_hard_pop_click",
+"cat": "pop",
+"dur": 1.17,
+"file": "mixkit_hard_pop_click.mp3"
+},
+{
+"id": "mixkit_in_and_out_zoom",
+"cat": "whoosh",
+"dur": 1.25,
+"file": "mixkit_in_and_out_zoom.mp3"
+},
+{
+"id": "mixkit_metal_hit_woosh",
+"cat": "whoosh",
+"dur": 0.48,
+"file": "mixkit_metal_hit_woosh.mp3"
+},
+{
+"id": "mixkit_warping_slide",
+"cat": "magic",
+"dur": 2.0,
+"file": "mixkit_warping_slide.mp3"
+},
+{
+"id": "mouse_click_2",
+"cat": "pop",
+"dur": 0.46,
+"file": "mouse_click_2.mp3"
+},
+{
+"id": "mouse_click_3",
+"cat": "pop",
+"dur": 0.34,
+"file": "mouse_click_3.mp3"
+},
+{
+"id": "mouse_click_4",
+"cat": "pop",
+"dur": 1.03,
+"file": "mouse_click_4.mp3"
+},
+{
+"id": "pop_1",
+"cat": "pop",
+"dur": 0.7,
+"file": "pop_1.mp3"
+},
+{
+"id": "pop_9",
+"cat": "pop",
+"dur": 3.84,
+"file": "pop_9.mp3"
+},
+{
+"id": "pop_bubble",
+"cat": "pop",
+"dur": 1.04,
+"file": "pop_bubble.mp3"
+},
+{
+"id": "pop_3",
+"cat": "pop",
+"dur": 2.02,
+"file": "pop_3.mp3"
+},
+{
+"id": "pop_up_256kbps_cbr",
+"cat": "pop",
+"dur": 3.97,
+"file": "pop_up_256kbps_cbr.mp3"
+},
+{
+"id": "pop_4",
+"cat": "pop",
+"dur": 1.74,
+"file": "pop_4.mp3"
+},
+{
+"id": "punch_2",
+"cat": "impact",
+"dur": 0.82,
+"file": "punch_2.mp3"
+},
+{
+"id": "quick_win",
+"cat": "win",
+"dur": 1.95,
+"file": "quick_win.mp3"
+},
+{
+"id": "rake_swing_whoosh_close",
+"cat": "fail",
+"dur": 2.05,
+"file": "rake_swing_whoosh_close.mp3"
+},
+{
+"id": "rm_click_1",
+"cat": "pop",
+"dur": 0.47,
+"file": "rm_click_1.mp3"
+},
+{
+"id": "rm_click_2",
+"cat": "pop",
+"dur": 0.4,
+"file": "rm_click_2.mp3"
+},
+{
+"id": "rm_click_3",
+"cat": "pop",
+"dur": 0.56,
+"file": "rm_click_3.mp3"
+},
+{
+"id": "rm_whoosh",
+"cat": "whoosh",
+"dur": 1.95,
+"file": "rm_whoosh.mp3"
+},
+{
+"id": "short_transition_2",
+"cat": "whoosh",
+"dur": 1.01,
+"file": "short_transition_2.mp3"
+},
+{
+"id": "short_whoosh",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "short_whoosh.mp3"
+},
+{
+"id": "shutter_click",
+"cat": "pop",
+"dur": 0.91,
+"file": "shutter_click.mp3"
+},
+{
+"id": "shutter_click_2",
+"cat": "pop",
+"dur": 0.95,
+"file": "shutter_click_2.mp3"
+},
+{
+"id": "glitch_3",
+"cat": "magic",
+"dur": 1.94,
+"file": "glitch_3.mp3"
+},
+{
+"id": "sudden_suspense",
+"cat": "riser",
+"dur": 1.99,
+"file": "sudden_suspense.mp3"
+},
+{
+"id": "swinging_staff_whoosh_strong_08",
+"cat": "whoosh",
+"dur": 0.42,
+"file": "swinging_staff_whoosh_strong_08.mp3"
+},
+{
+"id": "swoosh_2",
+"cat": "whoosh",
+"dur": 1.46,
+"file": "swoosh_2.mp3"
+},
+{
+"id": "whoosh_2",
+"cat": "whoosh",
+"dur": 0.89,
+"file": "whoosh_2.mp3"
+},
+{
+"id": "whoosh_3",
+"cat": "whoosh",
+"dur": 1.02,
+"file": "whoosh_3.mp3"
+},
+{
+"id": "whoosh_4",
+"cat": "whoosh",
+"dur": 0.48,
+"file": "whoosh_4.mp3"
+},
+{
+"id": "wine_glass_shatter",
+"cat": "win",
+"dur": 3.27,
+"file": "wine_glass_shatter.mp3"
+},
+{
+"id": "woosh_building",
+"cat": "whoosh",
+"dur": 2.59,
+"file": "woosh_building.mp3"
+},
+{
+"id": "1_swoosh_normal",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "1_swoosh_normal.mp3"
+},
+{
+"id": "1_swoosh_short",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "1_swoosh_short.mp3"
+},
+{
+"id": "1_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 2.17,
+"file": "1_whoosh_swoosh_long.mp3"
+},
+{
+"id": "1_whoosh_swoosh_short",
+"cat": "whoosh",
+"dur": 1.74,
+"file": "1_whoosh_swoosh_short.mp3"
+},
+{
+"id": "1_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.9,
+"file": "1_whoosh_swoosh.mp3"
+},
+{
+"id": "10_swoosh_normal",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "10_swoosh_normal.mp3"
+},
+{
+"id": "10_swoosh_short",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "10_swoosh_short.mp3"
+},
+{
+"id": "10_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 3.0,
+"file": "10_whoosh_swoosh_long.mp3"
+},
+{
+"id": "10_whoosh_swoosh_short",
+"cat": "whoosh",
+"dur": 1.53,
+"file": "10_whoosh_swoosh_short.mp3"
+},
+{
+"id": "10_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.9,
+"file": "10_whoosh_swoosh.mp3"
+},
+{
+"id": "2_swoosh_norm",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "2_swoosh_norm.mp3"
+},
+{
+"id": "2_swoosh_short",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "2_swoosh_short.mp3"
+},
+{
+"id": "2_whoosh_swoosh_long_65",
+"cat": "whoosh",
+"dur": 3.14,
+"file": "2_whoosh_swoosh_long_65.mp3"
+},
+{
+"id": "2_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 2.5,
+"file": "2_whoosh_swoosh_long.mp3"
+},
+{
+"id": "2_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.74,
+"file": "2_whoosh_swoosh.mp3"
+},
+{
+"id": "3_swoosh_long",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "3_swoosh_long.mp3"
+},
+{
+"id": "3_swoosh_normal",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "3_swoosh_normal.mp3"
+},
+{
+"id": "3_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 2.24,
+"file": "3_whoosh_swoosh_long.mp3"
+},
+{
+"id": "3_whoosh_swoosh_normal",
+"cat": "whoosh",
+"dur": 2.14,
+"file": "3_whoosh_swoosh_normal.mp3"
+},
+{
+"id": "3_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.77,
+"file": "3_whoosh_swoosh.mp3"
+},
+{
+"id": "4_swoosh_long_62",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "4_swoosh_long_62.mp3"
+},
+{
+"id": "4_swoosh_long",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "4_swoosh_long.mp3"
+},
+{
+"id": "4_whoosh_swoosh_normal",
+"cat": "whoosh",
+"dur": 1.47,
+"file": "4_whoosh_swoosh_normal.mp3"
+},
+{
+"id": "4_whoosh_swoosh_short",
+"cat": "whoosh",
+"dur": 1.77,
+"file": "4_whoosh_swoosh_short.mp3"
+},
+{
+"id": "4_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.74,
+"file": "4_whoosh_swoosh.mp3"
+},
+{
+"id": "5_swoosh_long_63",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "5_swoosh_long_63.mp3"
+},
+{
+"id": "5_swoosh_long",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "5_swoosh_long.mp3"
+},
+{
+"id": "5_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 2.14,
+"file": "5_whoosh_swoosh_long.mp3"
+},
+{
+"id": "5_whoosh_swoosh_normal",
+"cat": "whoosh",
+"dur": 1.5,
+"file": "5_whoosh_swoosh_normal.mp3"
+},
+{
+"id": "5_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.74,
+"file": "5_whoosh_swoosh.mp3"
+},
+{
+"id": "6_swoosh_long_64",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "6_swoosh_long_64.mp3"
+},
+{
+"id": "6_swoosh_long",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "6_swoosh_long.mp3"
+},
+{
+"id": "6_whoosh_swoosh_short_66",
+"cat": "whoosh",
+"dur": 1.5,
+"file": "6_whoosh_swoosh_short_66.mp3"
+},
+{
+"id": "6_whoosh_swoosh_short",
+"cat": "whoosh",
+"dur": 1.74,
+"file": "6_whoosh_swoosh_short.mp3"
+},
+{
+"id": "6_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.74,
+"file": "6_whoosh_swoosh.mp3"
+},
+{
+"id": "7_swoosh_normal",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "7_swoosh_normal.mp3"
+},
+{
+"id": "7_swoosh_short",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "7_swoosh_short.mp3"
+},
+{
+"id": "7_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 3.1,
+"file": "7_whoosh_swoosh_long.mp3"
+},
+{
+"id": "7_whoosh_swoosh_normal",
+"cat": "whoosh",
+"dur": 1.53,
+"file": "7_whoosh_swoosh_normal.mp3"
+},
+{
+"id": "7_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.84,
+"file": "7_whoosh_swoosh.mp3"
+},
+{
+"id": "8_swoosh_long",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "8_swoosh_long.mp3"
+},
+{
+"id": "8_swoosh_short",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "8_swoosh_short.mp3"
+},
+{
+"id": "8_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 2.67,
+"file": "8_whoosh_swoosh_long.mp3"
+},
+{
+"id": "8_whoosh_swoosh_short",
+"cat": "whoosh",
+"dur": 1.47,
+"file": "8_whoosh_swoosh_short.mp3"
+},
+{
+"id": "8_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.47,
+"file": "8_whoosh_swoosh.mp3"
+},
+{
+"id": "9_swoosh_normal",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "9_swoosh_normal.mp3"
+},
+{
+"id": "9_swoosh_short",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "9_swoosh_short.mp3"
+},
+{
+"id": "9_whoosh_swoosh_long",
+"cat": "whoosh",
+"dur": 2.84,
+"file": "9_whoosh_swoosh_long.mp3"
+},
+{
+"id": "9_whoosh_swoosh_short",
+"cat": "whoosh",
+"dur": 1.5,
+"file": "9_whoosh_swoosh_short.mp3"
+},
+{
+"id": "9_whoosh_swoosh",
+"cat": "whoosh",
+"dur": 1.8,
+"file": "9_whoosh_swoosh.mp3"
+},
+{
+"id": "apple_pay_success",
+"cat": "win",
+"dur": 1.5,
+"file": "apple_pay_success.mp3"
+},
+{
+"id": "awkward_spring_pluck",
+"cat": "bounce",
+"dur": 0.97,
+"file": "awkward_spring_pluck.mp3"
+},
+{
+"id": "bamboo_hit",
+"cat": "impact",
+"dur": 0.63,
+"file": "bamboo_hit.mp3"
+},
+{
+"id": "baseball_bat_wood_swing_whoosh_blastwave",
+"cat": "whoosh",
+"dur": 0.26,
+"file": "baseball_bat_wood_swing_whoosh_blastwave.mp3"
+},
+{
+"id": "basketball_net_swoosh_blastwavefx",
+"cat": "whoosh",
+"dur": 0.37,
+"file": "basketball_net_swoosh_blastwavefx.mp3"
+},
+{
+"id": "bells_01",
+"cat": "ding",
+"dur": 2.3,
+"file": "bells_01.mp3"
+},
+{
+"id": "bells_02",
+"cat": "ding",
+"dur": 2.3,
+"file": "bells_02.mp3"
+},
+{
+"id": "bells_03",
+"cat": "ding",
+"dur": 2.3,
+"file": "bells_03.mp3"
+},
+{
+"id": "bells_04",
+"cat": "ding",
+"dur": 2.3,
+"file": "bells_04.mp3"
+},
+{
+"id": "bells_05",
+"cat": "ding",
+"dur": 2.37,
+"file": "bells_05.mp3"
+},
+{
+"id": "big_bubble_2",
+"cat": "pop",
+"dur": 0.58,
+"file": "big_bubble_2.mp3"
+},
+{
+"id": "birds_take_off",
+"cat": "animal",
+"dur": 3.91,
+"file": "birds_take_off.mp3"
+},
+{
+"id": "bo_womp",
+"cat": "fail",
+"dur": 1.18,
+"file": "bo_womp.mp3"
+},
+{
+"id": "bongo_reverse_hits_10_1",
+"cat": "impact",
+"dur": 0.94,
+"file": "bongo_reverse_hits_10_1.mp3"
+},
+{
+"id": "bonk_kbps",
+"cat": "impact",
+"dur": 2.06,
+"file": "bonk_kbps.mp3"
+},
+{
+"id": "bruh_kbps",
+"cat": "bruh",
+"dur": 2.04,
+"file": "bruh_kbps.mp3"
+},
+{
+"id": "bubble_pop",
+"cat": "pop",
+"dur": 0.91,
+"file": "bubble_pop.mp3"
+},
+{
+"id": "camera_whoosh_01",
+"cat": "whoosh",
+"dur": 1.13,
+"file": "camera_whoosh_01.mp3"
+},
+{
+"id": "camera_whoosh_02",
+"cat": "whoosh",
+"dur": 1.37,
+"file": "camera_whoosh_02.mp3"
+},
+{
+"id": "camera_click",
+"cat": "pop",
+"dur": 0.47,
+"file": "camera_click.mp3"
+},
+{
+"id": "camera_click2",
+"cat": "pop",
+"dur": 1.38,
+"file": "camera_click2.mp3"
+},
+{
+"id": "camera_shutter_click",
+"cat": "pop",
+"dur": 1.56,
+"file": "camera_shutter_click.mp3"
+},
+{
+"id": "cartoon_bite",
+"cat": "bounce",
+"dur": 1.08,
+"file": "cartoon_bite.mp3"
+},
+{
+"id": "cartoon_boing",
+"cat": "bounce",
+"dur": 2.1,
+"file": "cartoon_boing.mp3"
+},
+{
+"id": "cartoon_kazoo_zip_accent_intense",
+"cat": "bounce",
+"dur": 1.12,
+"file": "cartoon_kazoo_zip_accent_intense.mp3"
+},
+{
+"id": "cartoon_lick",
+"cat": "bounce",
+"dur": 2.16,
+"file": "cartoon_lick.mp3"
+},
+{
+"id": "cartoon_poke",
+"cat": "bounce",
+"dur": 2.1,
+"file": "cartoon_poke.mp3"
+},
+{
+"id": "cartoon_slip_gaming",
+"cat": "bounce",
+"dur": 2.05,
+"file": "cartoon_slip_gaming.mp3"
+},
+{
+"id": "cartoony_boing_01",
+"cat": "bounce",
+"dur": 2.15,
+"file": "cartoony_boing_01.mp3"
+},
+{
+"id": "cartoony_point",
+"cat": "bounce",
+"dur": 0.3,
+"file": "cartoony_point.mp3"
+},
+{
+"id": "cash_register_1",
+"cat": "win",
+"dur": 2.75,
+"file": "cash_register_1.mp3"
+},
+{
+"id": "cash_register_3",
+"cat": "win",
+"dur": 1.5,
+"file": "cash_register_3.mp3"
+},
+{
+"id": "ceeday_huh",
+"cat": "shock",
+"dur": 1.16,
+"file": "ceeday_huh.mp3"
+},
+{
+"id": "chalk_drowing_1",
+"cat": "win",
+"dur": 0.93,
+"file": "chalk_drowing_1.mp3"
+},
+{
+"id": "cinematic_sub_drop_01",
+"cat": "impact",
+"dur": 3.74,
+"file": "cinematic_sub_drop_01.mp3"
+},
+{
+"id": "cinematic_sub_drop_02",
+"cat": "impact",
+"dur": 3.37,
+"file": "cinematic_sub_drop_02.mp3"
+},
+{
+"id": "cinematic_sub_drop_03",
+"cat": "impact",
+"dur": 3.5,
+"file": "cinematic_sub_drop_03.mp3"
+},
+{
+"id": "cinematic_sub_drop_04",
+"cat": "impact",
+"dur": 3.04,
+"file": "cinematic_sub_drop_04.mp3"
+},
+{
+"id": "cinematic_sub_drop_05",
+"cat": "impact",
+"dur": 3.27,
+"file": "cinematic_sub_drop_05.mp3"
+},
+{
+"id": "cinematic_whoosh_01",
+"cat": "whoosh",
+"dur": 2.37,
+"file": "cinematic_whoosh_01.mp3"
+},
+{
+"id": "cinematic_whoosh_02",
+"cat": "whoosh",
+"dur": 2.24,
+"file": "cinematic_whoosh_02.mp3"
+},
+{
+"id": "cinematic_whoosh_03",
+"cat": "whoosh",
+"dur": 3.0,
+"file": "cinematic_whoosh_03.mp3"
+},
+{
+"id": "cinematic_whoosh_04",
+"cat": "whoosh",
+"dur": 1.74,
+"file": "cinematic_whoosh_04.mp3"
+},
+{
+"id": "cinematic_whoosh_05",
+"cat": "whoosh",
+"dur": 3.0,
+"file": "cinematic_whoosh_05.mp3"
+},
+{
+"id": "cinematic_whoosh_06",
+"cat": "whoosh",
+"dur": 2.1,
+"file": "cinematic_whoosh_06.mp3"
+},
+{
+"id": "cinematic_whoosh_07",
+"cat": "whoosh",
+"dur": 3.0,
+"file": "cinematic_whoosh_07.mp3"
+},
+{
+"id": "cinematic_whoosh_08",
+"cat": "whoosh",
+"dur": 2.34,
+"file": "cinematic_whoosh_08.mp3"
+},
+{
+"id": "cinematic_whoosh_10",
+"cat": "whoosh",
+"dur": 2.37,
+"file": "cinematic_whoosh_10.mp3"
+},
+{
+"id": "click_0",
+"cat": "pop",
+"dur": 1.04,
+"file": "click_0.mp3"
+},
+{
+"id": "clicking_42",
+"cat": "pop",
+"dur": 2.9,
+"file": "clicking_42.mp3"
+},
+{
+"id": "clicking",
+"cat": "pop",
+"dur": 2.9,
+"file": "clicking.mp3"
+},
+{
+"id": "click_01",
+"cat": "pop",
+"dur": 1.13,
+"file": "click_01.mp3"
+},
+{
+"id": "click_02",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_02.mp3"
+},
+{
+"id": "click_03",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_03.mp3"
+},
+{
+"id": "click_04",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_04.mp3"
+},
+{
+"id": "click_05",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_05.mp3"
+},
+{
+"id": "click_06",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_06.mp3"
+},
+{
+"id": "click_07",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_07.mp3"
+},
+{
+"id": "click_08",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_08.mp3"
+},
+{
+"id": "click_09",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_09.mp3"
+},
+{
+"id": "click_10",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_10.mp3"
+},
+{
+"id": "click_11",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_11.mp3"
+},
+{
+"id": "click_12",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_12.mp3"
+},
+{
+"id": "click_13",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_13.mp3"
+},
+{
+"id": "click_14",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_14.mp3"
+},
+{
+"id": "click_15",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_15.mp3"
+},
+{
+"id": "click_16",
+"cat": "pop",
+"dur": 0.5,
+"file": "click_16.mp3"
+},
+{
+"id": "comical_disappointment",
+"cat": "fail",
+"dur": 1.54,
+"file": "comical_disappointment.mp3"
+},
+{
+"id": "comical_duck_quack",
+"cat": "animal",
+"dur": 2.18,
+"file": "comical_duck_quack.mp3"
+},
+{
+"id": "comical_pop",
+"cat": "pop",
+"dur": 1.42,
+"file": "comical_pop.mp3"
+},
+{
+"id": "comical_vein_popping_1",
+"cat": "pop",
+"dur": 0.46,
+"file": "comical_vein_popping_1.mp3"
+},
+{
+"id": "continue_hit",
+"cat": "impact",
+"dur": 2.0,
+"file": "continue_hit.mp3"
+},
+{
+"id": "cool_whoosh",
+"cat": "whoosh",
+"dur": 1.6,
+"file": "cool_whoosh.mp3"
+},
+{
+"id": "dbz_strong_punch",
+"cat": "impact",
+"dur": 1.45,
+"file": "dbz_strong_punch.mp3"
+},
+{
+"id": "deep_intense_hit_two",
+"cat": "impact",
+"dur": 4.0,
+"file": "deep_intense_hit_two.mp3"
+},
+{
+"id": "deep_solid_hit",
+"cat": "impact",
+"dur": 3.07,
+"file": "deep_solid_hit.mp3"
+},
+{
+"id": "deep_whoosh_two",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "deep_whoosh_two.mp3"
+},
+{
+"id": "delay_woosh",
+"cat": "whoosh",
+"dur": 3.11,
+"file": "delay_woosh.mp3"
+},
+{
+"id": "digital_camera_zoom",
+"cat": "whoosh",
+"dur": 1.38,
+"file": "digital_camera_zoom.mp3"
+},
+{
+"id": "digital_click_1",
+"cat": "pop",
+"dur": 0.58,
+"file": "digital_click_1.mp3"
+},
+{
+"id": "digital_click_3",
+"cat": "pop",
+"dur": 0.46,
+"file": "digital_click_3.mp3"
+},
+{
+"id": "digital_click_7",
+"cat": "pop",
+"dur": 0.44,
+"file": "digital_click_7.mp3"
+},
+{
+"id": "digital_click_8",
+"cat": "pop",
+"dur": 0.36,
+"file": "digital_click_8.mp3"
+},
+{
+"id": "discord_notification",
+"cat": "ding",
+"dur": 1.82,
+"file": "discord_notification.mp3"
+},
+{
+"id": "done_bell",
+"cat": "ding",
+"dur": 2.69,
+"file": "done_bell.mp3"
+},
+{
+"id": "dragon_studio_cash_register_kaching",
+"cat": "win",
+"dur": 1.1,
+"file": "dragon_studio_cash_register_kaching.mp3"
+},
+{
+"id": "dramatic_whoosh",
+"cat": "whoosh",
+"dur": 2.72,
+"file": "dramatic_whoosh.mp3"
+},
+{
+"id": "dream_bubble",
+"cat": "pop",
+"dur": 2.88,
+"file": "dream_bubble.mp3"
+},
+{
+"id": "emotional_damage",
+"cat": "fail",
+"dur": 3.32,
+"file": "emotional_damage.mp3"
+},
+{
+"id": "epic_fail_01",
+"cat": "fail",
+"dur": 2.54,
+"file": "epic_fail_01.mp3"
+},
+{
+"id": "epic_shock_doom",
+"cat": "shock",
+"dur": 3.3,
+"file": "epic_shock_doom.mp3"
+},
+{
+"id": "epic_twinkle",
+"cat": "win",
+"dur": 1.03,
+"file": "epic_twinkle.mp3"
+},
+{
+"id": "exploding_toilet_funny",
+"cat": "ding",
+"dur": 2.04,
+"file": "exploding_toilet_funny.mp3"
+},
+{
+"id": "fart_with_reverb",
+"cat": "fart",
+"dur": 3.2,
+"file": "fart_with_reverb.mp3"
+},
+{
+"id": "fast_swish",
+"cat": "whoosh",
+"dur": 0.57,
+"file": "fast_swish.mp3"
+},
+{
+"id": "fast_whoosh_44",
+"cat": "whoosh",
+"dur": 1.6,
+"file": "fast_whoosh_44.mp3"
+},
+{
+"id": "fast_whoosh_3",
+"cat": "whoosh",
+"dur": 1.6,
+"file": "fast_whoosh_3.mp3"
+},
+{
+"id": "flash_digital_tune_whoosh_blastwavefx",
+"cat": "whoosh",
+"dur": 0.58,
+"file": "flash_digital_tune_whoosh_blastwavefx.mp3"
+},
+{
+"id": "floraphonic_ui_pop_up_5",
+"cat": "pop",
+"dur": 0.55,
+"file": "floraphonic_ui_pop_up_5.mp3"
+},
+{
+"id": "foley_branch_swing_whoosh_01",
+"cat": "whoosh",
+"dur": 0.29,
+"file": "foley_branch_swing_whoosh_01.mp3"
+},
+{
+"id": "foley_wood_rod_whoosh_01",
+"cat": "whoosh",
+"dur": 0.19,
+"file": "foley_wood_rod_whoosh_01.mp3"
+},
+{
+"id": "freesound_community_cash_register_purcha",
+"cat": "win",
+"dur": 2.81,
+"file": "freesound_community_cash_register_purcha.mp3"
+},
+{
+"id": "funny_bonk",
+"cat": "impact",
+"dur": 1.33,
+"file": "funny_bonk.mp3"
+},
+{
+"id": "funny_whoosh",
+"cat": "whoosh",
+"dur": 0.6,
+"file": "funny_whoosh.mp3"
+},
+{
+"id": "funny_buildup_2",
+"cat": "riser",
+"dur": 2.56,
+"file": "funny_buildup_2.mp3"
+},
+{
+"id": "future_swoosh",
+"cat": "whoosh",
+"dur": 3.77,
+"file": "future_swoosh.mp3"
+},
+{
+"id": "glitch_01",
+"cat": "magic",
+"dur": 2.6,
+"file": "glitch_01.mp3"
+},
+{
+"id": "glitch_02",
+"cat": "magic",
+"dur": 2.57,
+"file": "glitch_02.mp3"
+},
+{
+"id": "glitch_03",
+"cat": "magic",
+"dur": 2.34,
+"file": "glitch_03.mp3"
+},
+{
+"id": "glitch_04",
+"cat": "magic",
+"dur": 2.5,
+"file": "glitch_04.mp3"
+},
+{
+"id": "glitch_05",
+"cat": "magic",
+"dur": 3.0,
+"file": "glitch_05.mp3"
+},
+{
+"id": "glitch_06",
+"cat": "magic",
+"dur": 2.5,
+"file": "glitch_06.mp3"
+},
+{
+"id": "golden_swoosh",
+"cat": "whoosh",
+"dur": 1.23,
+"file": "golden_swoosh.mp3"
+},
+{
+"id": "high_fast_swoosh",
+"cat": "whoosh",
+"dur": 0.57,
+"file": "high_fast_swoosh.mp3"
+},
+{
+"id": "high_sprung",
+"cat": "run",
+"dur": 0.78,
+"file": "high_sprung.mp3"
+},
+{
+"id": "hit_2",
+"cat": "impact",
+"dur": 2.0,
+"file": "hit_2.mp3"
+},
+{
+"id": "hollow_hit_01",
+"cat": "impact",
+"dur": 2.27,
+"file": "hollow_hit_01.mp3"
+},
+{
+"id": "household_fly_swatter_large_whoosh_hard_",
+"cat": "whoosh",
+"dur": 0.37,
+"file": "household_fly_swatter_large_whoosh_hard_.mp3"
+},
+{
+"id": "intense_hit_two",
+"cat": "impact",
+"dur": 4.0,
+"file": "intense_hit_two.mp3"
+},
+{
+"id": "kentut_fart",
+"cat": "fart",
+"dur": 1.9,
+"file": "kentut_fart.mp3"
+},
+{
+"id": "lens_zooming_in_and_out",
+"cat": "whoosh",
+"dur": 1.16,
+"file": "lens_zooming_in_and_out.mp3"
+},
+{
+"id": "long_swoosh_47",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "long_swoosh_47.mp3"
+},
+{
+"id": "long_swoosh",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "long_swoosh.mp3"
+},
+{
+"id": "mario_coin_2",
+"cat": "win",
+"dur": 1.74,
+"file": "mario_coin_2.mp3"
+},
+{
+"id": "mario_level_up",
+"cat": "win",
+"dur": 3.51,
+"file": "mario_level_up.mp3"
+},
+{
+"id": "metal_gear_alert",
+"cat": "shock",
+"dur": 2.1,
+"file": "metal_gear_alert.mp3"
+},
+{
+"id": "minecraft_door_open_and_close_2",
+"cat": "fail",
+"dur": 2.07,
+"file": "minecraft_door_open_and_close_2.mp3"
+},
+{
+"id": "minecraft_eating_kbps",
+"cat": "game",
+"dur": 1.68,
+"file": "minecraft_eating_kbps.mp3"
+},
+{
+"id": "minecraft_fall_damage_crack_kbps",
+"cat": "game",
+"dur": 2.04,
+"file": "minecraft_fall_damage_crack_kbps.mp3"
+},
+{
+"id": "minecraft_click",
+"cat": "pop",
+"dur": 0.84,
+"file": "minecraft_click.mp3"
+},
+{
+"id": "multi_pop_6_49",
+"cat": "pop",
+"dur": 0.41,
+"file": "multi_pop_6_49.mp3"
+},
+{
+"id": "multi_pop_6",
+"cat": "pop",
+"dur": 0.41,
+"file": "multi_pop_6.mp3"
+},
+{
+"id": "new_notification_08",
+"cat": "ding",
+"dur": 1.13,
+"file": "new_notification_08.mp3"
+},
+{
+"id": "nope_construction_worker_tf2_gaming_kbps",
+"cat": "voice_meme",
+"dur": 1.08,
+"file": "nope_construction_worker_tf2_gaming_kbps.mp3"
+},
+{
+"id": "notification_ping",
+"cat": "ding",
+"dur": 2.12,
+"file": "notification_ping.mp3"
+},
+{
+"id": "notification",
+"cat": "ding",
+"dur": 1.37,
+"file": "notification.mp3"
+},
+{
+"id": "notifikasi_iphone",
+"cat": "ding",
+"dur": 1.02,
+"file": "notifikasi_iphone.mp3"
+},
+{
+"id": "object_whoosh_fly_by_01_sfxbible_ss06024",
+"cat": "whoosh",
+"dur": 1.36,
+"file": "object_whoosh_fly_by_01_sfxbible_ss06024.mp3"
+},
+{
+"id": "oh_shit_4",
+"cat": "impact",
+"dur": 2.59,
+"file": "oh_shit_4.mp3"
+},
+{
+"id": "one_piece_brooks_laugh_15_minutes",
+"cat": "laugh",
+"dur": 3.01,
+"file": "one_piece_brooks_laugh_15_minutes.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds",
+"cat": "whoosh",
+"dur": 2.53,
+"file": "page_10_whoosh_swish_sounds.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_10",
+"cat": "whoosh",
+"dur": 1.41,
+"file": "page_10_whoosh_swish_sounds_10.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_3",
+"cat": "whoosh",
+"dur": 2.4,
+"file": "page_10_whoosh_swish_sounds_3.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_4",
+"cat": "whoosh",
+"dur": 3.45,
+"file": "page_10_whoosh_swish_sounds_4.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_5",
+"cat": "whoosh",
+"dur": 1.62,
+"file": "page_10_whoosh_swish_sounds_5.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_6",
+"cat": "whoosh",
+"dur": 2.98,
+"file": "page_10_whoosh_swish_sounds_6.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_7",
+"cat": "whoosh",
+"dur": 1.8,
+"file": "page_10_whoosh_swish_sounds_7.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 2.12,
+"file": "page_10_whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "page_10_whoosh_swish_sounds_9",
+"cat": "whoosh",
+"dur": 3.58,
+"file": "page_10_whoosh_swish_sounds_9.mp3"
+},
+{
+"id": "page_11_whoosh_swish_sounds_3",
+"cat": "whoosh",
+"dur": 2.56,
+"file": "page_11_whoosh_swish_sounds_3.mp3"
+},
+{
+"id": "page_11_whoosh_swish_sounds_4",
+"cat": "whoosh",
+"dur": 0.97,
+"file": "page_11_whoosh_swish_sounds_4.mp3"
+},
+{
+"id": "page_11_whoosh_swish_sounds_5",
+"cat": "whoosh",
+"dur": 0.81,
+"file": "page_11_whoosh_swish_sounds_5.mp3"
+},
+{
+"id": "page_11_whoosh_swish_sounds_6",
+"cat": "whoosh",
+"dur": 2.1,
+"file": "page_11_whoosh_swish_sounds_6.mp3"
+},
+{
+"id": "page_11_whoosh_swish_sounds_7",
+"cat": "whoosh",
+"dur": 1.36,
+"file": "page_11_whoosh_swish_sounds_7.mp3"
+},
+{
+"id": "page_11_whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 1.62,
+"file": "page_11_whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "page_11_whoosh_swish_sounds_9",
+"cat": "whoosh",
+"dur": 1.85,
+"file": "page_11_whoosh_swish_sounds_9.mp3"
+},
+{
+"id": "page_12_whoosh_swish_sounds_10",
+"cat": "whoosh",
+"dur": 1.52,
+"file": "page_12_whoosh_swish_sounds_10.mp3"
+},
+{
+"id": "page_12_whoosh_swish_sounds_2",
+"cat": "whoosh",
+"dur": 3.79,
+"file": "page_12_whoosh_swish_sounds_2.mp3"
+},
+{
+"id": "page_12_whoosh_swish_sounds_6",
+"cat": "whoosh",
+"dur": 1.83,
+"file": "page_12_whoosh_swish_sounds_6.mp3"
+},
+{
+"id": "page_12_whoosh_swish_sounds_7",
+"cat": "whoosh",
+"dur": 0.86,
+"file": "page_12_whoosh_swish_sounds_7.mp3"
+},
+{
+"id": "page_12_whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 2.87,
+"file": "page_12_whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "page_12_whoosh_swish_sounds_9",
+"cat": "whoosh",
+"dur": 2.53,
+"file": "page_12_whoosh_swish_sounds_9.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds",
+"cat": "whoosh",
+"dur": 2.95,
+"file": "page_13_whoosh_swish_sounds.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds_10",
+"cat": "whoosh",
+"dur": 2.51,
+"file": "page_13_whoosh_swish_sounds_10.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds_2",
+"cat": "whoosh",
+"dur": 1.75,
+"file": "page_13_whoosh_swish_sounds_2.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds_3",
+"cat": "whoosh",
+"dur": 3.74,
+"file": "page_13_whoosh_swish_sounds_3.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds_5",
+"cat": "whoosh",
+"dur": 3.63,
+"file": "page_13_whoosh_swish_sounds_5.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds_7",
+"cat": "whoosh",
+"dur": 2.12,
+"file": "page_13_whoosh_swish_sounds_7.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 2.85,
+"file": "page_13_whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "page_13_whoosh_swish_sounds_9",
+"cat": "whoosh",
+"dur": 3.63,
+"file": "page_13_whoosh_swish_sounds_9.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_10",
+"cat": "whoosh",
+"dur": 1.52,
+"file": "page_14_whoosh_swish_sounds_10.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_2",
+"cat": "whoosh",
+"dur": 3.16,
+"file": "page_14_whoosh_swish_sounds_2.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_3",
+"cat": "whoosh",
+"dur": 2.8,
+"file": "page_14_whoosh_swish_sounds_3.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_4",
+"cat": "whoosh",
+"dur": 2.66,
+"file": "page_14_whoosh_swish_sounds_4.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_5",
+"cat": "whoosh",
+"dur": 2.87,
+"file": "page_14_whoosh_swish_sounds_5.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_6",
+"cat": "whoosh",
+"dur": 2.17,
+"file": "page_14_whoosh_swish_sounds_6.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 3.81,
+"file": "page_14_whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "page_14_whoosh_swish_sounds_9",
+"cat": "whoosh",
+"dur": 2.59,
+"file": "page_14_whoosh_swish_sounds_9.mp3"
+},
+{
+"id": "page_3_whoosh_swish_sounds",
+"cat": "whoosh",
+"dur": 2.87,
+"file": "page_3_whoosh_swish_sounds.mp3"
+},
+{
+"id": "page_4_whoosh_swish_sounds",
+"cat": "whoosh",
+"dur": 2.56,
+"file": "page_4_whoosh_swish_sounds.mp3"
+},
+{
+"id": "page_5_whoosh_swish_sounds",
+"cat": "whoosh",
+"dur": 0.29,
+"file": "page_5_whoosh_swish_sounds.mp3"
+},
+{
+"id": "page_6_whoosh_swish_sounds",
+"cat": "whoosh",
+"dur": 0.99,
+"file": "page_6_whoosh_swish_sounds.mp3"
+},
+{
+"id": "page_7_whoosh_swish_sounds_6",
+"cat": "whoosh",
+"dur": 3.63,
+"file": "page_7_whoosh_swish_sounds_6.mp3"
+},
+{
+"id": "page_7_whoosh_swish_sounds_7",
+"cat": "whoosh",
+"dur": 3.04,
+"file": "page_7_whoosh_swish_sounds_7.mp3"
+},
+{
+"id": "page_7_whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 3.61,
+"file": "page_7_whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "page_7_whoosh_swish_sounds_9",
+"cat": "whoosh",
+"dur": 2.64,
+"file": "page_7_whoosh_swish_sounds_9.mp3"
+},
+{
+"id": "page_8_whoosh_swish_sounds_10",
+"cat": "whoosh",
+"dur": 3.84,
+"file": "page_8_whoosh_swish_sounds_10.mp3"
+},
+{
+"id": "page_9_whoosh_swish_sounds_10",
+"cat": "whoosh",
+"dur": 0.91,
+"file": "page_9_whoosh_swish_sounds_10.mp3"
+},
+{
+"id": "page_9_whoosh_swish_sounds_3",
+"cat": "whoosh",
+"dur": 2.12,
+"file": "page_9_whoosh_swish_sounds_3.mp3"
+},
+{
+"id": "page_9_whoosh_swish_sounds_5",
+"cat": "whoosh",
+"dur": 0.57,
+"file": "page_9_whoosh_swish_sounds_5.mp3"
+},
+{
+"id": "page_9_whoosh_swish_sounds_7",
+"cat": "whoosh",
+"dur": 3.42,
+"file": "page_9_whoosh_swish_sounds_7.mp3"
+},
+{
+"id": "page_9_whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 2.35,
+"file": "page_9_whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "page_9_whoosh_swish_sounds_9",
+"cat": "whoosh",
+"dur": 2.49,
+"file": "page_9_whoosh_swish_sounds_9.mp3"
+},
+{
+"id": "pause_hit",
+"cat": "impact",
+"dur": 2.0,
+"file": "pause_hit.mp3"
+},
+{
+"id": "punch_gaming_kbps",
+"cat": "impact",
+"dur": 1.51,
+"file": "punch_gaming_kbps.mp3"
+},
+{
+"id": "quick_riser_7",
+"cat": "riser",
+"dur": 2.29,
+"file": "quick_riser_7.mp3"
+},
+{
+"id": "quick_whoosh_7",
+"cat": "whoosh",
+"dur": 1.04,
+"file": "quick_whoosh_7.mp3"
+},
+{
+"id": "repeat_this_hit",
+"cat": "impact",
+"dur": 4.0,
+"file": "repeat_this_hit.mp3"
+},
+{
+"id": "right_bells",
+"cat": "ding",
+"dur": 1.85,
+"file": "right_bells.mp3"
+},
+{
+"id": "rope_whoosh_spin_twirl_reel_blastwavefx",
+"cat": "whoosh",
+"dur": 3.43,
+"file": "rope_whoosh_spin_twirl_reel_blastwavefx.mp3"
+},
+{
+"id": "rumble_swish",
+"cat": "whoosh",
+"dur": 3.83,
+"file": "rumble_swish.mp3"
+},
+{
+"id": "samsung_spaceline_notification",
+"cat": "ding",
+"dur": 2.37,
+"file": "samsung_spaceline_notification.mp3"
+},
+{
+"id": "sharp_swoosh",
+"cat": "whoosh",
+"dur": 0.57,
+"file": "sharp_swoosh.mp3"
+},
+{
+"id": "sharp_riser_51",
+"cat": "riser",
+"dur": 1.88,
+"file": "sharp_riser_51.mp3"
+},
+{
+"id": "sharp_riser",
+"cat": "riser",
+"dur": 1.88,
+"file": "sharp_riser.mp3"
+},
+{
+"id": "shocked_2",
+"cat": "shock",
+"dur": 1.42,
+"file": "shocked_2.mp3"
+},
+{
+"id": "soft_whoosh_22",
+"cat": "whoosh",
+"dur": 3.55,
+"file": "soft_whoosh_22.mp3"
+},
+{
+"id": "solid_hit_four",
+"cat": "impact",
+"dur": 4.0,
+"file": "solid_hit_four.mp3"
+},
+{
+"id": "solid_hit_one",
+"cat": "impact",
+"dur": 2.0,
+"file": "solid_hit_one.mp3"
+},
+{
+"id": "solid_hit_three",
+"cat": "impact",
+"dur": 4.0,
+"file": "solid_hit_three.mp3"
+},
+{
+"id": "solid_hit_two",
+"cat": "impact",
+"dur": 2.0,
+"file": "solid_hit_two.mp3"
+},
+{
+"id": "sonic_boing",
+"cat": "bounce",
+"dur": 1.14,
+"file": "sonic_boing.mp3"
+},
+{
+"id": "sonic_spring",
+"cat": "bounce",
+"dur": 0.99,
+"file": "sonic_spring.mp3"
+},
+{
+"id": "design_title_metal_shimmer_whoosh_sweep_",
+"cat": "whoosh",
+"dur": 3.6,
+"file": "design_title_metal_shimmer_whoosh_sweep_.mp3"
+},
+{
+"id": "sounds_ykt_time_freeze_tension",
+"cat": "riser",
+"dur": 3.47,
+"file": "sounds_ykt_time_freeze_tension.mp3"
+},
+{
+"id": "spongebob_disappointed",
+"cat": "fail",
+"dur": 3.97,
+"file": "spongebob_disappointed.mp3"
+},
+{
+"id": "stop_time",
+"cat": "voice_meme",
+"dur": 3.91,
+"file": "stop_time.mp3"
+},
+{
+"id": "surprise_pop",
+"cat": "shock",
+"dur": 1.24,
+"file": "surprise_pop.mp3"
+},
+{
+"id": "swoosh_2_54",
+"cat": "whoosh",
+"dur": 1.0,
+"file": "swoosh_2_54.mp3"
+},
+{
+"id": "swoosh_2_2",
+"cat": "whoosh",
+"dur": 1.0,
+"file": "swoosh_2_2.mp3"
+},
+{
+"id": "swoosh_56",
+"cat": "whoosh",
+"dur": 1.12,
+"file": "swoosh_56.mp3"
+},
+{
+"id": "swoosh_low",
+"cat": "whoosh",
+"dur": 0.37,
+"file": "swoosh_low.mp3"
+},
+{
+"id": "taco_bell_bong",
+"cat": "ding",
+"dur": 1.95,
+"file": "taco_bell_bong.mp3"
+},
+{
+"id": "tf2_bonk",
+"cat": "impact",
+"dur": 0.6,
+"file": "tf2_bonk.mp3"
+},
+{
+"id": "the_wind",
+"cat": "win",
+"dur": 2.6,
+"file": "the_wind.mp3"
+},
+{
+"id": "throwing_davemadson",
+"cat": "win",
+"dur": 1.07,
+"file": "throwing_davemadson.mp3"
+},
+{
+"id": "ui_pop_up_14_58",
+"cat": "pop",
+"dur": 1.03,
+"file": "ui_pop_up_14_58.mp3"
+},
+{
+"id": "ui_pop_up_14",
+"cat": "pop",
+"dur": 1.03,
+"file": "ui_pop_up_14.mp3"
+},
+{
+"id": "ui_pop_up_15_59",
+"cat": "pop",
+"dur": 1.03,
+"file": "ui_pop_up_15_59.mp3"
+},
+{
+"id": "ui_pop_up_15",
+"cat": "pop",
+"dur": 1.03,
+"file": "ui_pop_up_15.mp3"
+},
+{
+"id": "universfield_magic",
+"cat": "magic",
+"dur": 2.83,
+"file": "universfield_magic.mp3"
+},
+{
+"id": "universfield_scary_string_tension",
+"cat": "riser",
+"dur": 3.68,
+"file": "universfield_scary_string_tension.mp3"
+},
+{
+"id": "water_hit",
+"cat": "impact",
+"dur": 4.0,
+"file": "water_hit.mp3"
+},
+{
+"id": "wet_fart_getmp3_pro",
+"cat": "fart",
+"dur": 1.32,
+"file": "wet_fart_getmp3_pro.mp3"
+},
+{
+"id": "wheesh_woosh_fast_shake",
+"cat": "whoosh",
+"dur": 0.84,
+"file": "wheesh_woosh_fast_shake.mp3"
+},
+{
+"id": "whip_whoosh_fast_01",
+"cat": "whoosh",
+"dur": 0.24,
+"file": "whip_whoosh_fast_01.mp3"
+},
+{
+"id": "whoosh_1_2",
+"cat": "whoosh",
+"dur": 1.6,
+"file": "whoosh_1_2.mp3"
+},
+{
+"id": "whoosh_1",
+"cat": "whoosh",
+"dur": 1.6,
+"file": "whoosh_1.mp3"
+},
+{
+"id": "whoosh_2_2",
+"cat": "whoosh",
+"dur": 1.15,
+"file": "whoosh_2_2.mp3"
+},
+{
+"id": "whoosh_3_2",
+"cat": "whoosh",
+"dur": 3.1,
+"file": "whoosh_3_2.mp3"
+},
+{
+"id": "whoosh_4_low",
+"cat": "whoosh",
+"dur": 0.3,
+"file": "whoosh_4_low.mp3"
+},
+{
+"id": "whoosh_9",
+"cat": "whoosh",
+"dur": 2.38,
+"file": "whoosh_9.mp3"
+},
+{
+"id": "whoosh_deep_short_2",
+"cat": "whoosh",
+"dur": 2.34,
+"file": "whoosh_deep_short_2.mp3"
+},
+{
+"id": "whoosh_deep_short",
+"cat": "whoosh",
+"dur": 2.34,
+"file": "whoosh_deep_short.mp3"
+},
+{
+"id": "whoosh_delay_sparkle_blastwavefx",
+"cat": "whoosh",
+"dur": 3.25,
+"file": "whoosh_delay_sparkle_blastwavefx.mp3"
+},
+{
+"id": "whoosh_hit",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "whoosh_hit.mp3"
+},
+{
+"id": "whoosh_main",
+"cat": "whoosh",
+"dur": 1.72,
+"file": "whoosh_main.mp3"
+},
+{
+"id": "whoosh_mystery_dark_metallic_blastwavefx",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "whoosh_mystery_dark_metallic_blastwavefx.mp3"
+},
+{
+"id": "whoosh_robotic_high_fast_blastwavefx",
+"cat": "whoosh",
+"dur": 1.68,
+"file": "whoosh_robotic_high_fast_blastwavefx.mp3"
+},
+{
+"id": "whoosh_small_star_fly_by_blastwavefx",
+"cat": "whoosh",
+"dur": 3.42,
+"file": "whoosh_small_star_fly_by_blastwavefx.mp3"
+},
+{
+"id": "whoosh_two",
+"cat": "whoosh",
+"dur": 2.0,
+"file": "whoosh_two.mp3"
+},
+{
+"id": "whoosh_jet_pass_cripsly",
+"cat": "whoosh",
+"dur": 3.08,
+"file": "whoosh_jet_pass_cripsly.mp3"
+},
+{
+"id": "whoosh3",
+"cat": "whoosh",
+"dur": 2.03,
+"file": "whoosh3.mp3"
+},
+{
+"id": "whooshe_modern_12",
+"cat": "whoosh",
+"dur": 1.6,
+"file": "whooshe_modern_12.mp3"
+},
+{
+"id": "whoosh_swish_sounds",
+"cat": "whoosh",
+"dur": 1.13,
+"file": "whoosh_swish_sounds.mp3"
+},
+{
+"id": "whoosh_swish_sounds_3",
+"cat": "whoosh",
+"dur": 2.85,
+"file": "whoosh_swish_sounds_3.mp3"
+},
+{
+"id": "whoosh_swish_sounds_4",
+"cat": "whoosh",
+"dur": 0.79,
+"file": "whoosh_swish_sounds_4.mp3"
+},
+{
+"id": "whoosh_swish_sounds_5",
+"cat": "whoosh",
+"dur": 1.36,
+"file": "whoosh_swish_sounds_5.mp3"
+},
+{
+"id": "whoosh_swish_sounds_6",
+"cat": "whoosh",
+"dur": 0.37,
+"file": "whoosh_swish_sounds_6.mp3"
+},
+{
+"id": "whoosh_swish_sounds_8",
+"cat": "whoosh",
+"dur": 0.57,
+"file": "whoosh_swish_sounds_8.mp3"
+},
+{
+"id": "whoosh_panoramed_1",
+"cat": "whoosh",
+"dur": 2.6,
+"file": "whoosh_panoramed_1.mp3"
+},
+{
+"id": "whoosh_swoosh_multiple_swing_fencing_swo",
+"cat": "whoosh",
+"dur": 1.11,
+"file": "whoosh_swoosh_multiple_swing_fencing_swo.mp3"
+},
+{
+"id": "whoosh_swoosh_multiple_swing_fencing_swo_2",
+"cat": "whoosh",
+"dur": 0.96,
+"file": "whoosh_swoosh_multiple_swing_fencing_swo_2.mp3"
+},
+{
+"id": "whoosh_swoosh_swing_fishing_pole_closefu",
+"cat": "fail",
+"dur": 0.18,
+"file": "whoosh_swoosh_swing_fishing_pole_closefu.mp3"
+},
+{
+"id": "whoosh_swoosh_swing_fishing_pole_disthal",
+"cat": "whoosh",
+"dur": 0.19,
+"file": "whoosh_swoosh_swing_fishing_pole_disthal.mp3"
+},
+{
+"id": "wind_whoosh_two",
+"cat": "whoosh",
+"dur": 4.0,
+"file": "wind_whoosh_two.mp3"
+},
+{
+"id": "windy_swish",
+"cat": "whoosh",
+"dur": 2.76,
+"file": "windy_swish.mp3"
+},
+{
+"id": "woosh_one",
+"cat": "whoosh",
+"dur": 1.5,
+"file": "woosh_one.mp3"
+},
+{
+"id": "woosh_rattle",
+"cat": "whoosh",
+"dur": 3.12,
+"file": "woosh_rattle.mp3"
+},
+{
+"id": "woosh_10",
+"cat": "whoosh",
+"dur": 0.44,
+"file": "woosh_10.mp3"
+},
+{
+"id": "woosh_11",
+"cat": "whoosh",
+"dur": 0.52,
+"file": "woosh_11.mp3"
+},
+{
+"id": "woosh_5",
+"cat": "whoosh",
+"dur": 0.43,
+"file": "woosh_5.mp3"
+},
+{
+"id": "woosh_7",
+"cat": "whoosh",
+"dur": 0.5,
+"file": "woosh_7.mp3"
+},
+{
+"id": "woosh_9",
+"cat": "whoosh",
+"dur": 0.39,
+"file": "woosh_9.mp3"
+},
+{
+"id": "wrong",
+"cat": "fail",
+"dur": 1.62,
+"file": "wrong.mp3"
+},
+{
+"id": "y2mate_com_boy_what_the_hell_boy_talking",
+"cat": "shock",
+"dur": 1.07,
+"file": "y2mate_com_boy_what_the_hell_boy_talking.mp3"
+},
+{
+"id": "y2mate_com_spongebob_sad_face",
+"cat": "fail",
+"dur": 0.51,
+"file": "y2mate_com_spongebob_sad_face.mp3"
+},
+{
+"id": "y2mate_com_taco_bell_sounds",
+"cat": "ding",
+"dur": 1.83,
+"file": "y2mate_com_taco_bell_sounds.mp3"
+},
+{
+"id": "y2mate_com_what_a_dog_doing_original",
+"cat": "shock",
+"dur": 2.18,
+"file": "y2mate_com_what_a_dog_doing_original.mp3"
+}
+]
