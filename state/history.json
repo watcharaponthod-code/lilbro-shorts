@@ -5,9 +5,9 @@
   "format": "family_rule",
   "title": "In This World Siblings Swap Bodies When They Fight",
   "why": "manual-first+queued",
-  "views": 8,
+  "views": 14,
   "likes": 0,
-  "age_min": 531,
+  "age_min": 586,
   "checks": [
    [
     67,
@@ -44,6 +44,10 @@
    [
     531,
     8
+   ],
+   [
+    586,
+    14
    ]
   ]
  },
@@ -55,7 +59,7 @@
   "why": "explore-untried",
   "views": 118,
   "likes": 1,
-  "age_min": 456,
+  "age_min": 510,
   "checks": [
    [
     42,
@@ -88,6 +92,10 @@
    [
     456,
     118
+   ],
+   [
+    510,
+    118
    ]
   ]
  },
@@ -99,7 +107,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 408,
+  "age_min": 462,
   "checks": [
    [
     58,
@@ -128,6 +136,10 @@
    [
     408,
     0
+   ],
+   [
+    462,
+    0
    ]
   ]
  },
@@ -139,7 +151,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 329,
+  "age_min": 384,
   "checks": [
    [
     36,
@@ -164,6 +176,10 @@
    [
     329,
     0
+   ],
+   [
+    384,
+    0
    ]
   ]
  },
@@ -175,7 +191,7 @@
   "why": "explore-untried",
   "views": 1,
   "likes": 0,
-  "age_min": 273,
+  "age_min": 327,
   "checks": [
    [
     41,
@@ -196,6 +212,10 @@
    [
     273,
     1
+   ],
+   [
+    327,
+    1
    ]
   ]
  },
@@ -205,9 +225,9 @@
   "format": "monster_society",
   "title": "He Adopted 10 Kaiju... Not One Is Still Alive... 😨",
   "why": "exploit",
-  "views": 0,
+  "views": 1,
   "likes": 0,
-  "age_min": 227,
+  "age_min": 281,
   "checks": [
    [
     58,
@@ -224,6 +244,10 @@
    [
     227,
     0
+   ],
+   [
+    281,
+    1
    ]
   ]
  },
@@ -235,7 +259,7 @@
   "why": "exploit",
   "views": 0,
   "likes": 0,
-  "age_min": 163,
+  "age_min": 218,
   "checks": [
    [
     47,
@@ -247,6 +271,10 @@
    ],
    [
     163,
+    0
+   ],
+   [
+    218,
     0
    ]
   ]
