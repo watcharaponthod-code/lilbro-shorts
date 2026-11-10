@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: "7 * * * *"     # every hour (GitHub may start it a few minutes late)
   workflow_dispatch:
+    inputs:
+      test:
+        description: "make a video but do not upload"
+        type: boolean
+        default: false
 permissions:
   contents: write
   models: read
@@ -32,7 +37,7 @@ jobs:
           mkdir -p ~/.fonts && cp assets/fonts/*.ttf ~/.fonts/ && fc-cache -f >/dev/null
           npm ci --silent
       - name: make and upload one short
-        run: uv run -q --no-project --python 3.12 --with numpy --with requests --with "edge-tts>=7.3.1" python make.py
+        run: uv run -q --no-project --python 3.12 --with numpy --with requests --with "edge-tts>=7.3.1" python make.py ${{ inputs.test && '--no-upload' || '' }}
       - name: save learning state
         if: always()
         run: |
