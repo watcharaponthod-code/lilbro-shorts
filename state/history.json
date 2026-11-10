@@ -7,7 +7,7 @@
   "why": "manual-first+queued",
   "views": 3,
   "likes": 0,
-  "age_min": 238,
+  "age_min": 300,
   "checks": [
    [
     67,
@@ -24,6 +24,10 @@
    [
     238,
     3
+   ],
+   [
+    300,
+    3
    ]
   ]
  },
@@ -33,9 +37,9 @@
   "format": "monster_society",
   "title": "In This World Every Sneeze Hatches A Kaiju",
   "why": "explore-untried",
-  "views": 117,
+  "views": 118,
   "likes": 1,
-  "age_min": 163,
+  "age_min": 224,
   "checks": [
    [
     42,
@@ -48,6 +52,10 @@
    [
     163,
     117
+   ],
+   [
+    224,
+    118
    ]
   ]
  },
@@ -59,7 +67,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 115,
+  "age_min": 176,
   "checks": [
    [
     58,
@@ -67,6 +75,10 @@
    ],
    [
     115,
+    0
+   ],
+   [
+    176,
     0
    ]
   ]
@@ -79,10 +91,14 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 36,
+  "age_min": 98,
   "checks": [
    [
     36,
+    0
+   ],
+   [
+    98,
     0
    ]
   ]
@@ -92,6 +108,22 @@
   "t": 1794334178.0438855,
   "format": "impossible_physics",
   "title": "He Screamed Once... And 7 Kids Vanished... 😨",
-  "why": "explore-untried"
+  "why": "explore-untried",
+  "views": 0,
+  "likes": 0,
+  "age_min": 41,
+  "checks": [
+   [
+    41,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "PekbuHXq-bk",
+  "t": 1794336931.1832767,
+  "format": "monster_society",
+  "title": "He Adopted 10 Kaiju... Not One Is Still Alive... 😨",
+  "why": "exploit"
  }
 ]
