@@ -7,7 +7,7 @@
   "why": "manual-first+queued",
   "views": 3,
   "likes": 0,
-  "age_min": 181,
+  "age_min": 238,
   "checks": [
    [
     67,
@@ -20,6 +20,10 @@
    [
     181,
     3
+   ],
+   [
+    238,
+    3
    ]
   ]
  },
@@ -29,9 +33,9 @@
   "format": "monster_society",
   "title": "In This World Every Sneeze Hatches A Kaiju",
   "why": "explore-untried",
-  "views": 106,
+  "views": 117,
   "likes": 1,
-  "age_min": 106,
+  "age_min": 163,
   "checks": [
    [
     42,
@@ -40,6 +44,10 @@
    [
     106,
     106
+   ],
+   [
+    163,
+    117
    ]
   ]
  },
@@ -51,10 +59,14 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 58,
+  "age_min": 115,
   "checks": [
    [
     58,
+    0
+   ],
+   [
+    115,
     0
    ]
   ]
@@ -64,6 +76,22 @@
   "t": 1794330765.0929165,
   "format": "cosmic_event",
   "title": "In this world the moon is an egg... and it just HATCHED 😨",
+  "why": "explore-untried",
+  "views": 0,
+  "likes": 0,
+  "age_min": 36,
+  "checks": [
+   [
+    36,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "2Ms2g6yKy_o",
+  "t": 1794334178.0438855,
+  "format": "impossible_physics",
+  "title": "He Screamed Once... And 7 Kids Vanished... 😨",
   "why": "explore-untried"
  }
 ]
