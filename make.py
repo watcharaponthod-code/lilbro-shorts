@@ -60,8 +60,12 @@ def sfx_file(name):
     return p if p.is_absolute() else SFXLIB / p
 CHAN_RULES = """Audience: kids and teens (8-16) who play Roblox. Format = the viral Roblox story Shorts "In this world..." (ItsGuestCap
 'In this world everyone can see your lies' 36M views, playit 'Step On A Crack Break Your Moms BACK' 15M views):
-- Line 1 states the world's one strange RULE: "In this world, ..." (e.g. everyone sees a number of lies above your head; stepping
-  on a crack really bends your mom's back). Then 3-5 fast, funny examples of how everyday life works under that rule.
+- Line 1 states the world's one RULE, and it must be WILD, surreal and never seen before: beyond imagination, not an
+  everyday or school/family cliche. Good: "In this world, your shadow is a separate person who can quit", "In this world, the
+  moon is a giant egg and tonight it hatches", "In this world, every time you blink, a random city swaps places with yours",
+  "In this world, gravity belongs to whoever owns the most cats". Bad (too ordinary, never use): grades, lies, homework,
+  siblings swapping, chores, phones, mom rules, superstitions everyone knows. Then 3-5 fast, absurd examples of daily life
+  under that rule, each crazier than the last.
 - Then a main kid (named, e.g. Dylan) and his situation under the rule; a rival or outsider; a problem/conflict that escalates.
 - A twist that flips what we believed (the 'liar' was taking the blame for everyone), and a payoff: emotional or hilarious,
   with a callback to an early joke in the last line. Never reveal the twist early.
@@ -241,8 +245,9 @@ def invent_format(formats, hist):
     j = llm_json(f"""You run a YouTube Shorts channel of Roblox story videos. {CHAN_RULES}
 Existing formats (id: idea): {json.dumps({f['id']: f['idea'] for f in formats})}
 Our best videos so far: {json.dumps([{k: h.get(k) for k in ('title', 'format', 'views', 'age_min')} for h in top])}
-Invent ONE new THEME family of "In this world..." rules, different from the existing ones, that kids 8-16 would find
-irresistible (school, family, siblings, money, popularity, superstitions, body, phones, trending Roblox games like Steal An Egg).
+Invent ONE new THEME family of "In this world..." rules, different from the existing ones: surreal, mind-bending,
+beyond imagination (cosmic, impossible physics, living objects, monsters, time, dreams, giant creatures), never ordinary
+school/family/phone topics. Kids 8-16 must think "WHAT?" in the first second.
 Return JSON {{"id": "snake_case_id", "idea": "one sentence describing the kind of rule and story, with an example rule", "title_pattern": "example title"}}""")
     j["id"] = re.sub(r"[^a-z0-9_]", "", j["id"].lower())[:40] or f"fmt{len(formats)}"
     j["invented"] = dt.datetime.utcnow().isoformat()[:16]

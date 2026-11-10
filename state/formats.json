@@ -1,37 +1,37 @@
 [
  {
-  "id": "visible_number",
-  "idea": "Everyone has a visible number or meter above their head (lies told, times they cried, money in the bank, days left, how much they love you); the main kid judges people by it until a twist shows what the number really hides.",
-  "title_pattern": "In this world everyone can see your lies"
+  "id": "impossible_physics",
+  "idea": "A law of physics works in an impossible way (gravity belongs to whoever owns the most cats, falling up on Tuesdays, sound becomes solid and you can build houses out of screams); a kid exploits it until it nearly destroys the world, then a twist.",
+  "title_pattern": "In this world gravity belongs to whoever owns the most cats"
  },
  {
-  "id": "superstition_real",
-  "idea": "A childhood saying or superstition is literally true (step on a crack breaks your mom's back, if you make a face it stays that way, swallowing gum grows a tree); a funny town-wide consequence and a competition or crisis where the kid uses the rule to win.",
-  "title_pattern": "Step On A Crack Break Your Moms BACK..."
+  "id": "living_things",
+  "idea": "Things that should not be alive are alive with their own goals (your shadow can quit its job, the sun has a curfew, houses migrate south for winter); a kid befriends or fights one, absurd escalation, twist ending.",
+  "title_pattern": "In this world your shadow can quit"
  },
  {
-  "id": "family_rule",
-  "idea": "A strange rule about families (siblings swap bodies when they fight, parents shrink when you lie to them, your pet speaks for one day a year); a sibling or parent story with a heartfelt or hilarious payoff.",
-  "title_pattern": "In this world siblings swap bodies when they fight"
+  "id": "cosmic_event",
+  "idea": "A giant cosmic event is normal life (the moon is an egg that hatches once a century, the sky gets repainted every night by giants, stars fall and kids catch them as pets); the main kid is at the center of tonight's event.",
+  "title_pattern": "In this world the moon is an egg and tonight it hatches"
  },
  {
-  "id": "school_rule",
-  "idea": "A strange rule at school (your grade shows on your shirt, the class clown gets superpowers, homework comes alive if you skip it); an underdog kid story with a twist.",
-  "title_pattern": "In this world your grades show on your forehead"
+  "id": "strange_currency",
+  "idea": "People pay with something impossible (memories, years of life, their voice, colors, dreams); a kid trades something huge for something silly, consequences spiral, twist that recontextualizes everything.",
+  "title_pattern": "In this world you pay with your memories"
  },
  {
-  "id": "body_rule",
-  "idea": "A strange rule about bodies or senses (you shrink every time you lie, your hair color shows your mood, you can hear what people think about you once a day); funny examples then an emotional twist.",
-  "title_pattern": "In this world lying makes you shorter"
+  "id": "time_weirdness",
+  "idea": "Time works strangely (every sneeze skips a day, the oldest person is a baby, you can rent out your future self, clocks are alive and go on strike); a kid breaks it and must fix it before midnight.",
+  "title_pattern": "In this world every sneeze skips a day"
  },
  {
-  "id": "roblox_game_world",
-  "idea": "The rule comes from a trending Roblox game, especially Steal An Egg (if someone steals your egg you lose a memory, the rarer your egg the more powerful you are), or Throw Food For Animals; a kid story inside that world with a twist.",
-  "title_pattern": "In this world your egg decides your life"
+  "id": "monster_society",
+  "idea": "Giant monsters or creatures are part of normal society (kaiju are school buses, dragons work as firefighters but are afraid of fire, the monster under your bed pays rent); a kid and a creature, chaos, heartfelt or hilarious twist.",
+  "title_pattern": "In this world the monster under your bed pays rent"
  },
  {
-  "id": "wish_cost",
-  "idea": "Wishes, money or popularity have a strange price (every wish costs one friend, every Robux you spend ages you a day); greed then a twist and a smart ending.",
-  "title_pattern": "In this world every wish costs you a friend"
+  "id": "roblox_glitch_world",
+  "idea": "Roblox game mechanics are real life physics (respawning, admin commands, lag spikes freeze the whole city, Steal An Egg eggs hatch real gods); a kid finds a game-breaking glitch in reality.",
+  "title_pattern": "In this world lag spikes freeze the whole city"
  }
 ]
