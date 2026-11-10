@@ -17,7 +17,7 @@ concurrency:
 jobs:
   short:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_TOKEN: ${{ github.token }}
@@ -26,6 +26,8 @@ jobs:
       MATON_YT_MONKEY_CONNECTION: ${{ secrets.MATON_YT_MONKEY_CONNECTION }}
       FONTS_DIR: ${{ github.workspace }}/assets/fonts
       META_MAX_MIN: "16"
+      WORKER_URL: ${{ secrets.WORKER_URL }}
+      ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

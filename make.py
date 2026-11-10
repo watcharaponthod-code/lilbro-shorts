@@ -267,7 +267,7 @@ scene keeps them identical.
 Do NOT reuse these recent titles/ideas: {json.dumps(recent)}
 Return JSON: {{"title": "the hook as a title, max 70 chars, like 'In this world everyone can see your lies' or 'Step On A Crack Break Your Moms BACK...', never the word AI",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
-"music_mood": "one of emotional, suspense, epic, chill, hype (fits the story's main feeling)",
+"music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
 "scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""")
     assert len(j["scenes"]) >= 6, "need 6+ scenes"
@@ -298,7 +298,38 @@ async def _tts(text, out):
     return words
 
 
+def tts_cf(text, out):
+    """Cloudflare Workers AI Deepgram Aura-2 'zeus' via the worker's /tts route (the voice the user prefers).
+    Aura has no word timings, so caption timing is spread over the words by length."""
+    url, tok = os.environ.get("WORKER_URL"), os.environ.get("ADMIN_TOKEN")
+    if not url or not tok:
+        return None
+    for a in range(3):
+        try:
+            r = requests.post(url.rstrip("/") + "/tts", json={"text": text, "speaker": os.environ.get("AURA_SPEAKER", "zeus")},
+                              headers={"Authorization": f"Bearer {tok}"}, timeout=120)
+            if r.status_code == 200 and r.headers.get("content-type", "").startswith("audio") and len(r.content) > 2000:
+                raw = Path(out).with_suffix(".raw.mp3"); raw.write_bytes(r.content)
+                # trim leading/trailing silence so scenes flow tightly
+                sh(FF, "-v", "error", "-y", "-i", raw, "-af", "silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
+                   "silenceremove=start_periods=1:start_threshold=-45dB,areverse", "-ar", "24000", "-ac", "1", out)
+                d = dur(out); ws = text.split(); w8 = [len(x) + 2 for x in ws]; tot = sum(w8); t = 0.0; words = []
+                for x, k in zip(ws, w8):
+                    words.append({"w": x, "s": d * t / tot, "e": d * (t + k) / tot}); t += k
+                return words
+            print("aura failed", r.status_code, r.text[:150])
+        except Exception as e:
+            print("aura error", e)
+        time.sleep(3)
+    return None
+
+
 def tts(text, out):
+    if os.environ.get("TTS", "cf") == "cf":
+        w = tts_cf(text, out)
+        if w is not None:
+            return w
+        print("Cloudflare TTS unavailable -> Edge fallback")
     for a in range(6):
         try:
             return asyncio.run(_tts(text, out))
@@ -336,7 +367,8 @@ def assemble(s, clips, work):
             continue
         full = min(dur(clip), 10.5)
         mp3 = work / f"vo{i}.mp3"; W = tts(sc["say"], mp3); vd = dur(mp3)
-        tempo = min(1.12, max(1.0, vd / (full * 1.12)))  # narration drives the timing, like the reference shorts
+        base = float(os.environ.get("VO_SPEED", "1.15"))   # Aura-2 zeus sped up ~15% (punchy, like the first channel voice)
+        tempo = min(1.3, max(base, vd / (full * 1.12)))   # narration drives the timing, like the reference shorts
         sd = vd / tempo
         seg_len = max(3.0, sd + 0.12)
         cd = min(full, seg_len)
@@ -405,7 +437,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     k = 0
     for st, mp3, tempo, sd in speech:
         ms = int(st * 1000); inputs += ["-i", mp3]
-        af.append(f"[{k}:a]asetrate={EDGE_SR * SHIFT:.0f},aresample=48000,atempo={tempo / SHIFT:.4f},bass=g=5:f=110,equalizer=f=3000:t=q:w=1:g=3,acompressor=threshold=-20dB:ratio=6:attack=3:release=60:makeup=4,aformat=channel_layouts=stereo,volume=1.5,adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
+        af.append(f"[{k}:a]asetrate={EDGE_SR * SHIFT:.0f},aresample=48000,atempo={tempo / SHIFT:.4f},acompressor=threshold=-18dB:ratio=3:attack=5:release=80:makeup=2,aformat=channel_layouts=stereo,volume=1.5,adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
         mix.append(f"[a{k}]"); k += 1
     sfx = [] if os.environ.get("SFX", "0") != "1" else sfx   # user wants music only, no sound effects
     for st, f, g in sfx:
