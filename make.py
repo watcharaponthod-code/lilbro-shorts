@@ -280,7 +280,7 @@ def write_script(fmt, hist):
     j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
 {CHAN_RULES}
 Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
-- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). Scene 1 opens with the shocking mysterious hook line (it may start with "In this world,").
+- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). Scene 1 opens with the shocking mysterious hook line (start it with "In this world," and state the rule in the first sentence).
   All scenes together must read as one continuous story.
 - "video": what is SEEN in this 10 s as Roblox footage: location, which characters (by name), the action in order, and
   2-3 camera cuts written as [0-4s] ... [4-7s] ... [7-10s] .... Show the rule visually (e.g. floating numbers above heads).
