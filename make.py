@@ -165,6 +165,22 @@ def upload(final, s):
     return j["id"]
 
 
+def localize_th(vid, s):
+    """Thai title/description for viewers whose YouTube language is Thai (videos.localizations; works without
+    Multi-language audio, which this channel does not have yet)."""
+    if not s.get("th_title"):
+        return
+    try:
+        cur = requests.get(f"{GW}/youtube/v3/videos", params={"part": "snippet", "id": vid}, headers=maton_h(), timeout=60).json()["items"][0]["snippet"]
+        body = {"id": vid, "snippet": {"title": cur["title"], "description": cur.get("description", ""), "categoryId": cur.get("categoryId", "1"),
+                                       "tags": cur.get("tags", []), "defaultLanguage": "en"},
+                "localizations": {"th": {"title": s["th_title"][:100], "description": s.get("th_description", s["th_title"])[:4900]}}}
+        r = requests.put(f"{GW}/youtube/v3/videos?part=snippet,localizations", json=body, headers={**maton_h(), "Content-Type": "application/json"}, timeout=60)
+        print("thai localization", r.status_code, r.text[:120] if r.status_code != 200 else "")
+    except Exception as e:
+        print("thai localization failed", e)
+
+
 class UploadLimit(Exception):
     pass
 
@@ -199,7 +215,7 @@ def drain_queue(hist):
         if not m or not (d / "final.mp4").exists():
             gh("release", "delete", tag, "--yes", "--cleanup-tag"); continue
         try:
-            vid = upload(d / "final.mp4", m["script"])
+            vid = upload(d / "final.mp4", m["script"]); localize_th(vid, m["script"])
         except UploadLimit:
             print("still limited; queue:", tag); return True
         print("UPLOADED from queue", vid, m["script"]["title"])
@@ -276,6 +292,7 @@ scene keeps them identical.
 Do NOT reuse these recent titles/ideas: {json.dumps(recent)}
 Return JSON: {{"title": "a shocking mysterious hook title, max 70 chars, like 'Every Kid He Takes Home D*ES... 😨' or 'In this world your shadow can quit...', may censor one dark word with *, end with ... and one emoji, never the word AI",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
+"th_title": "the same title in natural Thai (for Thai viewers)", "th_description": "the description in natural Thai, same hashtags",
 "music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
 "scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""")
@@ -553,6 +570,7 @@ def main():
                 vid = upload(final, s)
             except UploadLimit:
                 enqueue(final, s, why, stamp); result["note"] = "upload limit: queued"; print(result["note"]); return
+            localize_th(vid, s)
             result.update(id=vid, url=f"https://youtube.com/shorts/{vid}")
             print("UPLOADED", result["url"])
             hist.append({"id": vid, "t": time.time(), "format": fmt["id"], "title": s["title"], "why": why})
