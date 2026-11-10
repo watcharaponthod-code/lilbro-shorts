@@ -7,7 +7,7 @@
   "why": "manual-first+queued",
   "views": 8,
   "likes": 0,
-  "age_min": 415,
+  "age_min": 470,
   "checks": [
    [
     67,
@@ -36,6 +36,10 @@
    [
     415,
     8
+   ],
+   [
+    470,
+    8
    ]
   ]
  },
@@ -47,7 +51,7 @@
   "why": "explore-untried",
   "views": 118,
   "likes": 1,
-  "age_min": 339,
+  "age_min": 395,
   "checks": [
    [
     42,
@@ -72,6 +76,10 @@
    [
     339,
     118
+   ],
+   [
+    395,
+    118
    ]
   ]
  },
@@ -83,7 +91,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 291,
+  "age_min": 347,
   "checks": [
    [
     58,
@@ -104,6 +112,10 @@
    [
     291,
     0
+   ],
+   [
+    347,
+    0
    ]
   ]
  },
@@ -115,7 +127,7 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 213,
+  "age_min": 268,
   "checks": [
    [
     36,
@@ -132,6 +144,10 @@
    [
     213,
     0
+   ],
+   [
+    268,
+    0
    ]
   ]
  },
@@ -141,9 +157,9 @@
   "format": "impossible_physics",
   "title": "He Screamed Once... And 7 Kids Vanished... 😨",
   "why": "explore-untried",
-  "views": 0,
+  "views": 1,
   "likes": 0,
-  "age_min": 156,
+  "age_min": 211,
   "checks": [
    [
     41,
@@ -156,6 +172,10 @@
    [
     156,
     0
+   ],
+   [
+    211,
+    1
    ]
   ]
  },
@@ -167,7 +187,7 @@
   "why": "exploit",
   "views": 0,
   "likes": 0,
-  "age_min": 110,
+  "age_min": 165,
   "checks": [
    [
     58,
@@ -175,6 +195,10 @@
    ],
    [
     110,
+    0
+   ],
+   [
+    165,
     0
    ]
   ]
@@ -187,10 +211,14 @@
   "why": "exploit",
   "views": 0,
   "likes": 0,
-  "age_min": 47,
+  "age_min": 102,
   "checks": [
    [
     47,
+    0
+   ],
+   [
+    102,
     0
    ]
   ]
