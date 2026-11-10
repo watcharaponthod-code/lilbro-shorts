@@ -29,9 +29,10 @@ CHANNEL_ID = "UCczRwdCgEiEsXG-6Ji2mWew"  # Lil Bro Chaos (monkey connection); ab
 GW = "https://gateway.maton.ai/youtube"
 FONT = os.environ.get("FONT_NAME", "Archivo Black")
 
-STYLE = ("It must look exactly like real ROBLOX gameplay footage recorded in Roblox Studio: 3D blocky Roblox R15 avatars "
-         "with smooth plastic shading, Roblox faces and hair accessories, simple bright Roblox maps (school, town, houses, "
-         "obbys) with default Roblox sky and lighting. No channel logos, no watermark.")
+STYLE = ("Classic 2D TV cartoon animated on twos at 12 frames per second, like an old-school hand-drawn Saturday-morning "
+         "cartoon: thick uniform black outlines, flat cel colors, painted backgrounds, snappy limited animation with held poses. "
+         "All characters are ROBLOX avatars drawn as 2D cartoons: blocky square heads, rectangular blocky bodies and limbs, "
+         "simple Roblox faces, Roblox hair and outfits. Not 3D, not CGI. No channel logos, no watermark.")
 SFXLIB = D / "assets" / "sfxlib"
 CATALOG = jload_early = json.loads((SFXLIB / "catalog.json").read_text(encoding="utf-8")) if (SFXLIB / "catalog.json").exists() else []
 CATALOG += [{"id": f.stem, "cat": "meme", "dur": 1, "file": str(f)} for f in sorted((D / "assets" / "sfx").glob("*.wav"))]
@@ -264,6 +265,7 @@ scene keeps them identical.
 Do NOT reuse these recent titles/ideas: {json.dumps(recent)}
 Return JSON: {{"title": "the hook as a title, max 70 chars, like 'In this world everyone can see your lies' or 'Step On A Crack Break Your Moms BACK...', never the word AI",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
+"music_mood": "one of emotional, suspense, epic, chill, hype (fits the story's main feeling)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
 "scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""")
     assert len(j["scenes"]) >= 6, "need 6+ scenes"
@@ -276,7 +278,7 @@ def video_prompt(sc, chars=None):
     chars = {str(k).strip(): v for k, v in (chars or {}).items() if str(k).strip()}
     who = [f"{k}: {v}" for k, v in chars.items() if re.search(rf"\b{re.escape(k)}\b", sc["video"], re.I)]
     looks = (" Characters (keep these exact looks): " + "; ".join(who) + ".") if who else ""
-    return (f"Create a 10-second vertical 9:16 video. {STYLE}{looks} {sc['video']} Smooth Roblox animation with the camera "
+    return (f"Create a 10-second vertical 9:16 video. {STYLE}{looks} {sc['video']} Animated on twos (12 fps) with the camera "
             f"cuts. No captions, no speech bubbles, no text except numbers or signs that are part of the story. AUDIO: no dialogue, no music.")
 
 
@@ -407,7 +409,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         ms = int(st * 1000); inputs += ["-i", f]
         af.append(f"[{k}:a]aresample=48000,aformat=channel_layouts=stereo,volume={g},adelay={ms}|{ms},apad=whole_dur={T}[a{k}]")
         mix.append(f"[a{k}]"); k += 1
-    music = sorted((D / "assets" / "music").glob("*.mp3"))
+    md = D / "assets" / "music"
+    moods = json.loads((md / "moods.json").read_text(encoding="utf-8")) if (md / "moods.json").exists() else {}
+    pick = moods.get(str(s.get("music_mood", "")).lower()) or [p.stem for p in md.glob("*.mp3")]
+    music = [md / f"{n}.mp3" for n in pick if (md / f"{n}.mp3").exists()]
     if music:
         inputs += ["-stream_loop", "-1", "-i", random.choice(music)]
         duck = "+".join(f"between(t,{a - 0.05:.2f},{a + d + 0.1:.2f})" for a, _, _, d in speech) or "0"
