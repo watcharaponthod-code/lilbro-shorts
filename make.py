@@ -148,8 +148,13 @@ def upload(final, s):
     meta = {"snippet": {"title": s["title"][:100], "description": s["description"][:4900], "tags": s["tags"][:20],
                         "categoryId": "1", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
             "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False, "containsSyntheticMedia": False}}
-    ch = requests.get(f"{GW}/youtube/v3/channels", params={"part": "id", "mine": "true"}, headers=maton_h(), timeout=60).json()
+    cr = requests.get(f"{GW}/youtube/v3/channels", params={"part": "id", "mine": "true"}, headers=maton_h(), timeout=60)
+    if cr.status_code == 429 or "quota" in cr.text.lower():
+        raise UploadLimit(f"maton quota ({cr.status_code}): {cr.text[:160]}")
+    ch = cr.json() if cr.headers.get("content-type", "").startswith("application/json") else {}
     cid = (ch.get("items") or [{}])[0].get("id")
+    if cid is None:
+        raise RuntimeError(f"channel check failed {cr.status_code} {cr.text[:200]}")
     if cid != CHANNEL_ID:
         raise SystemExit(f"wrong channel {cid}, refusing to upload")
     bd = "mtn" + os.urandom(12).hex()
