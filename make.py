@@ -408,7 +408,7 @@ class QualityReject(Exception):
 def quality_script(fmt, hist):
     """write -> harsh review -> rewrite, until the script passes; a weak idea is dropped and a new one written."""
     best = None
-    for idea in range(2):
+    for idea in range(4):                 # up to 4 fresh ideas x 3 review rounds (~12 min of LLM time)
         s = write_script(fmt, hist); s["format_idea"] = idea
         for rnd in range(3):
             rv = review_script(s)
