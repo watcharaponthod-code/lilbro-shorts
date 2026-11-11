@@ -339,8 +339,12 @@ def write_script(fmt, hist):
     j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
 {rules}
 Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
-- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). {opener}
+- "say": the narrator text for this scene, 22-34 words (spoken fast, ~220 words per minute). {opener}
+  The FIRST sentence of scene 1 is at most 10 words and contains the whole premise; nothing comes before it.
   All scenes together must read as one continuous story.
+  Craft rules the script is judged on: every object or power used in the ending must be shown earlier (set up, then pay off);
+  each scene follows from the last ("so", "but", never "and then"); the twist flips the premise and is funny, never a reward
+  or a lesson; the final line calls back to the first line; narration and "video" show the same thing in the same order.
 - "video": what is SEEN in this 10 s as Roblox footage: location, which characters (by name), the action in order, and
   2-3 camera cuts written as [0-4s] ... [4-7s] ... [7-10s] .... Show the rule visually (e.g. floating numbers above heads).
   No speech bubbles, no captions.
@@ -384,7 +388,8 @@ Return JSON {{"scores": {{"hook": n, "clarity": n, "escalation": n, "payoff": n,
 
 
 def improve_script(s, rv):
-    j = llm_json(f"""Rewrite this Roblox story Short script applying every fix. Keep the same premise, the same number of scenes,
+    j = llm_json(f"""Rewrite this Roblox story Short script applying every fix. You may restructure scenes, cut weak beats and change the
+ending, but keep the premise, the same number of scenes,
 the same JSON shape and the same characters. Each "say" stays 30-36 words; keep "video" and "sfx" fields in the same style.
 Fixes: {json.dumps(rv.get("fixes", []))}  Biggest problem: {rv.get("weakest", "")}
 Script: {json.dumps(s, ensure_ascii=False)}
