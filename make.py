@@ -290,6 +290,14 @@ def pick_format(formats, hist):
             if len(v) >= 3 and np.mean(v) < 0.5 * med:
                 f["retired"] = True; print("retire format", f["id"])
     r = random.random()
+    # clear winner (>= 5x the median theme): exploit it 70% of the time, uploads are scarce
+    if len(stats) >= 3:
+        means = {k: np.mean(sorted(v)[-5:]) for k, v in stats.items()}
+        med = sorted(means.values())[len(means) // 2]
+        lead = max((f for f in active if f["id"] in means), key=lambda f: means[f["id"]], default=None)
+        if lead and means[lead["id"]] >= 5 * max(med, 0.5) and r < 0.7:
+            return lead, "exploit-winner"
+        r = random.random()
     if untried and (r < 0.6 or not stats):
         return random.choice(untried), "explore-untried"
     if r < 0.2 or not stats:
