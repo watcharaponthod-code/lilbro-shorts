@@ -329,7 +329,7 @@ other channel's format: never open with "In this world", never use "Noob vs Pro 
 def write_script(fmt, hist):
     recent = [h["title"] for h in hist[-40:]]
     own = fmt.get("style") == "original"
-    n = random.choice(fmt.get("scenes") or [8, 9, 10, 11])      # ~10 s per scene
+    n = random.choice(fmt.get("scenes") or [6, 7])      # ~10 s per scene, 60-70 s max
     rules = ORIGINAL_RULES if own else CHAN_RULES
     opener = ("Scene 1 opens with the premise line in first person (never \"In this world\")." if own else
               "Scene 1 opens with the shocking mysterious hook line (start it with \"In this world,\" and state the rule in the first sentence).")
@@ -361,6 +361,62 @@ Return JSON: {{"title": "{title_rule}",
         j["title"] = re.sub(r"(?i)^in this world,?\s*", "", j["title"])
     j["title"] = re.sub(r"\s+", " ", j["title"])
     return j
+
+
+QUALITY_MIN, QUALITY_AVG = 7, 8.0   # every criterion >= 7 and average >= 8, else the script is rewritten or dropped
+
+
+def review_script(s):
+    return llm_json(f"""You are the harshest Shorts editor at a top kids' YouTube studio. Score this Roblox story Short script.
+An average Short on YouTube scores 5. Only a script that would make a 12-year-old watch to the end AND send it to a friend gets 9+.
+Criteria (1-10 each):
+- hook: line 1 makes the premise instantly clear and makes you need to know what happens (first 2 seconds)
+- clarity: a kid follows every beat on first watch, no confusing jumps, the narration matches what is seen
+- escalation: each scene is bigger/funnier than the last, with concrete numbers and images
+- payoff: the twist is surprising yet makes sense, the last line calls back to line 1 and lands as a joke
+- originality: nothing generic or copied (no "In this world" filler, no stock moral, no known meme template)
+- visual: every scene describes something funny to SEE, not just to hear
+- loop: the ending makes people rewatch
+Script: {json.dumps({k: s.get(k) for k in ("title", "scenes")}, ensure_ascii=False)}
+Return JSON {{"scores": {{"hook": n, "clarity": n, "escalation": n, "payoff": n, "originality": n, "visual": n, "loop": n}},
+"weakest": "the single biggest problem in one sentence", "fixes": ["3-5 concrete rewrite instructions naming the scene"]}}""",
+                    temp=0.3, need="scores")
+
+
+def improve_script(s, rv):
+    j = llm_json(f"""Rewrite this Roblox story Short script applying every fix. Keep the same premise, the same number of scenes,
+the same JSON shape and the same characters. Each "say" stays 30-36 words; keep "video" and "sfx" fields in the same style.
+Fixes: {json.dumps(rv.get("fixes", []))}  Biggest problem: {rv.get("weakest", "")}
+Script: {json.dumps(s, ensure_ascii=False)}
+Return the full rewritten script JSON.""", need="scenes")
+    for k in ("characters", "music_mood", "tags", "description"):
+        j.setdefault(k, s.get(k))
+    j["title"] = re.sub(r"[^\x00-\u024F]+", "", j.get("title") or s["title"]).strip(" .") or s["title"]
+    return j
+
+
+class QualityReject(Exception):
+    pass
+
+
+def quality_script(fmt, hist):
+    """write -> harsh review -> rewrite, until the script passes; a weak idea is dropped and a new one written."""
+    best = None
+    for idea in range(2):
+        s = write_script(fmt, hist)
+        for rnd in range(3):
+            rv = review_script(s)
+            sc = {k: float(v) for k, v in rv["scores"].items()}
+            avg = sum(sc.values()) / len(sc)
+            print(f"quality idea{idea + 1} round{rnd + 1}: avg {avg:.1f} min {min(sc.values())} | {rv.get('weakest', '')[:120]}")
+            if best is None or avg > best[0]:
+                best = (avg, s, rv)
+            if min(sc.values()) >= QUALITY_MIN and avg >= QUALITY_AVG:
+                s["quality"] = {"avg": round(avg, 2), "scores": sc, "rounds": rnd + 1, "idea": idea + 1}
+                return s
+            if rnd < 2:
+                s = improve_script(s, rv)
+    raise QualityReject(f"no script reached the bar (best avg {best[0]:.1f}: {best[2].get('weakest', '')[:120]})")
 
 
 def video_prompt(sc, chars=None):
@@ -603,8 +659,8 @@ def main():
                 fmt, why = forced[0], "forced"
             if fmt is None:
                 fmt = invent_format(formats, hist); formats.append(fmt)
-            s = write_script(fmt, hist)
-        s["format"] = fmt["id"]; result.update(format=fmt["id"], why=why, title=s["title"])
+            s = quality_script(fmt, hist)
+        s["format"] = fmt["id"]; result.update(format=fmt["id"], why=why, title=s["title"], quality=s.get("quality"))
         print("format", fmt["id"], why, "|", s["title"])
         (work / "script.json").write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")
         if a.clips:
@@ -642,6 +698,8 @@ def main():
             result.update(id=vid, url=f"https://youtube.com/shorts/{vid}")
             print("UPLOADED", result["url"])
             hist.append({"id": vid, "t": time.time(), "format": fmt["id"], "title": s["title"], "why": why})
+    except QualityReject as e:
+        result["note"] = f"quality reject, nothing made: {e}"; print(result["note"])
     except Exception as e:
         result["error"] = f"{type(e).__name__}: {e}"; print("ERROR", result["error"])
         if not a.no_upload:                  # meta.ai / LLM out of quota usually fails twice in a row: pause instead of burning runs

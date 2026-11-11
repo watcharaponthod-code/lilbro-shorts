@@ -2,37 +2,65 @@
  {
   "id": "impossible_physics",
   "idea": "A law of physics works in an impossible way (gravity belongs to whoever owns the most cats, falling up on Tuesdays, sound becomes solid and you can build houses out of screams); a kid exploits it until it nearly destroys the world, then a twist.",
-  "title_pattern": "In this world gravity belongs to whoever owns the most cats"
+  "title_pattern": "In this world gravity belongs to whoever owns the most cats",
+  "scenes": [
+   6,
+   7
+  ]
  },
  {
   "id": "living_things",
   "idea": "Things that should not be alive are alive with their own goals (your shadow can quit its job, the sun has a curfew, houses migrate south for winter); a kid befriends or fights one, absurd escalation, twist ending.",
-  "title_pattern": "In this world your shadow can quit"
+  "title_pattern": "In this world your shadow can quit",
+  "scenes": [
+   6,
+   7
+  ]
  },
  {
   "id": "cosmic_event",
   "idea": "A giant cosmic event is normal life (the moon is an egg that hatches once a century, the sky gets repainted every night by giants, stars fall and kids catch them as pets); the main kid is at the center of tonight's event.",
-  "title_pattern": "In this world the moon is an egg and tonight it hatches"
+  "title_pattern": "In this world the moon is an egg and tonight it hatches",
+  "scenes": [
+   6,
+   7
+  ]
  },
  {
   "id": "strange_currency",
   "idea": "People pay with something impossible (memories, years of life, their voice, colors, dreams); a kid trades something huge for something silly, consequences spiral, twist that recontextualizes everything.",
-  "title_pattern": "In this world you pay with your memories"
+  "title_pattern": "In this world you pay with your memories",
+  "scenes": [
+   6,
+   7
+  ]
  },
  {
   "id": "time_weirdness",
   "idea": "Time works strangely (every sneeze skips a day, the oldest person is a baby, you can rent out your future self, clocks are alive and go on strike); a kid breaks it and must fix it before midnight.",
-  "title_pattern": "In this world every sneeze skips a day"
+  "title_pattern": "In this world every sneeze skips a day",
+  "scenes": [
+   6,
+   7
+  ]
  },
  {
   "id": "monster_society",
   "idea": "Giant monsters or creatures are part of normal society (kaiju are school buses, dragons work as firefighters but are afraid of fire, the monster under your bed pays rent); a kid and a creature, chaos, heartfelt or hilarious twist.",
-  "title_pattern": "In this world the monster under your bed pays rent"
+  "title_pattern": "In this world the monster under your bed pays rent",
+  "scenes": [
+   6,
+   7
+  ]
  },
  {
   "id": "roblox_glitch_world",
   "idea": "Roblox game mechanics are real life physics (respawning, admin commands, lag spikes freeze the whole city, Steal An Egg eggs hatch real gods); a kid finds a game-breaking glitch in reality.",
-  "title_pattern": "In this world lag spikes freeze the whole city"
+  "title_pattern": "In this world lag spikes freeze the whole city",
+  "scenes": [
+   6,
+   7
+  ]
  },
  {
   "id": "own_lilbro_admin",
