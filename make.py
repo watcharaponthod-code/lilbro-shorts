@@ -92,32 +92,43 @@ def jload(p, default):
         return default
 
 
-# ---------------------------------------------------------------- LLM (GitHub Models; fallback list of models)
-def llm_json(prompt, temp=1.0):
-    tok = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_MODELS_TOKEN")
+# ---------------------------------------------------------------- LLM (meta.ai chat; fallback Workers AI via the worker)
+# GitHub Models was retired on 2026-07-30 (models.github.ai now answers a bare "OK"), so it is not used any more.
+def _parse_json(txt):
+    return json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
+
+
+def llm_json(prompt, temp=1.0, need=None):
+    """need: key that must be in the result (e.g. "scenes"); a reply without it counts as a failure and is retried."""
     last = None
-    for model in ["openai/gpt-4.1", "openai/gpt-4o", "openai/gpt-4.1-mini", "openai/gpt-4o-mini"]:
-        for attempt in range(2):
-            try:
-                r = requests.post("https://models.github.ai/inference/chat/completions", timeout=120,
-                                  headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
-                                  json={"model": model, "temperature": temp, "response_format": {"type": "json_object"},
-                                        "messages": [{"role": "user", "content": prompt}]})
-                if r.status_code != 200 or not r.headers.get("content-type", "").startswith("application/json"):
-                    last = f"{model} {r.status_code} {r.text[:200]}"; break
-                txt = r.json()["choices"][0]["message"]["content"]
-                return json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
-            except Exception as e:
-                last = f"{model} {e}"; time.sleep(3)
-    print("GitHub Models failed:", last, "-> asking meta.ai")
-    for attempt in range(2):                      # fallback: meta.ai text chat with the same login
+    for attempt in range(2):                      # primary: meta.ai text chat with the same login as the video gen
         pf, of = D / "work" / "llm_prompt.txt", D / "work" / "llm_out.json"
         pf.parent.mkdir(exist_ok=True)
         pf.write_text(prompt + "\nReply with ONLY the JSON object, no markdown, no extra text.", encoding="utf-8")
         of.unlink(missing_ok=True)
         subprocess.run(["node.exe" if os.name == "nt" else "node", str(D / "ask_meta.mjs"), str(pf), str(of)], check=False, timeout=400)
-        if of.exists():
-            return json.loads(of.read_text(encoding="utf-8"))
+        try:
+            j = json.loads(of.read_text(encoding="utf-8"))
+            if not need or need in j:
+                return j
+            last = f"meta.ai reply without '{need}'"
+        except Exception as e:
+            last = f"meta.ai {e}"
+        print("LLM retry:", last)
+    url, tok = os.environ.get("WORKER_URL"), os.environ.get("ADMIN_TOKEN")
+    for model in ["@cf/openai/gpt-oss-120b", "@cf/meta/llama-3.3-70b-instruct-fp8-fast"]:
+        if not url or not tok:
+            break
+        try:
+            r = requests.post(url.rstrip("/") + "/llm", timeout=180, headers={"Authorization": f"Bearer {tok}"},
+                              json={"prompt": prompt + "\nReply with ONLY the JSON object.", "model": model, "temperature": min(temp, 1.0)})
+            j = _parse_json(r.json()["text"]) if r.status_code == 200 else None
+            if j and (not need or need in j):
+                return j
+            last = f"{model} {r.status_code} {r.text[:160]}"
+        except Exception as e:
+            last = f"{model} {e}"
+        print("LLM fallback failed:", last)
     raise RuntimeError("LLM failed: " + str(last))
 
 
@@ -310,7 +321,7 @@ Return JSON: {{"title": "{title_rule}",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
 "music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
-"scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""")
+"scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""", need="scenes")
     assert len(j["scenes"]) >= min(6, n), f"need {min(6, n)}+ scenes"
     j["title"] = re.sub(r"\bAI\b", "", j["title"])
     j["title"] = re.sub(r"[^\x00-\u024F]+", "", j["title"]).replace("...", " ").strip(" .")
