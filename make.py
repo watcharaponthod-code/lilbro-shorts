@@ -188,6 +188,38 @@ def upload(final, s):
     return j["id"]
 
 
+UPLOAD_COST = 100            # Maton units per YouTube upload (daily budget 3000)
+LIMIT_PAUSE_H = 4            # after a limit (YouTube upload cap, or 2 failed runs in a row) pause uploads and new clips this long
+
+
+def maton_budget():
+    """(units left today, seconds until reset) from Maton's RateLimit header; (None, None) if unknown."""
+    try:
+        r = requests.get(f"{GW}/youtube/v3/channels", params={"part": "id", "mine": "true"}, headers=maton_h(), timeout=60)
+        if r.status_code == 429:
+            m = re.search(r"in (\d+)h", r.text)
+            return 0, (int(m.group(1)) + 1) * 3600 if m else 3600
+        m = re.search(r"r=(\d+);t=(\d+)", r.headers.get("ratelimit", ""))
+        return (int(m.group(1)), int(m.group(2))) if m else (None, None)
+    except Exception as e:
+        print("maton budget check failed", e); return None, None
+
+
+def mark_limited(reason):
+    (STATE / "limit.json").write_text(json.dumps({"until": time.time() + LIMIT_PAUSE_H * 3600, "reason": reason[:200]}), encoding="utf-8")
+
+
+def stop_reason():
+    """why this run must not upload or make a new clip, or None. Never spend effort on clips that cannot go out."""
+    lim = jload(STATE / "limit.json", {})
+    if lim.get("until", 0) > time.time():
+        return f"YouTube upload limit, paused {round((lim['until'] - time.time()) / 3600, 1)}h more ({lim.get('reason', '')[:80]})"
+    left, reset = maton_budget()
+    if left is not None and left < 2 * UPLOAD_COST + 20:
+        return f"Maton quota low: {left} units left, resets in {round(reset / 3600, 1)}h"
+    return None
+
+
 class UploadLimit(Exception):
     pass
 
@@ -223,8 +255,8 @@ def drain_queue(hist):
             gh("release", "delete", tag, "--yes", "--cleanup-tag"); continue
         try:
             vid = upload(d / "final.mp4", m["script"])
-        except UploadLimit:
-            print("still limited; queue:", tag); return True
+        except UploadLimit as e:
+            mark_limited(str(e)); print("still limited; queue:", tag); return True
         print("UPLOADED from queue", vid, m["script"]["title"])
         hist.append({"id": vid, "t": time.time(), "format": m["script"]["format"], "title": m["script"]["title"],
                      "why": m.get("why", "") + "+queued"})
@@ -554,6 +586,10 @@ def main():
     result = {"t": time.time(), "stamp": stamp}
     try:
         if not a.no_upload:
+            why_stop = stop_reason()
+            if why_stop:
+                result["note"] = "stopped, no new clip: " + why_stop
+                print(result["note"]); return
             refresh_stats(hist)
             if drain_queue(hist):
                 result["note"] = "uploaded/limited from queue, no new episode this run"
@@ -601,13 +637,18 @@ def main():
         if not a.no_upload:
             try:
                 vid = upload(final, s)
-            except UploadLimit:
-                enqueue(final, s, why, stamp); result["note"] = "upload limit: queued"; print(result["note"]); return
+            except UploadLimit as e:
+                mark_limited(str(e)); enqueue(final, s, why, stamp); result["note"] = "upload limit: queued"; print(result["note"]); return
             result.update(id=vid, url=f"https://youtube.com/shorts/{vid}")
             print("UPLOADED", result["url"])
             hist.append({"id": vid, "t": time.time(), "format": fmt["id"], "title": s["title"], "why": why})
     except Exception as e:
         result["error"] = f"{type(e).__name__}: {e}"; print("ERROR", result["error"])
+        if not a.no_upload:                  # meta.ai / LLM out of quota usually fails twice in a row: pause instead of burning runs
+            prev = [json.loads(l) for l in (STATE / "runs.jsonl").read_text(encoding="utf-8").splitlines()[-1:] if l.strip()] \
+                if (STATE / "runs.jsonl").exists() else []
+            if prev and prev[-1].get("error"):
+                mark_limited("2 failed runs in a row: " + result["error"])
     finally:
         (STATE / "history.json").write_text(json.dumps(hist[-500:], ensure_ascii=False, indent=1), encoding="utf-8")
         (STATE / "formats.json").write_text(json.dumps(formats, ensure_ascii=False, indent=1), encoding="utf-8")
