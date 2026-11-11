@@ -65,14 +65,10 @@
   "format": "monster_society",
   "title": "In This World Every Sneeze Hatches A Kaiju",
   "why": "explore-untried",
-  "views": 121,
+  "views": 125,
   "likes": 2,
-  "age_min": 965,
+  "age_min": 1067,
   "checks": [
-   [
-    163,
-    117
-   ],
    [
     224,
     118
@@ -116,6 +112,10 @@
    [
     965,
     121
+   ],
+   [
+    1067,
+    125
    ]
   ]
  },
@@ -125,14 +125,10 @@
   "format": "living_things",
   "title": "His House Packed Up And LEFT Him... 😨",
   "why": "explore-untried",
-  "views": 0,
-  "likes": 0,
-  "age_min": 917,
+  "views": 5,
+  "likes": 1,
+  "age_min": 1019,
   "checks": [
-   [
-    115,
-    0
-   ],
    [
     176,
     0
@@ -176,6 +172,10 @@
    [
     917,
     0
+   ],
+   [
+    1019,
+    5
    ]
   ]
  },
@@ -185,14 +185,10 @@
   "format": "cosmic_event",
   "title": "In this world the moon is an egg... and it just HATCHED 😨",
   "why": "explore-untried",
-  "views": 2,
+  "views": 4,
   "likes": 1,
-  "age_min": 838,
+  "age_min": 941,
   "checks": [
-   [
-    36,
-    0
-   ],
    [
     98,
     0
@@ -236,6 +232,10 @@
    [
     838,
     2
+   ],
+   [
+    941,
+    4
    ]
   ]
  },
@@ -247,7 +247,7 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 0,
-  "age_min": 781,
+  "age_min": 884,
   "checks": [
    [
     41,
@@ -292,6 +292,10 @@
    [
     781,
     5
+   ],
+   [
+    884,
+    5
    ]
   ]
  },
@@ -303,7 +307,7 @@
   "why": "exploit",
   "views": 10,
   "likes": 2,
-  "age_min": 735,
+  "age_min": 838,
   "checks": [
    [
     58,
@@ -344,6 +348,10 @@
    [
     735,
     10
+   ],
+   [
+    838,
+    10
    ]
   ]
  },
@@ -355,7 +363,7 @@
   "why": "exploit",
   "views": 5,
   "likes": 1,
-  "age_min": 672,
+  "age_min": 775,
   "checks": [
    [
     47,
@@ -392,6 +400,10 @@
    [
     672,
     5
+   ],
+   [
+    775,
+    5
    ]
   ]
  },
@@ -403,7 +415,7 @@
   "why": "explore-untried+queued",
   "views": 4,
   "likes": 1,
-  "age_min": 260,
+  "age_min": 362,
   "checks": [
    [
     63,
@@ -420,6 +432,10 @@
    [
     260,
     4
+   ],
+   [
+    362,
+    4
    ]
   ]
  },
@@ -429,9 +445,9 @@
   "format": "strange_currency",
   "title": "In This World You Pay For Everything With Memories",
   "why": "explore-untried",
-  "views": 0,
+  "views": 5,
   "likes": 1,
-  "age_min": 191,
+  "age_min": 293,
   "checks": [
    [
     59,
@@ -444,6 +460,10 @@
    [
     191,
     0
+   ],
+   [
+    293,
+    5
    ]
   ]
  },
@@ -453,9 +473,9 @@
   "format": "roblox_glitch_world",
   "title": "In This World Everyone Has A Respawn Button On Their Back",
   "why": "explore-untried",
-  "views": 417,
-  "likes": 29,
-  "age_min": 112,
+  "views": 763,
+  "likes": 52,
+  "age_min": 215,
   "checks": [
    [
     40,
@@ -464,6 +484,10 @@
    [
     112,
     417
+   ],
+   [
+    215,
+    763
    ]
   ]
  }
