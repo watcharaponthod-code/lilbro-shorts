@@ -67,12 +67,8 @@
   "why": "explore-untried",
   "views": 125,
   "likes": 2,
-  "age_min": 1067,
+  "age_min": 1314,
   "checks": [
-   [
-    224,
-    118
-   ],
    [
     287,
     118
@@ -116,6 +112,10 @@
    [
     1067,
     125
+   ],
+   [
+    1314,
+    125
    ]
   ]
  },
@@ -127,12 +127,8 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 1,
-  "age_min": 1019,
+  "age_min": 1266,
   "checks": [
-   [
-    176,
-    0
-   ],
    [
     239,
     0
@@ -176,6 +172,10 @@
    [
     1019,
     5
+   ],
+   [
+    1266,
+    5
    ]
   ]
  },
@@ -185,14 +185,10 @@
   "format": "cosmic_event",
   "title": "In this world the moon is an egg... and it just HATCHED 😨",
   "why": "explore-untried",
-  "views": 4,
+  "views": 5,
   "likes": 1,
-  "age_min": 941,
+  "age_min": 1188,
   "checks": [
-   [
-    98,
-    0
-   ],
    [
     161,
     0
@@ -236,6 +232,10 @@
    [
     941,
     4
+   ],
+   [
+    1188,
+    5
    ]
   ]
  },
@@ -247,12 +247,8 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 0,
-  "age_min": 884,
+  "age_min": 1131,
   "checks": [
-   [
-    41,
-    0
-   ],
    [
     104,
     0
@@ -296,6 +292,10 @@
    [
     884,
     5
+   ],
+   [
+    1131,
+    5
    ]
   ]
  },
@@ -306,8 +306,8 @@
   "title": "He Adopted 10 Kaiju... Not One Is Still Alive... 😨",
   "why": "exploit",
   "views": 10,
-  "likes": 2,
-  "age_min": 838,
+  "likes": 3,
+  "age_min": 1085,
   "checks": [
    [
     58,
@@ -352,6 +352,10 @@
    [
     838,
     10
+   ],
+   [
+    1085,
+    10
    ]
   ]
  },
@@ -363,7 +367,7 @@
   "why": "exploit",
   "views": 5,
   "likes": 1,
-  "age_min": 775,
+  "age_min": 1022,
   "checks": [
    [
     47,
@@ -404,6 +408,10 @@
    [
     775,
     5
+   ],
+   [
+    1022,
+    5
    ]
   ]
  },
@@ -415,7 +423,7 @@
   "why": "explore-untried+queued",
   "views": 4,
   "likes": 1,
-  "age_min": 362,
+  "age_min": 609,
   "checks": [
    [
     63,
@@ -436,6 +444,10 @@
    [
     362,
     4
+   ],
+   [
+    609,
+    4
    ]
   ]
  },
@@ -447,7 +459,7 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 1,
-  "age_min": 293,
+  "age_min": 540,
   "checks": [
    [
     59,
@@ -464,6 +476,10 @@
    [
     293,
     5
+   ],
+   [
+    540,
+    5
    ]
   ]
  },
@@ -473,9 +489,9 @@
   "format": "roblox_glitch_world",
   "title": "In This World Everyone Has A Respawn Button On Their Back",
   "why": "explore-untried",
-  "views": 763,
-  "likes": 52,
-  "age_min": 215,
+  "views": 1237,
+  "likes": 49,
+  "age_min": 462,
   "checks": [
    [
     40,
@@ -488,6 +504,10 @@
    [
     215,
     763
+   ],
+   [
+    462,
+    1237
    ]
   ]
  }
