@@ -270,13 +270,33 @@ Return JSON {{"id": "snake_case_id", "idea": "one sentence describing the kind o
     return j
 
 
+ORIGINAL_RULES = """Audience: kids and teens (8-16) who play Roblox. This is the channel's OWN series, not a copy of any
+other channel's format: never open with "In this world", never use "Noob vs Pro vs Hacker", "POV:", or any known template.
+- Told in FIRST PERSON by the narrator named in the theme, like a kid telling a friend what just happened. Plain, fast, funny.
+- Line 1 is the whole premise in one concrete sentence with a number in it, so a viewer gets it in 2 seconds.
+- Everything is built on real Roblox things kids know: respawn, admin commands, Robux, obbies, lag, servers, lobbies, NPCs,
+  game passes, the void, leaderboards. Use them literally, as if they are real life.
+- One problem that gets worse three times, each step bigger and sillier than the last, with exact numbers.
+- Last scene: a twist that flips the story, then a final line that calls back to line 1. No moral, no lesson.
+- Recurring cast (keep these exact looks whenever they appear): Lil Bro = 6-year-old tiny Roblox avatar, round yellow head,
+  huge red hoodie down to his knees, one missing front tooth, always holding a half-eaten cookie. Dylan = his 11-year-old
+  big brother, messy black hair, white puffer jacket, blue jeans."""
+
+
 def write_script(fmt, hist):
     recent = [h["title"] for h in hist[-40:]]
-    n = random.choice([8, 9, 10, 11])      # ~10 s per scene -> 80-110 s videos
+    own = fmt.get("style") == "original"
+    n = random.choice(fmt.get("scenes") or [8, 9, 10, 11])      # ~10 s per scene
+    rules = ORIGINAL_RULES if own else CHAN_RULES
+    opener = ("Scene 1 opens with the premise line in first person (never \"In this world\")." if own else
+              "Scene 1 opens with the shocking mysterious hook line (start it with \"In this world,\" and state the rule in the first sentence).")
+    title_rule = (f"Title Case title in first person that states the premise plainly, max 60 chars, like '{fmt.get('title_pattern', '')}'; never starts with 'In This World'; no emoji, no ellipsis, never the word AI"
+                  if own else
+                  "Title Case title that starts with 'In This World' and states the strange rule plainly, max 70 chars, like 'In This World Every Sneeze Hatches A Kaiju' or 'In This World Siblings Swap Bodies When They Fight'; no emoji, no ellipsis, never the word AI")
     j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
-{CHAN_RULES}
+{rules}
 Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
-- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). Scene 1 opens with the shocking mysterious hook line (start it with "In this world," and state the rule in the first sentence).
+- "say": the narrator text for this scene, 30-36 words (spoken fast, ~220 words per minute). {opener}
   All scenes together must read as one continuous story.
 - "video": what is SEEN in this 10 s as Roblox footage: location, which characters (by name), the action in order, and
   2-3 camera cuts written as [0-4s] ... [4-7s] ... [7-10s] .... Show the rule visually (e.g. floating numbers above heads).
@@ -286,14 +306,16 @@ Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken o
 "characters": every named character with a FIXED look as Roblox avatar (age, hair, clothes, colors), so each separately generated
 scene keeps them identical.
 Do NOT reuse these recent titles/ideas: {json.dumps(recent)}
-Return JSON: {{"title": "Title Case title that starts with 'In This World' and states the strange rule plainly, max 70 chars, like 'In This World Every Sneeze Hatches A Kaiju' or 'In This World Siblings Swap Bodies When They Fight'; no emoji, no ellipsis, never the word AI",
+Return JSON: {{"title": "{title_rule}",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
 "music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
 "scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""")
-    assert len(j["scenes"]) >= 6, "need 6+ scenes"
+    assert len(j["scenes"]) >= min(6, n), f"need {min(6, n)}+ scenes"
     j["title"] = re.sub(r"\bAI\b", "", j["title"])
     j["title"] = re.sub(r"[^\x00-\u024F]+", "", j["title"]).replace("...", " ").strip(" .")
+    if own:
+        j["title"] = re.sub(r"(?i)^in this world,?\s*", "", j["title"])
     j["title"] = re.sub(r"\s+", " ", j["title"])
     return j
 
@@ -529,6 +551,9 @@ def main():
             s = jload(a.script, None); fmt = {"id": s.get("format", "test")}; why = "manual"
         else:
             fmt, why = pick_format(formats, hist)
+            forced = [f for f in formats if f["id"] == os.environ.get("FORCE_FORMAT", "").strip()]
+            if forced:
+                fmt, why = forced[0], "forced"
             if fmt is None:
                 fmt = invent_format(formats, hist); formats.append(fmt)
             s = write_script(fmt, hist)

@@ -8,6 +8,10 @@ on:
         description: "make a video but do not upload"
         type: boolean
         default: false
+      format:
+        description: "force a format id from state/formats.json (optional)"
+        type: string
+        default: ""
 permissions:
   contents: write
   models: read
@@ -26,6 +30,7 @@ jobs:
       MATON_YT_MONKEY_CONNECTION: ${{ secrets.MATON_YT_MONKEY_CONNECTION }}
       FONTS_DIR: ${{ github.workspace }}/assets/fonts
       META_MAX_MIN: "16"
+      FORCE_FORMAT: ${{ inputs.format }}
       WORKER_URL: ${{ secrets.WORKER_URL }}
       ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
     steps:

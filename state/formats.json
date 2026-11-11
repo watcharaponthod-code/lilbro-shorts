@@ -33,5 +33,35 @@
   "id": "roblox_glitch_world",
   "idea": "Roblox game mechanics are real life physics (respawning, admin commands, lag spikes freeze the whole city, Steal An Egg eggs hatch real gods); a kid finds a game-breaking glitch in reality.",
   "title_pattern": "In this world lag spikes freeze the whole city"
+ },
+ {
+  "id": "own_lilbro_admin",
+  "style": "original",
+  "scenes": [
+   5,
+   6
+  ],
+  "idea": "Narrator = Dylan, the big brother. His 6-year-old Lil Bro gets his hands on ONE powerful Roblox thing for a few seconds (the admin console, the server gravity slider, the delete tool, the ban hammer, Dylan's 40,000 Robux) and the whole server pays for it; Dylan has to undo it before mom logs on.",
+  "title_pattern": "My Little Brother Had Admin For 9 Seconds"
+ },
+ {
+  "id": "own_npc_diary",
+  "style": "original",
+  "scenes": [
+   5,
+   6
+  ],
+  "idea": "Narrator = something inside a Roblox game that players never think about, telling its own day: the lava brick in an obby that feels guilty, the shopkeeper NPC who has sold the same sword for 9 years, the spawn point everyone steps on, the checkpoint nobody reaches, the server that wants to sleep. It wants one small thing and today a player changes everything.",
+  "title_pattern": "I Am The Lava In Your Obby And I Am Sorry"
+ },
+ {
+  "id": "own_one_robux_job",
+  "style": "original",
+  "scenes": [
+   5,
+   6
+  ],
+  "idea": "Narrator = Lil Bro. He takes an impossible odd job inside the Roblox world for exactly 1 Robux (babysit the final boss, mop the lobby after 10,000 players, deliver pizza into the void, be the bodyguard of a noob with 0 health, fix the lag by hand) and takes it far too seriously.",
+  "title_pattern": "I Babysat The Final Boss For 1 Robux"
  }
 ]
