@@ -5,9 +5,9 @@
   "format": "family_rule",
   "title": "In This World Siblings Swap Bodies When They Fight",
   "why": "manual-first+queued",
-  "views": 16,
+  "views": 18,
   "likes": 0,
-  "age_min": 780,
+  "age_min": 843,
   "checks": [
    [
     67,
@@ -52,6 +52,10 @@
    [
     780,
     16
+   ],
+   [
+    843,
+    18
    ]
   ]
  },
@@ -61,9 +65,9 @@
   "format": "monster_society",
   "title": "In This World Every Sneeze Hatches A Kaiju",
   "why": "explore-untried",
-  "views": 119,
-  "likes": 1,
-  "age_min": 705,
+  "views": 121,
+  "likes": 2,
+  "age_min": 768,
   "checks": [
    [
     42,
@@ -104,6 +108,10 @@
    [
     705,
     119
+   ],
+   [
+    768,
+    121
    ]
   ]
  },
@@ -113,9 +121,9 @@
   "format": "living_things",
   "title": "His House Packed Up And LEFT Him... 😨",
   "why": "explore-untried",
-  "views": 0,
+  "views": 3,
   "likes": 0,
-  "age_min": 657,
+  "age_min": 720,
   "checks": [
    [
     58,
@@ -152,6 +160,10 @@
    [
     657,
     0
+   ],
+   [
+    720,
+    3
    ]
   ]
  },
@@ -161,9 +173,9 @@
   "format": "cosmic_event",
   "title": "In this world the moon is an egg... and it just HATCHED 😨",
   "why": "explore-untried",
-  "views": 0,
+  "views": 2,
   "likes": 0,
-  "age_min": 578,
+  "age_min": 642,
   "checks": [
    [
     36,
@@ -196,6 +208,10 @@
    [
     578,
     0
+   ],
+   [
+    642,
+    2
    ]
   ]
  },
@@ -205,9 +221,9 @@
   "format": "impossible_physics",
   "title": "He Screamed Once... And 7 Kids Vanished... 😨",
   "why": "explore-untried",
-  "views": 1,
+  "views": 5,
   "likes": 0,
-  "age_min": 522,
+  "age_min": 585,
   "checks": [
    [
     41,
@@ -236,6 +252,10 @@
    [
     522,
     1
+   ],
+   [
+    585,
+    5
    ]
   ]
  },
@@ -245,9 +265,9 @@
   "format": "monster_society",
   "title": "He Adopted 10 Kaiju... Not One Is Still Alive... 😨",
   "why": "exploit",
-  "views": 4,
+  "views": 9,
   "likes": 2,
-  "age_min": 476,
+  "age_min": 539,
   "checks": [
    [
     58,
@@ -272,6 +292,10 @@
    [
     476,
     4
+   ],
+   [
+    539,
+    9
    ]
   ]
  },
@@ -281,9 +305,9 @@
   "format": "monster_society",
   "title": "His House Ate 99 Memories... Then Asked For The Last One... 😨",
   "why": "exploit",
-  "views": 0,
+  "views": 5,
   "likes": 0,
-  "age_min": 412,
+  "age_min": 476,
   "checks": [
    [
     47,
@@ -304,6 +328,10 @@
    [
     412,
     0
+   ],
+   [
+    476,
+    5
    ]
   ]
  },
@@ -312,6 +340,22 @@
   "t": 1794365480.8827393,
   "format": "time_weirdness",
   "title": "In This World Every Sneeze Skips A Day",
-  "why": "explore-untried+queued"
+  "why": "explore-untried+queued",
+  "views": 2,
+  "likes": 0,
+  "age_min": 63,
+  "checks": [
+   [
+    63,
+    2
+   ]
+  ]
+ },
+ {
+  "id": "ob5Q8RSRXaA",
+  "t": 1794369607.6578317,
+  "format": "strange_currency",
+  "title": "In This World You Pay For Everything With Memories",
+  "why": "explore-untried"
  }
 ]
