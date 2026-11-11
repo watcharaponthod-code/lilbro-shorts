@@ -67,12 +67,8 @@
   "why": "explore-untried",
   "views": 121,
   "likes": 2,
-  "age_min": 892,
+  "age_min": 965,
   "checks": [
-   [
-    106,
-    106
-   ],
    [
     163,
     117
@@ -116,6 +112,10 @@
    [
     892,
     121
+   ],
+   [
+    965,
+    121
    ]
   ]
  },
@@ -125,14 +125,10 @@
   "format": "living_things",
   "title": "His House Packed Up And LEFT Him... 😨",
   "why": "explore-untried",
-  "views": 4,
+  "views": 0,
   "likes": 0,
-  "age_min": 844,
+  "age_min": 917,
   "checks": [
-   [
-    58,
-    0
-   ],
    [
     115,
     0
@@ -176,6 +172,10 @@
    [
     844,
     4
+   ],
+   [
+    917,
+    0
    ]
   ]
  },
@@ -185,9 +185,9 @@
   "format": "cosmic_event",
   "title": "In this world the moon is an egg... and it just HATCHED 😨",
   "why": "explore-untried",
-  "views": 4,
+  "views": 2,
   "likes": 1,
-  "age_min": 766,
+  "age_min": 838,
   "checks": [
    [
     36,
@@ -232,6 +232,10 @@
    [
     766,
     4
+   ],
+   [
+    838,
+    2
    ]
   ]
  },
@@ -243,7 +247,7 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 0,
-  "age_min": 709,
+  "age_min": 781,
   "checks": [
    [
     41,
@@ -284,6 +288,10 @@
    [
     709,
     5
+   ],
+   [
+    781,
+    5
    ]
   ]
  },
@@ -293,9 +301,9 @@
   "format": "monster_society",
   "title": "He Adopted 10 Kaiju... Not One Is Still Alive... 😨",
   "why": "exploit",
-  "views": 9,
+  "views": 10,
   "likes": 2,
-  "age_min": 663,
+  "age_min": 735,
   "checks": [
    [
     58,
@@ -332,6 +340,10 @@
    [
     663,
     9
+   ],
+   [
+    735,
+    10
    ]
   ]
  },
@@ -343,7 +355,7 @@
   "why": "exploit",
   "views": 5,
   "likes": 1,
-  "age_min": 600,
+  "age_min": 672,
   "checks": [
    [
     47,
@@ -376,6 +388,10 @@
    [
     600,
     5
+   ],
+   [
+    672,
+    5
    ]
   ]
  },
@@ -387,7 +403,7 @@
   "why": "explore-untried+queued",
   "views": 4,
   "likes": 1,
-  "age_min": 187,
+  "age_min": 260,
   "checks": [
    [
     63,
@@ -400,6 +416,10 @@
    [
     187,
     4
+   ],
+   [
+    260,
+    4
    ]
   ]
  },
@@ -410,8 +430,8 @@
   "title": "In This World You Pay For Everything With Memories",
   "why": "explore-untried",
   "views": 0,
-  "likes": 0,
-  "age_min": 119,
+  "likes": 1,
+  "age_min": 191,
   "checks": [
    [
     59,
@@ -419,6 +439,10 @@
    ],
    [
     119,
+    0
+   ],
+   [
+    191,
     0
    ]
   ]
@@ -429,13 +453,17 @@
   "format": "roblox_glitch_world",
   "title": "In This World Everyone Has A Respawn Button On Their Back",
   "why": "explore-untried",
-  "views": 193,
-  "likes": 10,
-  "age_min": 40,
+  "views": 417,
+  "likes": 29,
+  "age_min": 112,
   "checks": [
    [
     40,
     193
+   ],
+   [
+    112,
+    417
    ]
   ]
  }
