@@ -344,7 +344,8 @@ Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken o
   All scenes together must read as one continuous story.
   Craft rules the script is judged on: every object or power used in the ending must be shown earlier (set up, then pay off);
   each scene follows from the last ("so", "but", never "and then"); the twist flips the premise and is funny, never a reward
-  or a lesson; the final line calls back to the first line; narration and "video" show the same thing in the same order.
+  or a lesson; the final line calls back to the first line so the Short loops (the last words lead straight into the first sentence and
+  make people rewatch); narration and "video" show the same thing in the same order.
 - "video": what is SEEN in this 10 s as Roblox footage: location, which characters (by name), the action in order, and
   2-3 camera cuts written as [0-4s] ... [4-7s] ... [7-10s] .... Show the rule visually (e.g. floating numbers above heads).
   No speech bubbles, no captions.
@@ -367,7 +368,7 @@ Return JSON: {{"title": "{title_rule}",
     return j
 
 
-QUALITY_MIN, QUALITY_AVG = 7, 8.0   # every criterion >= 7 and average >= 8, else the script is rewritten or dropped
+QUALITY_MIN, QUALITY_AVG = 6, 7.5   # (avg Short = 5 on this scale) every criterion >= 6 and average >= 7.5, else the script is rewritten or dropped
 
 
 def review_script(s):
@@ -408,7 +409,7 @@ def quality_script(fmt, hist):
     """write -> harsh review -> rewrite, until the script passes; a weak idea is dropped and a new one written."""
     best = None
     for idea in range(2):
-        s = write_script(fmt, hist)
+        s = write_script(fmt, hist); s["format_idea"] = idea
         for rnd in range(3):
             rv = review_script(s)
             sc = {k: float(v) for k, v in rv["scores"].items()}
@@ -419,8 +420,10 @@ def quality_script(fmt, hist):
             if min(sc.values()) >= QUALITY_MIN and avg >= QUALITY_AVG:
                 s["quality"] = {"avg": round(avg, 2), "scores": sc, "rounds": rnd + 1, "idea": idea + 1}
                 return s
-            if rnd < 2:
-                s = improve_script(s, rv)
+            if rnd < 2:                       # always rewrite from the best version so far; reviews are noisy
+                b = best if best[1].get("format_idea") == idea else (avg, s, rv)
+                s = improve_script(b[1], b[2])
+            s["format_idea"] = idea
     raise QualityReject(f"no script reached the bar (best avg {best[0]:.1f}: {best[2].get('weakest', '')[:120]})")
 
 
