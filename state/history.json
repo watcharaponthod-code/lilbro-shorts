@@ -67,12 +67,8 @@
   "why": "explore-untried",
   "views": 121,
   "likes": 2,
-  "age_min": 832,
+  "age_min": 892,
   "checks": [
-   [
-    42,
-    106
-   ],
    [
     106,
     106
@@ -116,6 +112,10 @@
    [
     832,
     121
+   ],
+   [
+    892,
+    121
    ]
   ]
  },
@@ -127,7 +127,7 @@
   "why": "explore-untried",
   "views": 4,
   "likes": 0,
-  "age_min": 784,
+  "age_min": 844,
   "checks": [
    [
     58,
@@ -172,6 +172,10 @@
    [
     784,
     4
+   ],
+   [
+    844,
+    4
    ]
   ]
  },
@@ -183,7 +187,7 @@
   "why": "explore-untried",
   "views": 4,
   "likes": 1,
-  "age_min": 706,
+  "age_min": 766,
   "checks": [
    [
     36,
@@ -224,6 +228,10 @@
    [
     706,
     4
+   ],
+   [
+    766,
+    4
    ]
   ]
  },
@@ -235,7 +243,7 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 0,
-  "age_min": 649,
+  "age_min": 709,
   "checks": [
    [
     41,
@@ -272,6 +280,10 @@
    [
     649,
     5
+   ],
+   [
+    709,
+    5
    ]
   ]
  },
@@ -283,7 +295,7 @@
   "why": "exploit",
   "views": 9,
   "likes": 2,
-  "age_min": 603,
+  "age_min": 663,
   "checks": [
    [
     58,
@@ -316,6 +328,10 @@
    [
     603,
     9
+   ],
+   [
+    663,
+    9
    ]
   ]
  },
@@ -326,8 +342,8 @@
   "title": "His House Ate 99 Memories... Then Asked For The Last One... 😨",
   "why": "exploit",
   "views": 5,
-  "likes": 0,
-  "age_min": 540,
+  "likes": 1,
+  "age_min": 600,
   "checks": [
    [
     47,
@@ -356,6 +372,10 @@
    [
     540,
     5
+   ],
+   [
+    600,
+    5
    ]
   ]
  },
@@ -366,8 +386,8 @@
   "title": "In This World Every Sneeze Skips A Day",
   "why": "explore-untried+queued",
   "views": 4,
-  "likes": 0,
-  "age_min": 127,
+  "likes": 1,
+  "age_min": 187,
   "checks": [
    [
     63,
@@ -375,6 +395,10 @@
    ],
    [
     127,
+    4
+   ],
+   [
+    187,
     4
    ]
   ]
@@ -387,10 +411,14 @@
   "why": "explore-untried",
   "views": 0,
   "likes": 0,
-  "age_min": 59,
+  "age_min": 119,
   "checks": [
    [
     59,
+    0
+   ],
+   [
+    119,
     0
    ]
   ]
@@ -400,6 +428,15 @@
   "t": 1794374317.6499248,
   "format": "roblox_glitch_world",
   "title": "In This World Everyone Has A Respawn Button On Their Back",
-  "why": "explore-untried"
+  "why": "explore-untried",
+  "views": 193,
+  "likes": 10,
+  "age_min": 40,
+  "checks": [
+   [
+    40,
+    193
+   ]
+  ]
  }
 ]
