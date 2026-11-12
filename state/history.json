@@ -67,12 +67,8 @@
   "why": "explore-untried",
   "views": 125,
   "likes": 2,
-  "age_min": 2271,
+  "age_min": 2403,
   "checks": [
-   [
-    339,
-    118
-   ],
    [
     395,
     118
@@ -116,6 +112,10 @@
    [
     2271,
     125
+   ],
+   [
+    2403,
+    125
    ]
   ]
  },
@@ -126,13 +126,9 @@
   "title": "His House Packed Up And LEFT Him... 😨",
   "why": "explore-untried",
   "views": 5,
-  "likes": 1,
-  "age_min": 2223,
+  "likes": 2,
+  "age_min": 2355,
   "checks": [
-   [
-    291,
-    0
-   ],
    [
     347,
     0
@@ -176,6 +172,10 @@
    [
     2223,
     5
+   ],
+   [
+    2355,
+    5
    ]
   ]
  },
@@ -187,12 +187,8 @@
   "why": "explore-untried",
   "views": 7,
   "likes": 1,
-  "age_min": 2145,
+  "age_min": 2277,
   "checks": [
-   [
-    213,
-    0
-   ],
    [
     268,
     0
@@ -236,6 +232,10 @@
    [
     2145,
     7
+   ],
+   [
+    2277,
+    7
    ]
   ]
  },
@@ -245,14 +245,10 @@
   "format": "impossible_physics",
   "title": "He Screamed Once... And 7 Kids Vanished... 😨",
   "why": "explore-untried",
-  "views": 5,
+  "views": 7,
   "likes": 1,
-  "age_min": 2088,
+  "age_min": 2220,
   "checks": [
-   [
-    156,
-    0
-   ],
    [
     211,
     1
@@ -296,6 +292,10 @@
    [
     2088,
     5
+   ],
+   [
+    2220,
+    7
    ]
   ]
  },
@@ -307,12 +307,8 @@
   "why": "exploit",
   "views": 17,
   "likes": 3,
-  "age_min": 2042,
+  "age_min": 2174,
   "checks": [
-   [
-    110,
-    0
-   ],
    [
     165,
     0
@@ -356,6 +352,10 @@
    [
     2042,
     17
+   ],
+   [
+    2174,
+    17
    ]
   ]
  },
@@ -367,12 +367,8 @@
   "why": "exploit",
   "views": 6,
   "likes": 1,
-  "age_min": 1979,
+  "age_min": 2111,
   "checks": [
-   [
-    47,
-    0
-   ],
    [
     102,
     0
@@ -416,6 +412,10 @@
    [
     1979,
     6
+   ],
+   [
+    2111,
+    6
    ]
   ]
  },
@@ -427,7 +427,7 @@
   "why": "explore-untried+queued",
   "views": 5,
   "likes": 1,
-  "age_min": 1566,
+  "age_min": 1698,
   "checks": [
    [
     63,
@@ -456,6 +456,10 @@
    [
     1566,
     5
+   ],
+   [
+    1698,
+    5
    ]
   ]
  },
@@ -467,7 +471,7 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 1,
-  "age_min": 1498,
+  "age_min": 1630,
   "checks": [
    [
     59,
@@ -492,6 +496,10 @@
    [
     1498,
     5
+   ],
+   [
+    1630,
+    5
    ]
   ]
  },
@@ -503,7 +511,7 @@
   "why": "explore-untried",
   "views": 1275,
   "likes": 47,
-  "age_min": 1419,
+  "age_min": 1551,
   "checks": [
    [
     40,
@@ -524,6 +532,10 @@
    [
     1419,
     1275
+   ],
+   [
+    1551,
+    1275
    ]
   ]
  },
@@ -532,6 +544,22 @@
   "t": 1794459470.146831,
   "format": "own_lilbro_admin",
   "title": "My Little Brother Had Admin For 9 Seconds",
-  "why": "forced+queued"
+  "why": "forced+queued",
+  "views": 4,
+  "likes": 1,
+  "age_min": 132,
+  "checks": [
+   [
+    132,
+    4
+   ]
+  ]
+ },
+ {
+  "id": "FD-XQGN5CUI",
+  "t": 1794467390.0659637,
+  "format": "roblox_glitch_world",
+  "title": "In This World Lag Freezes Everyone Except You",
+  "why": "exploit+queued"
  }
 ]
