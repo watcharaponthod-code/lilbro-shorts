@@ -12,6 +12,10 @@ on:
         description: "force a format id from state/formats.json (optional)"
         type: string
         default: ""
+      script:
+        description: "repo path of a ready script.json to render (skips writing/quality gate; test only)"
+        type: string
+        default: ""
       look:
         description: "visual style: roblox (current) or anime (retro 90s TV anime, human characters)"
         type: string
@@ -54,7 +58,7 @@ jobs:
           mkdir -p ~/.fonts && cp assets/fonts/*.ttf ~/.fonts/ && fc-cache -f >/dev/null
           npm ci --silent
       - name: make and upload one short
-        run: uv run -q --no-project --python 3.12 --with numpy --with requests --with "edge-tts>=7.3.1" python make.py ${{ inputs.test && '--no-upload' || '' }}
+        run: uv run -q --no-project --python 3.12 --with numpy --with requests --with "edge-tts>=7.3.1" python make.py ${{ inputs.test && '--no-upload' || '' }} ${{ inputs.script && format('--script {0}', inputs.script) || '' }}
       - name: save learning state
         if: always()
         run: |
