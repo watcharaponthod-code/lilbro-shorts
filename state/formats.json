@@ -141,8 +141,8 @@
   "id": "beast_last_to_leave",
   "look": "anime",
   "style": "beast",
-  "idea": "Last-to-leave challenge (circle, train car, rooftop, giant cake) with a huge cash prize, eliminations and a temptation buyout.",
-  "title_pattern": "Last To Leave The Circle Wins $500,000",
+  "idea": "Fantasy last-to-leave challenge: last one still on a sleeping dragon's back / inside a shrinking magic circle / aboard a sinking sky-ship wins a castle, a wish or a mountain of gold; eliminations come from the magic.",
+  "title_pattern": "Last One On The Dragon's Back Wins Its Castle",
   "scenes": [
    6
   ]
@@ -151,8 +151,8 @@
   "id": "beast_giveaway_strangers",
   "look": "anime",
   "style": "beast",
-  "idea": "The host gives a stranger an impossible choice or a giant giveaway (a house, $1,000,000, a whole store) and the stranger's choice flips everything.",
-  "title_pattern": "I Gave A Stranger $1 Or A Mystery Box",
+  "idea": "Fantasy giveaway: a wizard or spirit gives a stranger an impossible magical choice (a real wish vs $1,000,000, a key to any door, ten extra years of life) and the choice flips everything.",
+  "title_pattern": "I Gave A Stranger One Real Wish Or $1,000,000",
   "scenes": [
    6
   ]
@@ -161,8 +161,8 @@
   "id": "beast_vs_extremes",
   "look": "anime",
   "style": "beast",
-  "idea": "Extreme comparison challenge: $1 vs $1,000,000 versions of something (sushi, school, birthday, hotel), or 1 vs 100 people.",
-  "title_pattern": "$1 vs $1,000,000 Birthday Party",
+  "idea": "Fantasy extremes: $1 vs $1,000,000 versions of something magical (wizard school, dragon egg, potion, castle), or 1 human vs 100 spirits.",
+  "title_pattern": "$1 vs $1,000,000 Wizard School",
   "scenes": [
    6
   ]
@@ -243,6 +243,26 @@
   "style": "true",
   "idea": "A real act of kindness between strangers that changed lives (a documented news story), with the twist of how it came back years later.",
   "title_pattern": "He Paid A Stranger's Bill And Got A Letter 20 Years Later",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "beast_survive_magic_night",
+  "look": "anime",
+  "style": "beast",
+  "idea": "100 people must survive one night somewhere magical and deadly (a living labyrinth, a haunted sky-train, a forest where time runs backward) for a huge prize; each hour the place removes people in a magical way.",
+  "title_pattern": "100 People Must Survive One Night In A Living Maze",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "beast_impossible_auction",
+  "look": "anime",
+  "style": "beast",
+  "idea": "A fantasy auction or trade show where the prizes are impossible things (a year of someone's time, a stolen memory, a pet storm) and the bids get insane.",
+  "title_pattern": "I Auctioned Off A Year Of My Life",
   "scenes": [
    6
   ]

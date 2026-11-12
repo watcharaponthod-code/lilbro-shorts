@@ -408,17 +408,18 @@ other channel's format: never open with "In this world", never use "Noob vs Pro 
   big brother, messy black hair, white puffer jacket, blue jeans."""
 
 
-BEAST_RULES = """Audience: teens and young adults worldwide. Format = a MrBeast-style challenge / giveaway Short, but every person is a
-retro 1990s anime character (ordinary humans drawn in that style), told by an off-screen narrator in third person.
-- Line 1 is the whole stake in one sentence with a huge exact number (money, people, days): "100 strangers, one circle, the last
-  one inside wins $500,000." The viewer must know the game and the prize in the first 2 seconds.
-- A host character runs the challenge (new name and look each episode). Contestants are named, each with one memorable trait.
-- Fast escalation: eliminations, a countdown, a temptation offer ("take $20,000 and leave now?"), the stakes rise every scene.
-- One generous twist near the end (the loser gets a bigger surprise, the winner gives it all away to someone who needed it,
-  the host doubles the prize), then a last line that loops back to line 1. Concrete numbers everywhere, no moralizing.
-- Keep it grounded like a quiet 90s anime drama, not a glitzy game show: real places, small groups, faces and reactions in
-  close-up. Show money as a plain envelope or a briefcase, never giant checks, signs, scoreboards or written numbers; say the
-  numbers in the narration instead. No fireworks, confetti, giant cakes or crowds filling the frame."""
+BEAST_RULES = """Audience: teens and young adults worldwide. Format = a MrBeast-style challenge / giveaway Short set in a WILD
+FANTASY world, never ordinary real life: e.g. last one to stay on a sleeping dragon's back wins a castle, $1 vs $1,000,000
+wizard school, 100 people must survive one night in a living labyrinth, a giveaway of a real wish, a race across clouds,
+an auction where the prize is a year of someone's time. Magic, monsters, floating islands, spirits, time and gravity games.
+Every person is a retro 1990s anime character, told by an off-screen narrator in third person.
+- Line 1 is the whole stake in one sentence with a huge exact number and the fantasy hook: "100 strangers, one sleeping
+  dragon, the last one still on its back wins its castle." The viewer must know the game and the prize in 2 seconds.
+- A host character runs the challenge (new name and look each episode, can be a wizard, spirit, dragon keeper).
+- Fast escalation: eliminations caused by the magic itself, a countdown, a temptation offer, stakes rise every scene.
+- One twist that uses the fantasy rule set up earlier (never breaks it), then a last line that loops back to line 1.
+- Visually: the fantasy is shown through few characters and clear moments (one dragon, one floating island, one glowing door),
+  framed like a 90s anime film; no crowds filling the frame, no game-show stage, no signs, scoreboards or written numbers."""
 
 
 EXAMPLE_WORLD = '{"title": "In This World Every Lie Becomes A Paper Crane", "says": ["In this world, every lie becomes a paper crane. It follows you forever. Most people carry three or four. Mika carries one thousand, and nobody will sit with her.", "So the whole school calls her the biggest liar alive. Kids whisper behind her. Teachers grade her homework twice. The bus driver makes her walk, because her cranes won\'t fit.", "But Kenji, the new kid, notices something weird. Every single crane appears at exactly 7:15 in the evening. Every night. For three years straight. So he follows her.", "She walks into a hospital. At 7:15 she sits beside Grandma\'s bed, smiles, and says, \'Mom is coming tomorrow, I promise.\' And right above her head, a brand-new crane unfolds.", "Her mom left three years ago and never came back. Grandma asks every night. So every night Mika tells the same lie, just so Grandma can fall asleep happy.", "The next morning, Kenji sits right next to her. One small crane floats above his head. \'I told your grandma I\'m your boyfriend,\' he says. In this world, that\'s two lies."]}'
