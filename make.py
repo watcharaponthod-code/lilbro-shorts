@@ -892,10 +892,15 @@ def main():
         result["note"] = f"quality reject, nothing made: {e}"; print(result["note"])
     except Exception as e:
         result["error"] = f"{type(e).__name__}: {e}"; print("ERROR", result["error"])
-        if not a.no_upload:                  # meta.ai / LLM out of quota usually fails twice in a row: pause instead of burning runs
+        uq = locals().get("used_q")
+        if uq and uq.exists() and "clips" in str(e):    # meta.ai refused/failed most scenes: park it so the queue moves on
+            (STATE / "script_failed").mkdir(exist_ok=True)
+            uq.rename(STATE / "script_failed" / uq.name); print("parked failed queued script", uq.name)
+            result["note"] = "parked queued script after clip failure: " + result.pop("error")
+        if not a.no_upload and result.get("error"):   # meta.ai / LLM out of quota usually fails twice in a row: pause instead of burning runs
             prev = [json.loads(l) for l in (STATE / "runs.jsonl").read_text(encoding="utf-8").splitlines()[-1:] if l.strip()] \
                 if (STATE / "runs.jsonl").exists() else []
-            if prev and prev[-1].get("error"):
+            if prev and prev[-1].get("error") and result.get("error"):
                 mark_limited("2 failed runs in a row: " + result["error"])
     finally:
         (STATE / "history.json").write_text(json.dumps(hist[-500:], ensure_ascii=False, indent=1), encoding="utf-8")
