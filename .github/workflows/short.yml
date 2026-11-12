@@ -1,7 +1,7 @@
 name: short
 on:
   schedule:
-    - cron: "7 */2 * * *"    # every 2 h: fewer, better clips (each script must pass the quality review)
+    - cron: "7 * * * *"    # hourly tick; make.py --gate keeps it to 10 uploads/24 h, >=110 min apart (GitHub often skips slots)
   workflow_dispatch:
     inputs:
       test:
@@ -46,7 +46,13 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
       - uses: astral-sh/setup-uv@v5
+      - name: gate (daily cap / spacing)
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "go=true" >> $GITHUB_OUTPUT; echo "manual: go"; else
+          uv run -q --no-project --python 3.12 --with numpy --with requests python make.py --gate; fi
       - name: tools
+        if: steps.gate.outputs.go == 'true'
         timeout-minutes: 12
         run: |
           for i in 1 2 3; do
@@ -58,6 +64,7 @@ jobs:
           mkdir -p ~/.fonts && cp assets/fonts/*.ttf ~/.fonts/ && fc-cache -f >/dev/null
           npm ci --silent
       - name: make and upload one short
+        if: steps.gate.outputs.go == 'true'
         run: uv run -q --no-project --python 3.12 --with numpy --with requests --with "edge-tts>=7.3.1" python make.py ${{ inputs.test && '--no-upload' || '' }} ${{ inputs.script && format('--script {0}', inputs.script) || '' }}
       - name: save learning state
         if: always()

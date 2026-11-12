@@ -283,8 +283,31 @@ def mark_limited(reason):
     (STATE / "limit.json").write_text(json.dumps({"until": time.time() + LIMIT_PAUSE_H * 3600, "reason": reason[:200]}), encoding="utf-8")
 
 
+DAILY_MAX = int(os.environ.get("DAILY_MAX", "10"))        # user: 10 clips a day
+MIN_GAP_MIN = int(os.environ.get("MIN_GAP_MIN", "110"))   # spread them over the day (cron fires hourly)
+
+
+def pace_reason(hist=None):
+    """cheap local check (no API): daily cap reached or the last upload was too recent."""
+    hist = jload(STATE / "history.json", []) if hist is None else hist
+    ts = sorted(h["t"] for h in hist if h.get("id") and h.get("t"))
+    now = time.time()
+    n24 = sum(1 for t in ts if now - t < 86400)
+    if n24 >= DAILY_MAX:
+        return f"daily cap: {n24} uploads in the last 24 h (max {DAILY_MAX})"
+    if ts and (now - ts[-1]) / 60 < MIN_GAP_MIN:
+        return f"last upload {round((now - ts[-1]) / 60)} min ago (min gap {MIN_GAP_MIN})"
+    lim = jload(STATE / "limit.json", {})
+    if lim.get("until", 0) > now:
+        return f"YouTube upload limit, paused {round((lim['until'] - now) / 3600, 1)}h more"
+    return None
+
+
 def stop_reason():
     """why this run must not upload or make a new clip, or None. Never spend effort on clips that cannot go out."""
+    pr = pace_reason()
+    if pr:
+        return pr
     lim = jload(STATE / "limit.json", {})
     if lim.get("until", 0) > time.time():
         return f"YouTube upload limit, paused {round((lim['until'] - time.time()) / 3600, 1)}h more ({lim.get('reason', '')[:80]})"
@@ -780,7 +803,15 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--script"); ap.add_argument("--clips"); ap.add_argument("--no-upload", action="store_true")
+    ap.add_argument("--gate", action="store_true", help="print go/skip for the workflow and exit")
     a = ap.parse_args()
+    if a.gate:
+        why = pace_reason()
+        print("skip: " + why if why else "go")
+        if os.environ.get("GITHUB_OUTPUT"):
+            with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                f.write(f"go={'false' if why else 'true'}\n")
+        return
     STATE.mkdir(exist_ok=True)
     hist = jload(STATE / "history.json", [])
     formats = jload(STATE / "formats.json", [])
