@@ -136,5 +136,35 @@
   "scenes": [
    6
   ]
+ },
+ {
+  "id": "beast_last_to_leave",
+  "look": "anime",
+  "style": "beast",
+  "idea": "Last-to-leave challenge (circle, train car, rooftop, giant cake) with a huge cash prize, eliminations and a temptation buyout.",
+  "title_pattern": "Last To Leave The Circle Wins $500,000",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "beast_giveaway_strangers",
+  "look": "anime",
+  "style": "beast",
+  "idea": "The host gives a stranger an impossible choice or a giant giveaway (a house, $1,000,000, a whole store) and the stranger's choice flips everything.",
+  "title_pattern": "I Gave A Stranger $1 Or A Mystery Box",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "beast_vs_extremes",
+  "look": "anime",
+  "style": "beast",
+  "idea": "Extreme comparison challenge: $1 vs $1,000,000 versions of something (sushi, school, birthday, hotel), or 1 vs 100 people.",
+  "title_pattern": "$1 vs $1,000,000 Birthday Party",
+  "scenes": [
+   6
+  ]
  }
 ]

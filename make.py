@@ -371,16 +371,36 @@ other channel's format: never open with "In this world", never use "Noob vs Pro 
   big brother, messy black hair, white puffer jacket, blue jeans."""
 
 
+BEAST_RULES = """Audience: teens and young adults worldwide. Format = a MrBeast-style challenge / giveaway Short, but every person is a
+retro 1990s anime character (ordinary humans drawn in that style), told by an off-screen narrator in third person.
+- Line 1 is the whole stake in one sentence with a huge exact number (money, people, days): "100 strangers, one circle, the last
+  one inside wins $500,000." The viewer must know the game and the prize in the first 2 seconds.
+- A host character runs the challenge (new name and look each episode). Contestants are named, each with one memorable trait.
+- Fast escalation: eliminations, a countdown, a temptation offer ("take $20,000 and leave now?"), the stakes rise every scene.
+- One generous twist near the end (the loser gets a bigger surprise, the winner gives it all away to someone who needed it,
+  the host doubles the prize), then a last line that loops back to line 1. Concrete numbers everywhere, no moralizing.
+- Every scene is a big visual: giant piles of cash, a huge arena, a timer, a crowd reacting."""
+
+
 def write_script(fmt, hist):
     recent = [h["title"] for h in hist[-40:]]
     own = fmt.get("style") == "original"
+    beast = fmt.get("style") == "beast"
     n = random.choice(fmt.get("scenes") or [6, 7])      # ~10 s per scene, 60-70 s max
-    rules = ORIGINAL_RULES if own else CHAN_RULES
+    rules = ORIGINAL_RULES if own else BEAST_RULES if beast else CHAN_RULES
     opener = ("Scene 1 opens with the premise line in first person (never \"In this world\")." if own else
+              "Scene 1 opens with the challenge and the prize in one sentence with the exact number (never \"In this world\")." if beast else
               "Scene 1 opens with the shocking mysterious hook line (start it with \"In this world,\" and state the rule in the first sentence).")
     title_rule = (f"Title Case title in first person that states the premise plainly, max 60 chars, like '{fmt.get('title_pattern', '')}'; never starts with 'In This World'; no emoji, no ellipsis, never the word AI"
                   if own else
+                  f"MrBeast-style Title Case title with the challenge and a big exact number, max 60 chars, like '{fmt.get('title_pattern', '')}'; never starts with 'In This World'; no emoji, no ellipsis, never the word AI"
+                  if beast else
                   "Title Case title that starts with 'In This World' and states the strange rule plainly, max 70 chars, like 'In This World Every Sneeze Hatches A Kaiju' or 'In This World Siblings Swap Bodies When They Fight'; no emoji, no ellipsis, never the word AI")
+    if LOOK == "anime":                  # a brand-new cast every episode
+        used = sorted({c for h in hist[-60:] for c in (h.get("cast") or [])})
+        rules += ("\n- Invent a completely NEW cast for this episode: new names, faces, hair, outfits and ages (vary gender, age and "
+                  "setting: high school, office, countryside, city, seaside, old people, kids). Never reuse a character or name"
+                  + (f" from earlier episodes: {', '.join(used)}." if used else "."))
     j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
 {rules}
 Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
@@ -407,7 +427,7 @@ Return JSON: {{"title": "{title_rule}",
     assert len(j["scenes"]) >= min(6, n), f"need {min(6, n)}+ scenes"
     j["title"] = re.sub(r"\bAI\b", "", j["title"])
     j["title"] = re.sub(r"[^\x00-\u024F]+", "", j["title"]).replace("...", " ").strip(" .")
-    if own:
+    if own or beast:
         j["title"] = re.sub(r"(?i)^in this world,?\s*", "", j["title"])
     j["title"] = re.sub(r"\s+", " ", j["title"])
     return j
@@ -752,7 +772,8 @@ def main():
                 mark_limited(str(e)); enqueue(final, s, why, stamp); result["note"] = "upload limit: queued"; print(result["note"]); return
             result.update(id=vid, url=f"https://youtube.com/shorts/{vid}")
             print("UPLOADED", result["url"])
-            hist.append({"id": vid, "t": time.time(), "format": fmt["id"], "title": s["title"], "why": why})
+            hist.append({"id": vid, "t": time.time(), "format": fmt["id"], "title": s["title"], "why": why,
+                         "cast": list((s.get("characters") or {}).keys())[:6]})
     except QualityReject as e:
         result["note"] = f"quality reject, nothing made: {e}"; print(result["note"])
     except Exception as e:
