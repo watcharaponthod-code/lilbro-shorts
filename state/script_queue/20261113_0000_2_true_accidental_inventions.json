@@ -1,0 +1,60 @@
+{
+ "format": "true_accidental_inventions",
+ "title": "Sticky Notes Came From A Glue That Failed",
+ "description": "In 1968 a 3M chemist tried to make the strongest glue ever and made the weakest one instead. https://en.wikipedia.org/wiki/Post-it_note What failure of yours could be useful to someone else? #anime #shorts #animestory #retroanime #truestory #history",
+ "music_mood": "funny",
+ "tags": [
+  "true story",
+  "history",
+  "post it notes",
+  "sticky notes",
+  "spencer silver",
+  "art fry",
+  "3m",
+  "accidental inventions",
+  "inventions",
+  "anime",
+  "retro anime",
+  "anime story",
+  "anime shorts",
+  "history facts",
+  "did you know"
+ ],
+ "characters": {
+  "Spencer Silver": "27-year-old American chemist in 1968, short neatly combed dark brown hair, clean-shaven, white lab coat over a white shirt and thin black tie, dark trousers, no hat, no glasses",
+  "Art Fry": "43-year-old American engineer in 1974, short receding light brown hair, thick dark-rimmed glasses, light blue short-sleeve dress shirt with a narrow brown tie, gray slacks, no hat",
+  "Linda": "30-year-old American office secretary in 1978, feathered shoulder-length blonde hair, cream turtleneck sweater, brown plaid skirt, no hat"
+ },
+ "scenes": [
+  {
+   "say": "In 1968, a scientist tried to make the strongest glue ever made. He made one of the weakest. And that mistake is probably stuck to your fridge right now.",
+   "video": "[0-4s] Inside a 1960s chemistry lab with wooden benches and glass beakers, Spencer Silver stirs a pale liquid in a beaker. [4-7s] Close-up: he presses two blank sheets of white paper together with the glue, then they peel apart easily. [7-10s] Medium shot of Spencer Silver in the lab, staring at the separated papers, puzzled.",
+   "sfx": []
+  },
+  {
+   "say": "Spencer Silver worked at 3M, and he wanted a super glue for building aircraft. Instead he got tiny sticky beads that held paper, let go, and stuck again, leaving nothing behind.",
+   "video": "[0-4s] Inside the 1960s lab, Spencer Silver looks through a brass microscope. [4-7s] Through the microscope: tiny round clear beads under soft light. [7-10s] At his lab bench, Spencer Silver sticks one blank sheet to a glass window, peels it off, sticks it again, and frowns.",
+   "sfx": []
+  },
+  {
+   "say": "So he spent five years giving talks about a glue nobody needed. People nodded politely and went back to work. But in 1974, one man in the audience remembered it.",
+   "video": "[0-4s] Small wood-paneled 1970s meeting room, Spencer Silver stands talking beside a table holding two blank papers, three colleagues sitting politely. [4-7s] Close-up of a colleague stifling a yawn behind his hand. [7-10s] In the back row of the same meeting room, Art Fry in thick glasses leans forward, listening closely.",
+   "sfx": []
+  },
+  {
+   "say": "Art Fry sang in his church choir, and his paper bookmarks kept falling out of his hymn book. So he brushed Silver's weak glue onto them. They stayed, then peeled off clean.",
+   "video": "[0-4s] Inside a small wooden church on a Sunday, Art Fry stands in a choir robe and blank paper bookmarks flutter out of his hymn book to the floor. [4-7s] At a 1970s lab bench, Art Fry brushes a thin line of glue onto small blank paper strips. [7-10s] Back in the wooden church, Art Fry opens his hymn book; the bookmark stays, and he peels it off cleanly with a small smile.",
+   "sfx": []
+  },
+  {
+   "say": "The notes were yellow only because the lab next door had yellow scrap paper. In 1977 they flopped in four test cities. So 3M handed out free pads in Boise, Idaho.",
+   "video": "[0-4s] Inside a 1970s lab storeroom, Art Fry picks up a stack of plain yellow scrap paper from a shelf. [4-7s] Close-up of his hands cutting it into small blank yellow squares. [7-10s] A 1978 office in Boise, Idaho with wood desks: Linda receives a small blank yellow pad, turning it over curiously.",
+   "sfx": []
+  },
+  {
+   "say": "Over 90 percent of those offices said they'd buy them. In 1980, Post-it Notes went on sale across America, twelve years after the failed glue. The strongest glue ever, it wasn't.",
+   "video": "[0-4s] In the 1978 Boise office, Linda sticks a blank yellow square on the side of her typewriter, peels it off, and sticks it again, smiling. [4-7s] Back in the 3M lab, Art Fry and Spencer Silver stand side by side looking at a blank yellow pad on the bench. [7-10s] Close-up of Spencer Silver laughing quietly, a single blank yellow square stuck to his lab coat.",
+   "sfx": []
+  }
+ ]
+}

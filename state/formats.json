@@ -138,6 +138,15 @@
   ]
  },
  {
+  "id": "anime_echoes_messages",
+  "look": "anime",
+  "idea": "A rule about words and messages that bends time or distance (everything you say echoes back one year later, unsent letters arrive ten years late, the last words you said to someone replay when they miss you), told through one family or friendship with a quiet twist about who heard what.",
+  "title_pattern": "In This World Unsent Letters Arrive Ten Years Late",
+  "scenes": [
+   6
+  ]
+ },
+ {
   "id": "beast_last_to_leave",
   "look": "anime",
   "style": "beast",

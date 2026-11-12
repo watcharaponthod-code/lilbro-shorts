@@ -1,0 +1,60 @@
+{
+ "format": "anime_price_of_wishes",
+ "title": "In This World You Pay With Your Memories",
+ "description": "Noa needs $4,000 to save her dog, and the only thing she can sell is the day she found him. Which memory would you never sell? #anime #shorts #animestory #retroanime",
+ "music_mood": "emotional",
+ "tags": [
+  "anime",
+  "retro anime",
+  "90s anime",
+  "in this world",
+  "anime story",
+  "anime shorts",
+  "sad anime",
+  "emotional anime",
+  "dog",
+  "dog story",
+  "memories",
+  "plot twist",
+  "animated story",
+  "heartwarming",
+  "story time"
+ ],
+ "characters": {
+  "Noa": "14-year-old Japanese girl, long dark brown hair in a low side ponytail tied with a yellow band, oversized faded green hoodie, denim shorts, white sneakers, no hat",
+  "Biscuit": "small scruffy brown mixed-breed dog with one floppy ear, a white patch on his chest, a worn red collar",
+  "Mrs. Oda": "70-year-old Japanese shopkeeper, silver hair in a tight bun, small round spectacles, dark purple kimono-style jacket over a gray dress, no hat"
+ },
+ "scenes": [
+  {
+   "say": "In this world, you pay with memories, not money. Noa needs four thousand dollars by Friday, or her little dog Biscuit doesn't get his surgery.",
+   "video": "[0-4s] Small animal clinic waiting room in the evening, Noa sits on a bench hugging Biscuit, who rests his head on her knee. [4-7s] Medium shot of a tired vet in a white coat shaking her head gently at Noa in the clinic hallway. [7-10s] Close-up of Noa's face, jaw set, one hand on Biscuit's floppy ear.",
+   "sfx": []
+  },
+  {
+   "say": "At the memory shop on the corner, a bad day buys bread and a good day buys shoes. Noa sells seven small memories, a hundred dollars each. Seven hundred. Not enough.",
+   "video": "[0-4s] Inside a narrow old memory shop lined with small empty glass jars on wooden shelves, Mrs. Oda behind the counter, Noa standing in front of it. [4-7s] Close-up: a thin silver thread drifts from Noa's forehead into a small glass jar on the counter. [7-10s] Mrs. Oda slides a plain white envelope across the counter; Noa looks at it and her shoulders drop.",
+   "sfx": []
+  },
+  {
+   "say": "Mrs. Oda studies her over her glasses. 'You have one big one. A rainy night, a cardboard box, a puppy.' It's worth exactly thirty-three hundred dollars. Exactly what's missing.",
+   "video": "[0-4s] In the memory shop, Mrs. Oda peers at Noa over small round spectacles. [4-7s] Soft faded flashback: on a rainy night by trash bins in a back alley, a younger Noa crouches over a soggy cardboard box with a tiny brown puppy inside. [7-10s] Back in the memory shop, close-up of Noa's eyes filling with tears.",
+   "sfx": []
+  },
+  {
+   "say": "So Noa nods. A thick silver thread slips out of her forehead into the biggest jar on the shelf. On Friday the surgery happens, and Biscuit wakes up wagging his tail.",
+   "video": "[0-4s] In the memory shop, Noa closes her eyes and nods while Mrs. Oda holds up a large glass jar. [4-7s] Close-up: a bright silver thread curls into the large glass jar and glows softly. [7-10s] In the animal clinic recovery room, Biscuit lifts his head from a blanket and wags his tail.",
+   "sfx": []
+  },
+  {
+   "say": "But at home, Noa looks at the little brown dog on her bed and feels nothing. She doesn't know why he sleeps there. Biscuit doesn't care. He brings her his leash.",
+   "video": "[0-4s] Noa's small bedroom at night, Noa sits at her desk and glances at Biscuit curled up on her bed, her face blank. [4-7s] Medium shot: Biscuit hops down and carries a worn red leash in his mouth to Noa's feet. [7-10s] Close-up of Noa's confused face looking down at him.",
+   "sfx": []
+  },
+  {
+   "say": "That night it rains. Biscuit drags her outside and climbs into an old box by the bins. In this world, you pay with memories. He just made her a new one.",
+   "video": "[0-4s] Back alley by the trash bins on a rainy night, Biscuit pulls Noa along by the red leash. [4-7s] Biscuit climbs into a soggy cardboard box and looks up at her, ears down, rain on his fur. [7-10s] Close-up: Noa kneels in the rain, laughing and crying, and lifts Biscuit out of the box into a hug.",
+   "sfx": []
+  }
+ ]
+}
