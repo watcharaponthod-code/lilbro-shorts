@@ -777,8 +777,14 @@ def main():
             if drain_queue(hist):
                 result["note"] = "uploaded/limited from queue, no new episode this run"
                 print(result["note"]); return
+        queued = sorted((STATE / "script_queue").glob("*.json")) if LOOK == "anime" and not a.script else []
+        used_q = None
         if a.script:
             s = jload(a.script, None); fmt = {"id": s.get("format", "test")}; why = "manual"
+        elif queued and not os.environ.get("FORCE_FORMAT", "").strip():
+            # scripts written by the Hermes agent (strong writer) go first; the free on-runner LLMs rarely pass the bar
+            s = jload(queued[0], None); used_q = queued[0]
+            fmt = next((f for f in formats if f["id"] == s.get("format")), {"id": s.get("format", "queued")}); why = "queued-script"
         else:
             pool = [f for f in formats if f.get("look") == "anime"] if LOOK == "anime" else [f for f in formats if f.get("look") != "anime"]
             fmt, why = pick_format(pool, hist)
@@ -818,6 +824,8 @@ def main():
             if c is None:
                 clips[i] = clips[i - 1] or clips[i + 1]
         final, T = assemble(s, clips, work)
+        if used_q and not a.no_upload:
+            used_q.unlink(missing_ok=True)      # consumed only once a video really exists (a failed run retries it)
         result["dur"] = T
         if not a.no_upload:
             try:
