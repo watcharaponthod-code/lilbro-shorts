@@ -166,5 +166,85 @@
   "scenes": [
    6
   ]
+ },
+ {
+  "id": "true_unsung_heroes",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real person almost nobody knows who saved many lives or changed history (e.g. Stanislav Petrov stopping a nuclear war, Irena Sendler smuggling 2,500 children), told as a tense true story.",
+  "title_pattern": "This Man Stopped World War 3 And Nobody Knew",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "true_survival",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real, documented survival story against impossible odds (e.g. Juliane Koepcke falling 3 km from a plane and walking out of the jungle, Hiroo Onoda fighting in the jungle for 29 years after the war ended).",
+  "title_pattern": "She Fell 3,000 Meters And Walked Home",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "true_japan_stories",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real story from Japan that fits the anime look (Hachiko waiting 9 years, Sadako Sasaki and her thousand paper cranes, the Shinkansen's 'seven-minute miracle' cleaners, the 'Fukushima 50').",
+  "title_pattern": "This Dog Waited 9 Years At One Train Station",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "true_history_weird",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real historical event so strange it sounds made up (the 1919 Boston molasses flood, Australia's Great Emu War, the dancing plague of 1518), told with a hook and a final surprising fact.",
+  "title_pattern": "Australia Declared War On Birds And Lost",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "true_accidental_inventions",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real invention or discovery that happened by accident or mistake (penicillin, the microwave oven, Post-it notes, the pacemaker), told through the person it happened to.",
+  "title_pattern": "A Melted Chocolate Bar Gave Us The Microwave",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "true_animal_stories",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real, documented story of an animal doing something incredible (Hachiko, Balto, the penguin who swims 8,000 km to visit the man who saved him every year).",
+  "title_pattern": "This Penguin Swims 8,000 km Every Year For One Man",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "true_mysteries",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real unsolved or recently solved mystery told carefully with only verified facts (the Mary Celeste, the Voynich manuscript, the Wow! signal), ending on the open question.",
+  "title_pattern": "A Ship Was Found Perfectly Fine But Everyone Was Gone",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "true_kindness_strangers",
+  "look": "anime",
+  "style": "true",
+  "idea": "A real act of kindness between strangers that changed lives (a documented news story), with the twist of how it came back years later.",
+  "title_pattern": "He Paid A Stranger's Bill And Got A Letter 20 Years Later",
+  "scenes": [
+   6
+  ]
  }
 ]

@@ -29,29 +29,8 @@
   ]
  },
  {
-  "id": "0V53FUqVZmQ",
-  "t": 1794480790.772504,
-  "format": "beast_vs_extremes",
-  "title": "$1 vs $1,000,000 Birthday Party",
-  "why": "queued-script",
-  "cast": [
-   "Daisuke",
-   "Rina",
-   "Hana"
-  ],
-  "views": 0,
-  "likes": 0,
-  "age_min": 5,
-  "checks": [
-   [
-    5,
-    0
-   ]
-  ]
- },
- {
-  "id": "x1urSyWfLSc",
-  "t": 1794481459.4752207,
+  "id": "WgZ2nhfXe10",
+  "t": 1794484777.636031,
   "format": "beast_last_to_leave",
   "title": "Last To Leave The Ferris Wheel Wins $250,000",
   "why": "queued-script",

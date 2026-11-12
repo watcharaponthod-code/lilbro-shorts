@@ -50,7 +50,9 @@ if LOOK == "anime":
              "palette, soft daylight or warm lamplight, grounded everyday places (streets, classrooms, trains, small apartments, "
              "hospitals, seaside towns), quiet cinematic framing: medium shots and close-ups of one to three characters, simple "
              "uncluttered backgrounds. NO glitter, sparkles, neon, glossy highlights, fireworks, confetti, giant props, or crowds "
-             "filling the frame (extras only as soft background figures). NO readable signs, banners, checks or writing.")
+             "filling the frame (extras only as soft background figures). NO readable signs, banners, checks or writing. "
+             "Every character keeps exactly the listed hair and outfit in every shot; never add hats, caps or accessories that are "
+             "not listed. Stay in the location the shot names.")
 CAP_ALIGN, CAP_MARGIN = (8, 330) if LOOK == "anime" else (2, 700)   # anime: captions at the top (below Shorts' top UI)
 _ANIME_SUBS = [  # applied to every LLM prompt in anime mode, longest phrases first
     ("told over real 3D ROBLOX gameplay footage", "told as a retro 1990s Japanese TV anime episode"),
@@ -422,19 +424,31 @@ retro 1990s anime character (ordinary humans drawn in that style), told by an of
 EXAMPLE_WORLD = '{"title": "In This World Every Lie Becomes A Paper Crane", "says": ["In this world, every lie becomes a paper crane. It follows you forever. Most people carry three or four. Mika carries one thousand, and nobody will sit with her.", "So the whole school calls her the biggest liar alive. Kids whisper behind her. Teachers grade her homework twice. The bus driver makes her walk, because her cranes won\'t fit.", "But Kenji, the new kid, notices something weird. Every single crane appears at exactly 7:15 in the evening. Every night. For three years straight. So he follows her.", "She walks into a hospital. At 7:15 she sits beside Grandma\'s bed, smiles, and says, \'Mom is coming tomorrow, I promise.\' And right above her head, a brand-new crane unfolds.", "Her mom left three years ago and never came back. Grandma asks every night. So every night Mika tells the same lie, just so Grandma can fall asleep happy.", "The next morning, Kenji sits right next to her. One small crane floats above his head. \'I told your grandma I\'m your boyfriend,\' he says. In this world, that\'s two lies."]}'
 EXAMPLE_BEAST = '{"title": "Last To Let Go Of The Train Wins $500,000", "says": ["100 people, one old train, and whoever keeps a hand on it longest wins $500,000. But the host, Mr. Hoshino, warns them: every hour, he will pay you to quit.", "Hour one, he offers $1,000, and 31 people run. Hour five, $10,000. A dad named Taro lets go to pay his daughter\'s hospital bill. So now only 12 are left.", "Day two, it pours rain. Hoshino offers $50,000 and a hot bowl of ramen. Seven more quit. Five remain, and one of them, Yuki, has not slept in 30 hours.", "At hour 40 he doubles it: $100,000 to the next person who leaves. Three let go at once. Now it is Yuki against Ren, a guy who says he needs nothing.", "Hour 52, Ren\'s hand starts slipping. But Yuki grabs his wrist and holds it to the train. \'If you fall, I quit too,\' she says. Hoshino stares for ten seconds.", "So he breaks his own rule: both win $500,000. Yuki gives half to Taro, the dad from hour five. And Hoshino taps the train: \'Next year, 100 people.\'"]}'
 
+TRUE_RULES = """Audience: teens and adults worldwide. Format = a TRUE story from the real world, retold as a quiet retro 1990s anime
+drama by an off-screen narrator. Only real, verifiable facts: real names, dates, places and numbers; never invent events.
+- Line 1 is the most shocking true fact in one sentence ("In 1983, one man ignored five missiles and saved the world.").
+- Tell it in order with 'so' / 'but' causality, concrete numbers, one human detail per scene.
+- End on a final true fact that recasts the story, and a last line that echoes line 1.
+- The description must name the real source (Wikipedia article or news outlet)."""
+
+
 def write_script(fmt, hist):
     recent = [h["title"] for h in hist[-40:]]
     own = fmt.get("style") == "original"
     beast = fmt.get("style") == "beast"
+    true_ = fmt.get("style") == "true"
     n = random.choice(fmt.get("scenes") or [6, 7])      # ~10 s per scene, 60-70 s max
-    rules = ORIGINAL_RULES if own else BEAST_RULES if beast else CHAN_RULES
+    rules = ORIGINAL_RULES if own else BEAST_RULES if beast else TRUE_RULES if true_ else CHAN_RULES
     opener = ("Scene 1 opens with the premise line in first person (never \"In this world\")." if own else
               "Scene 1 opens with the challenge and the prize in one sentence with the exact number (never \"In this world\")." if beast else
+              "Scene 1 opens with the most shocking true fact of the story in one sentence (never \"In this world\")." if true_ else
               "Scene 1 opens with the shocking mysterious hook line (start it with \"In this world,\" and state the rule in the first sentence).")
     title_rule = (f"Title Case title in first person that states the premise plainly, max 60 chars, like '{fmt.get('title_pattern', '')}'; never starts with 'In This World'; no emoji, no ellipsis, never the word AI"
                   if own else
                   f"MrBeast-style Title Case title with the challenge and a big exact number, max 60 chars, like '{fmt.get('title_pattern', '')}'; never starts with 'In This World'; no emoji, no ellipsis, never the word AI"
                   if beast else
+                  f"Title Case title that states the true story's shocking fact plainly, max 60 chars, like '{fmt.get('title_pattern', '')}'; no emoji, no ellipsis, never the word AI"
+                  if true_ else
                   "Title Case title that starts with 'In This World' and states the strange rule plainly, max 70 chars, like 'In This World Every Sneeze Hatches A Kaiju' or 'In This World Siblings Swap Bodies When They Fight'; no emoji, no ellipsis, never the word AI")
     if LOOK == "anime":                  # a brand-new cast every episode
         used = sorted({c for h in hist[-60:] for c in (h.get("cast") or [])})
@@ -487,7 +501,7 @@ Return JSON: {{"title": "{title_rule}",
     assert len(j["scenes"]) >= min(6, n), f"need {min(6, n)}+ scenes"
     j["title"] = re.sub(r"\bAI\b", "", j["title"])
     j["title"] = re.sub(r"[^\x00-\u024F]+", "", j["title"]).replace("...", " ").strip(" .")
-    if own or beast:
+    if own or beast or true_:
         j["title"] = re.sub(r"(?i)^in this world,?\s*", "", j["title"])
     j["title"] = re.sub(r"\s+", " ", j["title"])
     return j
