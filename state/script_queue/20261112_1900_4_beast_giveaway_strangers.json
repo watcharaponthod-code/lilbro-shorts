@@ -1,0 +1,61 @@
+{
+ "format": "beast_giveaway_strangers",
+ "title": "I Gave A Stranger $20,000 And Followed The Envelope",
+ "description": "One envelope, one rule: keep half, give half to a stranger. Who would you have given it to? #anime #shorts #animestory #retroanime",
+ "music_mood": "emotional",
+ "tags": [
+  "anime",
+  "retro anime",
+  "90s anime",
+  "challenge",
+  "giveaway",
+  "pay it forward",
+  "20000",
+  "taxi driver",
+  "kindness",
+  "anime story",
+  "anime shorts",
+  "plot twist",
+  "mrbeast style",
+  "wholesome",
+  "story time"
+ ],
+ "characters": {
+  "Yuto": "28-year-old Japanese man, short dark brown hair, calm friendly face, no hat, plain gray hoodie, black jeans, white sneakers",
+  "Goro": "58-year-old Japanese taxi driver, short gray crew cut, tired kind eyes, navy taxi driver jacket over a white shirt, navy driver's cap, white cotton driving gloves",
+  "Emi": "24-year-old Japanese young mother, long black hair in a loose low ponytail, no hat, oversized beige cardigan over a pale pink t-shirt, gray sweatpants, white slippers",
+  "Mrs. Kuroda": "80-year-old Japanese woman, short white permed hair, small round glasses, no hat, faded green work apron over a brown long-sleeve blouse, dark slacks, cloth shoulder bag"
+ },
+ "scenes": [
+  {
+   "say": "$20,000, one envelope, one rule: keep half, give half away. I handed it to Goro, a night taxi driver, and followed it to see where it ends.",
+   "video": "[0-4s] Late night at a quiet taxi stand under a single streetlamp, Yuto leans into the open window of an old black taxi and holds out a plain white envelope. [4-7s] Inside the taxi, Goro in his navy cap and white gloves stares at the envelope, stunned. [7-10s] Close-up of Goro's gloved hands taking the envelope slowly.",
+   "sfx": []
+  },
+  {
+   "say": "Goro counts out his $10,000, then folds one corner of the envelope, a habit from thirty years of tips. He drives off to find a stranger.",
+   "video": "[0-4s] Inside the parked taxi under the dashboard light, Goro counts plain bills from the envelope, lips moving silently. [4-7s] Close-up of Goro's gloved fingers folding the top corner of the white envelope into a small triangle. [7-10s] The old black taxi pulls away from the curb onto an empty night street.",
+   "sfx": []
+  },
+  {
+   "say": "At a laundromat at 2 a.m., he finds Emi, a young mom folding baby clothes. She keeps $5,000 for rent, so the envelope moves on with $5,000.",
+   "video": "[0-4s] Inside a small fluorescent-lit laundromat at night, Emi folds tiny baby clothes on a counter beside humming washers. [4-7s] Goro stands near the door of the laundromat holding out the folded-corner envelope; Emi covers her mouth. [7-10s] Close-up of Emi's hands taking out some bills and holding the envelope to her chest.",
+   "sfx": []
+  },
+  {
+   "say": "Emi hands it to Mrs. Kuroda, 80, who walks home from her cleaning job every night because taxis cost too much. She keeps $2,500, leaving $2,500 to give.",
+   "video": "[0-4s] On a dim sidewalk outside the laundromat, Mrs. Kuroda walks slowly with her cloth bag as Emi runs up behind her. [4-7s] Emi presses the white envelope into Mrs. Kuroda's wrinkled hands. [7-10s] Close-up of Mrs. Kuroda behind her round glasses, eyes wet, slowly nodding.",
+   "sfx": []
+  },
+  {
+   "say": "So for the first time in years, she waves down a taxi. It's Goro's cab. At her door, she hands the driver the envelope, and he sees the folded corner.",
+   "video": "[0-4s] On a quiet street corner under a streetlamp, Mrs. Kuroda raises her hand and the old black taxi slows beside her. [4-7s] In the back seat of the taxi, Mrs. Kuroda holds out the envelope toward Goro at the wheel. [7-10s] Close-up of the envelope in Goro's gloved hand, its top corner folded into a small triangle; his eyes widen.",
+   "sfx": []
+  },
+  {
+   "say": "His own envelope came back to him with $2,500, from a woman who had no idea. Goro laughs, keeps half, and drives off to give the other half away.",
+   "video": "[0-4s] Outside a small wooden house at night, Mrs. Kuroda waves from her doorway as Goro watches from the taxi window. [4-7s] Inside the taxi, Goro laughs quietly, wiping his eye with the back of his glove. [7-10s] The old black taxi drives off down the empty street toward the first light of dawn.",
+   "sfx": []
+  }
+ ]
+}
