@@ -10,9 +10,9 @@
    "Kenji",
    "Grandma"
   ],
-  "views": 12,
-  "likes": 0,
-  "age_min": 90,
+  "views": 63,
+  "likes": 3,
+  "age_min": 214,
   "checks": [
    [
     33,
@@ -25,6 +25,10 @@
    [
     90,
     12
+   ],
+   [
+    214,
+    63
    ]
   ]
  },
@@ -38,6 +42,15 @@
    "Okabe",
    "Sora",
    "Kenta"
+  ],
+  "views": 70,
+  "likes": 3,
+  "age_min": 63,
+  "checks": [
+   [
+    63,
+    70
+   ]
   ]
  }
 ]
