@@ -39,6 +39,8 @@ jobs:
       META_MAX_MIN: "16"
       FORCE_FORMAT: ${{ inputs.format }}
       LOOK: ${{ inputs.look || vars.LOOK || 'roblox' }}
+      DAILY_MAX: ${{ vars.DAILY_MAX || '10' }}
+      MIN_GAP_MIN: ${{ vars.MIN_GAP_MIN || '110' }}
       WORKER_URL: ${{ secrets.WORKER_URL }}
       ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
     steps:
