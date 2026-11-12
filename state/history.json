@@ -67,12 +67,8 @@
   "why": "explore-untried",
   "views": 125,
   "likes": 2,
-  "age_min": 1314,
+  "age_min": 2271,
   "checks": [
-   [
-    287,
-    118
-   ],
    [
     339,
     118
@@ -116,6 +112,10 @@
    [
     1314,
     125
+   ],
+   [
+    2271,
+    125
    ]
   ]
  },
@@ -127,12 +127,8 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 1,
-  "age_min": 1266,
+  "age_min": 2223,
   "checks": [
-   [
-    239,
-    0
-   ],
    [
     291,
     0
@@ -176,6 +172,10 @@
    [
     1266,
     5
+   ],
+   [
+    2223,
+    5
    ]
   ]
  },
@@ -185,14 +185,10 @@
   "format": "cosmic_event",
   "title": "In this world the moon is an egg... and it just HATCHED 😨",
   "why": "explore-untried",
-  "views": 5,
+  "views": 7,
   "likes": 1,
-  "age_min": 1188,
+  "age_min": 2145,
   "checks": [
-   [
-    161,
-    0
-   ],
    [
     213,
     0
@@ -236,6 +232,10 @@
    [
     1188,
     5
+   ],
+   [
+    2145,
+    7
    ]
   ]
  },
@@ -246,13 +246,9 @@
   "title": "He Screamed Once... And 7 Kids Vanished... 😨",
   "why": "explore-untried",
   "views": 5,
-  "likes": 0,
-  "age_min": 1131,
+  "likes": 1,
+  "age_min": 2088,
   "checks": [
-   [
-    104,
-    0
-   ],
    [
     156,
     0
@@ -296,6 +292,10 @@
    [
     1131,
     5
+   ],
+   [
+    2088,
+    5
    ]
   ]
  },
@@ -305,14 +305,10 @@
   "format": "monster_society",
   "title": "He Adopted 10 Kaiju... Not One Is Still Alive... 😨",
   "why": "exploit",
-  "views": 10,
+  "views": 17,
   "likes": 3,
-  "age_min": 1085,
+  "age_min": 2042,
   "checks": [
-   [
-    58,
-    0
-   ],
    [
     110,
     0
@@ -356,6 +352,10 @@
    [
     1085,
     10
+   ],
+   [
+    2042,
+    17
    ]
   ]
  },
@@ -365,9 +365,9 @@
   "format": "monster_society",
   "title": "His House Ate 99 Memories... Then Asked For The Last One... 😨",
   "why": "exploit",
-  "views": 5,
+  "views": 6,
   "likes": 1,
-  "age_min": 1022,
+  "age_min": 1979,
   "checks": [
    [
     47,
@@ -412,6 +412,10 @@
    [
     1022,
     5
+   ],
+   [
+    1979,
+    6
    ]
   ]
  },
@@ -421,9 +425,9 @@
   "format": "time_weirdness",
   "title": "In This World Every Sneeze Skips A Day",
   "why": "explore-untried+queued",
-  "views": 4,
+  "views": 5,
   "likes": 1,
-  "age_min": 609,
+  "age_min": 1566,
   "checks": [
    [
     63,
@@ -448,6 +452,10 @@
    [
     609,
     4
+   ],
+   [
+    1566,
+    5
    ]
   ]
  },
@@ -459,7 +467,7 @@
   "why": "explore-untried",
   "views": 5,
   "likes": 1,
-  "age_min": 540,
+  "age_min": 1498,
   "checks": [
    [
     59,
@@ -480,6 +488,10 @@
    [
     540,
     5
+   ],
+   [
+    1498,
+    5
    ]
   ]
  },
@@ -489,9 +501,9 @@
   "format": "roblox_glitch_world",
   "title": "In This World Everyone Has A Respawn Button On Their Back",
   "why": "explore-untried",
-  "views": 1237,
-  "likes": 49,
-  "age_min": 462,
+  "views": 1275,
+  "likes": 47,
+  "age_min": 1419,
   "checks": [
    [
     40,
@@ -508,7 +520,18 @@
    [
     462,
     1237
+   ],
+   [
+    1419,
+    1275
    ]
   ]
+ },
+ {
+  "id": "TA114HomHcw",
+  "t": 1794459470.146831,
+  "format": "own_lilbro_admin",
+  "title": "My Little Brother Had Admin For 9 Seconds",
+  "why": "forced+queued"
  }
 ]
