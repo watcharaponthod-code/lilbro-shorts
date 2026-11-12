@@ -1,0 +1,60 @@
+{
+ "format": "beast_last_to_leave",
+ "title": "Last To Leave The Ferris Wheel Wins $250,000",
+ "description": "50 strangers rode one Ferris wheel for six days. Would you have stepped off for $100,000? #anime #shorts #animestory #retroanime",
+ "music_mood": "dramatic",
+ "tags": [
+  "anime",
+  "retro anime",
+  "90s anime",
+  "last to leave",
+  "challenge",
+  "ferris wheel",
+  "250000",
+  "anime story",
+  "anime shorts",
+  "emotional story",
+  "plot twist",
+  "mrbeast style",
+  "animated story",
+  "story time",
+  "wholesome"
+ ],
+ "characters": {
+  "Okabe": "40-year-old Japanese game-show host, silver hair in a ponytail, white suit, black sunglasses, microphone",
+  "Sora": "24-year-old Japanese nurse, brown hair in a low ponytail, light blue nurse scrubs, tired kind eyes",
+  "Kenta": "35-year-old Japanese businessman, neat black hair, navy three-piece suit, expensive watch, calm smirk"
+ },
+ "scenes": [
+  {
+   "say": "50 strangers, one Ferris wheel, and the last one still riding wins $250,000. Host Okabe adds one rule: every time the wheel stops, he pays you to step off.",
+   "video": "[0-4s] Dusk at a small seaside amusement park, an old Ferris wheel against a pale orange sky, a line of ordinary people waiting at its base. [4-7s] Medium shot: Okabe in a white suit and sunglasses holds a plain black briefcase, calm. [7-10s] Inside a small cabin, Sora looks out the scratched window as the wheel starts to turn.",
+   "sfx": []
+  },
+  {
+   "say": "First stop, $2,000. 28 people step off right away, so 22 are left. A nurse named Sora stays, and she keeps staring at a photo of a boy in a hospital bed.",
+   "video": "[0-4s] The wheel stops; Okabe opens the briefcase toward a cabin door and several people step down onto the platform, heads lowered. [4-7s] Wide quiet shot of the wheel with many cabins now dark and empty. [7-10s] Close-up inside a cabin: Sora holds a small worn photo of a little boy in a hospital bed, thumb on the edge.",
+   "sfx": []
+  },
+  {
+   "say": "Day two, $20,000 and a hot bath. 13 more quit, leaving 9. Sora's phone buzzes: the boy's surgery costs exactly $230,000. She does not move.",
+   "video": "[0-4s] Gray rainy morning, raindrops on a cabin window, a few figures walk away across the wet platform under umbrellas. [4-7s] Sora's face lit by her flip phone, eyes widening. [7-10s] She closes the phone slowly and grips the seat, staying still as the cabin rocks in the wind.",
+   "sfx": []
+  },
+  {
+   "say": "Day four, $100,000. Five people take it, so only 4 remain: Sora, a teen gamer, a grandpa, and Kenta, a rich businessman who says he's only here for fun.",
+   "video": "[0-4s] Okabe stands at the platform holding the open briefcase; five tired people climb down one by one. [4-7s] Slow pan across four lit cabins at night: a teen with headphones, a grandpa with a thermos, Sora. [7-10s] Kenta in a navy suit leans back in his cabin, checking his watch with a small smirk.",
+   "sfx": []
+  },
+  {
+   "say": "Day six, the grandpa and the gamer step off for $150,000 each. So it's Sora against Kenta, and through the glass, Kenta finally sees the photo of the boy.",
+   "video": "[0-4s] The grandpa and the teen step off together into morning light. [4-7s] Two cabins side by side near the top of the wheel at sunset, only Sora and Kenta left. [7-10s] Kenta looks across through the glass, sees Sora's photo of the boy, and his smirk fades.",
+   "sfx": []
+  },
+  {
+   "say": "Kenta steps off with $200,000, so Sora wins $250,000. Then Kenta hands her his cash too: 'For his recovery.' 50 strangers rode that wheel. Only one never rode for herself.",
+   "video": "[0-4s] Kenta steps down, takes an envelope from Okabe and bows slightly. [4-7s] Sora steps out of her cabin crying while Okabe hands her the black briefcase. [7-10s] Kenta quietly gives Sora his envelope too; they stand under the glowing old wheel at dusk.",
+   "sfx": []
+  }
+ ]
+}

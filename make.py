@@ -46,7 +46,11 @@ if LOOK == "anime":
              "colors, hand-painted watercolor backgrounds, thin clean ink lines, cel shading with one hard shadow tone, big "
              "expressive anime eyes with highlights, realistic human proportions, speed lines and dramatic held frames on big "
              "moments. All characters are ordinary human people drawn in that retro anime style (not Roblox, not blocky, not "
-             "chibi, not modern anime). Not 3D, not CGI. No channel logos, no watermark, no subtitles.")
+             "chibi, not modern anime). Not 3D, not CGI. No channel logos, no watermark, no subtitles. Look and feel: muted natural "
+             "palette, soft daylight or warm lamplight, grounded everyday places (streets, classrooms, trains, small apartments, "
+             "hospitals, seaside towns), quiet cinematic framing: medium shots and close-ups of one to three characters, simple "
+             "uncluttered backgrounds. NO glitter, sparkles, neon, glossy highlights, fireworks, confetti, giant props, or crowds "
+             "filling the frame (extras only as soft background figures). NO readable signs, banners, checks or writing.")
 CAP_ALIGN, CAP_MARGIN = (8, 330) if LOOK == "anime" else (2, 700)   # anime: captions at the top (below Shorts' top UI)
 _ANIME_SUBS = [  # applied to every LLM prompt in anime mode, longest phrases first
     ("told over real 3D ROBLOX gameplay footage", "told as a retro 1990s Japanese TV anime episode"),
@@ -410,7 +414,9 @@ retro 1990s anime character (ordinary humans drawn in that style), told by an of
 - Fast escalation: eliminations, a countdown, a temptation offer ("take $20,000 and leave now?"), the stakes rise every scene.
 - One generous twist near the end (the loser gets a bigger surprise, the winner gives it all away to someone who needed it,
   the host doubles the prize), then a last line that loops back to line 1. Concrete numbers everywhere, no moralizing.
-- Every scene is a big visual: giant piles of cash, a huge arena, a timer, a crowd reacting."""
+- Keep it grounded like a quiet 90s anime drama, not a glitzy game show: real places, small groups, faces and reactions in
+  close-up. Show money as a plain envelope or a briefcase, never giant checks, signs, scoreboards or written numbers; say the
+  numbers in the narration instead. No fireworks, confetti, giant cakes or crowds filling the frame."""
 
 
 EXAMPLE_WORLD = '{"title": "In This World Every Lie Becomes A Paper Crane", "says": ["In this world, every lie becomes a paper crane. It follows you forever. Most people carry three or four. Mika carries one thousand, and nobody will sit with her.", "So the whole school calls her the biggest liar alive. Kids whisper behind her. Teachers grade her homework twice. The bus driver makes her walk, because her cranes won\'t fit.", "But Kenji, the new kid, notices something weird. Every single crane appears at exactly 7:15 in the evening. Every night. For three years straight. So he follows her.", "She walks into a hospital. At 7:15 she sits beside Grandma\'s bed, smiles, and says, \'Mom is coming tomorrow, I promise.\' And right above her head, a brand-new crane unfolds.", "Her mom left three years ago and never came back. Grandma asks every night. So every night Mika tells the same lie, just so Grandma can fall asleep happy.", "The next morning, Kenji sits right next to her. One small crane floats above his head. \'I told your grandma I\'m your boyfriend,\' he says. In this world, that\'s two lies."]}'
