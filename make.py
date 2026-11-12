@@ -382,6 +382,9 @@ retro 1990s anime character (ordinary humans drawn in that style), told by an of
 - Every scene is a big visual: giant piles of cash, a huge arena, a timer, a crowd reacting."""
 
 
+EXAMPLE_WORLD = '{"title": "In This World Every Lie Becomes A Paper Crane", "says": ["In this world, every lie becomes a paper crane. It follows you forever. Most people carry three or four. Mika carries one thousand, and nobody will sit with her.", "So the whole school calls her the biggest liar alive. Kids whisper behind her. Teachers grade her homework twice. The bus driver makes her walk, because her cranes won\'t fit.", "But Kenji, the new kid, notices something weird. Every single crane appears at exactly 7:15 in the evening. Every night. For three years straight. So he follows her.", "She walks into a hospital. At 7:15 she sits beside Grandma\'s bed, smiles, and says, \'Mom is coming tomorrow, I promise.\' And right above her head, a brand-new crane unfolds.", "Her mom left three years ago and never came back. Grandma asks every night. So every night Mika tells the same lie, just so Grandma can fall asleep happy.", "The next morning, Kenji sits right next to her. One small crane floats above his head. \'I told your grandma I\'m your boyfriend,\' he says. In this world, that\'s two lies."]}'
+EXAMPLE_BEAST = '{"title": "Last To Let Go Of The Train Wins $500,000", "says": ["100 people, one old train, and whoever keeps a hand on it longest wins $500,000. But the host, Mr. Hoshino, warns them: every hour, he will pay you to quit.", "Hour one, he offers $1,000, and 31 people run. Hour five, $10,000. A dad named Taro lets go to pay his daughter\'s hospital bill. So now only 12 are left.", "Day two, it pours rain. Hoshino offers $50,000 and a hot bowl of ramen. Seven more quit. Five remain, and one of them, Yuki, has not slept in 30 hours.", "At hour 40 he doubles it: $100,000 to the next person who leaves. Three let go at once. Now it is Yuki against Ren, a guy who says he needs nothing.", "Hour 52, Ren\'s hand starts slipping. But Yuki grabs his wrist and holds it to the train. \'If you fall, I quit too,\' she says. Hoshino stares for ten seconds.", "So he breaks his own rule: both win $500,000. Yuki gives half to Taro, the dad from hour five. And Hoshino taps the train: \'Next year, 100 people.\'"]}'
+
 def write_script(fmt, hist):
     recent = [h["title"] for h in hist[-40:]]
     own = fmt.get("style") == "original"
@@ -401,6 +404,10 @@ def write_script(fmt, hist):
         rules += ("\n- Invent a completely NEW cast for this episode: new names, faces, hair, outfits and ages (vary gender, age and "
                   "setting: high school, office, countryside, city, seaside, old people, kids). Never reuse a character or name"
                   + (f" from earlier episodes: {', '.join(used)}." if used else "."))
+        ex = EXAMPLE_BEAST if beast else EXAMPLE_WORLD
+        rules += ("\nHere is the narration of a script that scored 8+ with our editor. Match its craft exactly (premise and stake in "
+                  "line 1, every scene caused by the last with 'so/but', concrete numbers, a twist that was set up earlier, a last line "
+                  "that echoes line 1), but write a completely different story, setting and cast: " + ex)
     j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
 {rules}
 Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
