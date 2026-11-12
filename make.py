@@ -130,13 +130,43 @@ def jload(p, default):
 # ---------------------------------------------------------------- LLM (meta.ai chat; fallback Workers AI via the worker)
 # GitHub Models was retired on 2026-07-30 (models.github.ai now answers a bare "OK"), so it is not used any more.
 def _parse_json(txt):
-    return json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
+    j = json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
+    if isinstance(j, dict) and "choices" in j:          # worker passes gpt-oss's raw chat.completion through
+        msg = j["choices"][0].get("message") or {}
+        c = msg.get("content") or j["choices"][0].get("text") or ""
+        return json.loads(c[c.index("{"): c.rindex("}") + 1])
+    return j
 
 
-def llm_json(prompt, temp=1.0, need=None):
-    """need: key that must be in the result (e.g. "scenes"); a reply without it counts as a failure and is retried."""
+def _worker_llm(prompt, temp, need, models=("@cf/openai/gpt-oss-120b", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")):
+    url, tok = os.environ.get("WORKER_URL"), os.environ.get("ADMIN_TOKEN")
+    last = None
+    for model in models:
+        if not url or not tok:
+            return None, "no worker"
+        try:
+            r = requests.post(url.rstrip("/") + "/llm", timeout=240, headers={"Authorization": f"Bearer {tok}"},
+                              json={"prompt": prompt + "\nReply with ONLY the JSON object.", "model": model, "temperature": min(temp, 1.0)})
+            j = _parse_json(r.json()["text"]) if r.status_code == 200 else None
+            if j and (not need or need in j):
+                return j, None
+            last = f"{model} {r.status_code} {r.text[:160]}"
+        except Exception as e:
+            last = f"{model} {e}"
+        print("LLM worker failed:", last)
+    return None, last
+
+
+def llm_json(prompt, temp=1.0, need=None, writer=False):
+    """need: key that must be in the result (e.g. "scenes"); a reply without it counts as a failure and is retried.
+    writer=True (script writing/rewriting): try Workers AI gpt-oss-120b first when WRITER=worker (writes tighter scripts than
+    meta.ai chat, which kept breaking its own numbers); reviews stay on meta.ai so the editor is a different model."""
     last = None
     prompt = look_prompt(prompt)
+    if writer and os.environ.get("WRITER", "worker" if LOOK == "anime" else "meta") == "worker":
+        j, last = _worker_llm(prompt, temp, need, models=("@cf/openai/gpt-oss-120b",))
+        if j:
+            return j
     for attempt in range(2):                      # primary: meta.ai text chat with the same login as the video gen
         pf, of = D / "work" / "llm_prompt.txt", D / "work" / "llm_out.json"
         pf.parent.mkdir(exist_ok=True)
@@ -404,6 +434,8 @@ def write_script(fmt, hist):
         rules += ("\n- Invent a completely NEW cast for this episode: new names, faces, hair, outfits and ages (vary gender, age and "
                   "setting: high school, office, countryside, city, seaside, old people, kids). Never reuse a character or name"
                   + (f" from earlier episodes: {', '.join(used)}." if used else "."))
+        rules += ("\n- Numbers must add up: if you give a count, every later count equals it minus every drop you stated; never let "
+                  "people vanish off-screen. Every rule-break or reward in the ending must be set up in an earlier scene.")
         ex = EXAMPLE_BEAST if beast else EXAMPLE_WORLD
         rules += ("\nHere is the narration of a script that scored 8+ with our editor. Match its craft exactly (premise and stake in "
                   "line 1, every scene caused by the last with 'so/but', concrete numbers, a twist that was set up earlier, a last line "
@@ -430,7 +462,7 @@ Return JSON: {{"title": "{title_rule}",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
 "music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
-"scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""", need="scenes")
+"scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""", need="scenes", writer=True)
     assert len(j["scenes"]) >= min(6, n), f"need {min(6, n)}+ scenes"
     j["title"] = re.sub(r"\bAI\b", "", j["title"])
     j["title"] = re.sub(r"[^\x00-\u024F]+", "", j["title"]).replace("...", " ").strip(" .")
@@ -466,7 +498,7 @@ ending, but keep the premise, the same number of scenes,
 the same JSON shape and the same characters. Each "say" stays 30-36 words; keep "video" and "sfx" fields in the same style.
 Fixes: {json.dumps(rv.get("fixes", []))}  Biggest problem: {rv.get("weakest", "")}
 Script: {json.dumps(s, ensure_ascii=False)}
-Return the full rewritten script JSON.""", need="scenes")
+Return the full rewritten script JSON.""", need="scenes", writer=True)
     for k in ("characters", "music_mood", "tags", "description"):
         j.setdefault(k, s.get(k))
     j["title"] = re.sub(r"[^\x00-\u024F]+", "", j.get("title") or s["title"]).strip(" .") or s["title"]
