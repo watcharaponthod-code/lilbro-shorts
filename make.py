@@ -138,7 +138,7 @@ def _parse_json(txt):
     return j
 
 
-def _worker_llm(prompt, temp, need, models=("@cf/openai/gpt-oss-120b", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")):
+def _worker_llm(prompt, temp, need, models=("@cf/openai/gpt-oss-120b", "@cf/meta/llama-3.3-70b-instruct-fp8-fast"), effort=None):
     url, tok = os.environ.get("WORKER_URL"), os.environ.get("ADMIN_TOKEN")
     last = None
     for model in models:
@@ -146,7 +146,8 @@ def _worker_llm(prompt, temp, need, models=("@cf/openai/gpt-oss-120b", "@cf/meta
             return None, "no worker"
         try:
             r = requests.post(url.rstrip("/") + "/llm", timeout=240, headers={"Authorization": f"Bearer {tok}"},
-                              json={"prompt": prompt + "\nReply with ONLY the JSON object.", "model": model, "temperature": min(temp, 1.0)})
+                              json={"prompt": prompt + "\nReply with ONLY the JSON object.", "model": model, "temperature": min(temp, 1.0),
+                                                       **({"effort": effort, "max_tokens": 20000} if effort else {})})
             j = _parse_json(r.json()["text"]) if r.status_code == 200 else None
             if j and (not need or need in j):
                 return j, None
@@ -164,7 +165,7 @@ def llm_json(prompt, temp=1.0, need=None, writer=False):
     last = None
     prompt = look_prompt(prompt)
     if writer and os.environ.get("WRITER", "worker" if LOOK == "anime" else "meta") == "worker":
-        j, last = _worker_llm(prompt, temp, need, models=("@cf/openai/gpt-oss-120b",))
+        j, last = _worker_llm(prompt, min(temp, 0.8), need, models=("@cf/openai/gpt-oss-120b",), effort="high")
         if j:
             return j
     for attempt in range(2):                      # primary: meta.ai text chat with the same login as the video gen
@@ -436,10 +437,23 @@ def write_script(fmt, hist):
                   + (f" from earlier episodes: {', '.join(used)}." if used else "."))
         rules += ("\n- Numbers must add up: if you give a count, every later count equals it minus every drop you stated; never let "
                   "people vanish off-screen. Every rule-break or reward in the ending must be set up in an earlier scene.")
+        if beast:                         # numbers come from code so the count can never break
+            start = random.choice([50, 100, 100, 200, 1000])
+            left, ladder = start, [start]
+            for k in range(n - 2):
+                left = max(2, round(left * random.uniform(0.35, 0.6))); ladder.append(left)
+            ladder.append(1)
+            rules += (f"\n- If this format eliminates people, use EXACTLY this head count at the START of scenes 1..{n}: {ladder} "
+                      "(say each drop with its exact number and a visible reason). If the format has no eliminations, ignore the counts "
+                      "but keep every money amount consistent.")
+        rules += ("\n- BEFORE the scenes, fill \"plan\": premise (one line), setup (the object/person/fact shown in scene 2 or 3 that the "
+                  "twist depends on), twist (one line, it must NOT break the stated rules of the game or world), callback (how the "
+                  "last line echoes line 1). Then write scenes that follow the plan exactly. Re-read your counts and money before replying.")
         ex = EXAMPLE_BEAST if beast else EXAMPLE_WORLD
         rules += ("\nHere is the narration of a script that scored 8+ with our editor. Match its craft exactly (premise and stake in "
                   "line 1, every scene caused by the last with 'so/but', concrete numbers, a twist that was set up earlier, a last line "
-                  "that echoes line 1), but write a completely different story, setting and cast: " + ex)
+                  "that echoes line 1), but write a completely different story, setting and cast. The example only shows craft; YOUR format is: "
+                  + fmt["idea"] + " Example: " + ex)
     j = llm_json(f"""Write a {n * 10}-second YouTube Short story told over real 3D ROBLOX gameplay footage. Theme: {fmt['idea']}
 {rules}
 Exactly {n} scenes. Each scene = ~10 seconds of video and the narration spoken over it.
@@ -462,6 +476,7 @@ Return JSON: {{"title": "{title_rule}",
 "description": "1 line hook + 1 question for viewers, then: #roblox #shorts #robloxstory #robloxanimation",
 "music_mood": "the background music that fits the WHOLE story's tone: funny (light comedy), mystery (curious/suspense), dramatic (tension, conflict), emotional (sad/heartfelt twist), epic (big competition/climax)",
 "tags": ["15 search tags"], "characters": {{"Dylan": "11-year-old Roblox boy, messy black hair, white puffer jacket, blue jeans"}},
+"plan": {{"premise": "...", "setup": "...", "twist": "...", "callback": "..."}},
 "scenes": [{{"say": "...", "video": "...", "sfx": [{{"name": "shock", "at": 6}}]}}]}}""", need="scenes", writer=True)
     assert len(j["scenes"]) >= min(6, n), f"need {min(6, n)}+ scenes"
     j["title"] = re.sub(r"\bAI\b", "", j["title"])
