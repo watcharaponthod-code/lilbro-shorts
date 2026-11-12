@@ -36,6 +36,37 @@ STYLE = ("Classic 2D TV cartoon animated on twos at 12 frames per second, like a
          "cartoon: thick uniform black outlines, flat cel colors, painted backgrounds, snappy limited animation with held poses. "
          "All characters are ROBLOX avatars drawn as 2D cartoons: blocky square heads, rectangular blocky bodies and limbs, "
          "simple Roblox faces, Roblox hair and outfits. Not 3D, not CGI. No channel logos, no watermark.")
+# LOOK=anime: retro Japanese TV anime with ordinary human characters (no Roblox anywhere in prompts, tags or captions)
+LOOK = os.environ.get("LOOK", "roblox").strip().lower() or "roblox"
+if LOOK == "anime":
+    STYLE = ("Retro Japanese TV anime from the late 1980s / early 1990s, hand-drawn cel animation on twos at 12 frames per "
+             "second, like a vintage anime episode broadcast on TV and recorded on VHS: soft film grain, slightly faded warm "
+             "colors, hand-painted watercolor backgrounds, thin clean ink lines, cel shading with one hard shadow tone, big "
+             "expressive anime eyes with highlights, realistic human proportions, speed lines and dramatic held frames on big "
+             "moments. All characters are ordinary human people drawn in that retro anime style (not Roblox, not blocky, not "
+             "chibi, not modern anime). Not 3D, not CGI. No channel logos, no watermark, no subtitles.")
+_ANIME_SUBS = [  # applied to every LLM prompt in anime mode, longest phrases first
+    ("told over real 3D ROBLOX gameplay footage", "told as a retro 1990s Japanese TV anime episode"),
+    ("kids and teens (8-16) who play Roblox", "teens and young adults (13-30) who love anime"),
+    ("what is SEEN in this 10 s as Roblox footage", "what is SEEN in this 10 s as retro anime"),
+    ("a FIXED look as Roblox avatar", "a FIXED look as an ordinary human drawn in retro 1990s anime style"),
+    ("11-year-old Roblox boy, messy black hair", "16-year-old Japanese high-school boy, messy black hair"),
+    ("#roblox #shorts #robloxstory #robloxanimation", "#anime #shorts #animestory #retroanime"),
+    ("viral Roblox story Shorts", "viral animated story Shorts"),
+    ("Roblox story videos", "retro anime story videos"),
+    ("Roblox story Short", "anime story Short"),
+    ("a 12-year-old", "a teenager"),
+    ("Kids 8-16", "Viewers"),
+    ("Roblox", "anime"),
+]
+
+
+def look_prompt(text):
+    if LOOK != "anime":
+        return text
+    for a, b in _ANIME_SUBS:
+        text = text.replace(a, b)
+    return text
 SFXLIB = D / "assets" / "sfxlib"
 CATALOG = jload_early = json.loads((SFXLIB / "catalog.json").read_text(encoding="utf-8")) if (SFXLIB / "catalog.json").exists() else []
 CATALOG += [{"id": f.stem, "cat": "meme", "dur": 1, "file": str(f)} for f in sorted((D / "assets" / "sfx").glob("*.wav"))]
@@ -101,6 +132,7 @@ def _parse_json(txt):
 def llm_json(prompt, temp=1.0, need=None):
     """need: key that must be in the result (e.g. "scenes"); a reply without it counts as a failure and is retried."""
     last = None
+    prompt = look_prompt(prompt)
     for attempt in range(2):                      # primary: meta.ai text chat with the same login as the video gen
         pf, of = D / "work" / "llm_prompt.txt", D / "work" / "llm_out.json"
         pf.parent.mkdir(exist_ok=True)
@@ -160,9 +192,10 @@ def upload(final, s):
     en = lambda x: re.sub(r"\s+", " ", re.sub(r"[^\x00-\u024F\u2010-\u2027]+", "", str(x))).strip()
     desc = re.sub(r"#\s+(?=\w)", "#", en(s.get("description", "")))
     if "#shorts" not in desc.lower():
-        desc += " #roblox #shorts #robloxstory #robloxanimation"
+        desc += look_prompt(" #roblox #shorts #robloxstory #robloxanimation")
     tags = [t for t in (en(t).replace("<", "").replace(">", "")[:30] for t in (s.get("tags") or [])) if t][:15] or \
-        ["roblox", "roblox story", "roblox animation", "roblox shorts", "in this world"]
+        (["anime", "retro anime", "anime story", "90s anime", "in this world"] if LOOK == "anime" else
+         ["roblox", "roblox story", "roblox animation", "roblox shorts", "in this world"])
     meta = {"snippet": {"title": en(s["title"])[:100], "description": desc[:4900], "tags": tags,
                         "categoryId": "1", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
             "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False, "containsSyntheticMedia": False}}
@@ -669,14 +702,16 @@ def main():
         if a.script:
             s = jload(a.script, None); fmt = {"id": s.get("format", "test")}; why = "manual"
         else:
-            fmt, why = pick_format(formats, hist)
+            pool = [f for f in formats if f.get("style") != "original" and "roblox" not in f["id"]] if LOOK == "anime" else formats
+            fmt, why = pick_format(pool, hist)
             forced = [f for f in formats if f["id"] == os.environ.get("FORCE_FORMAT", "").strip()]
             if forced:
                 fmt, why = forced[0], "forced"
             if fmt is None:
                 fmt = invent_format(formats, hist); formats.append(fmt)
             s = quality_script(fmt, hist)
-        s["format"] = fmt["id"]; result.update(format=fmt["id"], why=why, title=s["title"], quality=s.get("quality"))
+        s["format"] = fmt["id"]; s["look"] = LOOK; result["look"] = LOOK
+        result.update(format=fmt["id"], why=why, title=s["title"], quality=s.get("quality"))
         print("format", fmt["id"], why, "|", s["title"])
         (work / "script.json").write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")
         if a.clips:

@@ -12,6 +12,10 @@ on:
         description: "force a format id from state/formats.json (optional)"
         type: string
         default: ""
+      look:
+        description: "visual style: roblox (current) or anime (retro 90s TV anime, human characters)"
+        type: string
+        default: ""
 permissions:
   contents: write
 concurrency:
@@ -30,6 +34,7 @@ jobs:
       FONTS_DIR: ${{ github.workspace }}/assets/fonts
       META_MAX_MIN: "16"
       FORCE_FORMAT: ${{ inputs.format }}
+      LOOK: ${{ inputs.look || vars.LOOK || 'roblox' }}
       WORKER_URL: ${{ secrets.WORKER_URL }}
       ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
     steps:
