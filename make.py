@@ -23,10 +23,12 @@ VOICES = {  # name: (edge voice, rate, pitch, pitch-shift factor applied by ffmp
     "andrew_fast": ("en-US-AndrewMultilingualNeural", "+55%", "+0Hz", 1.0),
     "andrew_chipmunk": ("en-US-AndrewMultilingualNeural", "+10%", "+0Hz", 1.35),
     "guy_squeaky": ("en-US-GuyNeural", "+12%", "+20Hz", 1.25),
+    "andrew_story": ("en-US-AndrewMultilingualNeural", "+18%", "+0Hz", 1.0),    # natural warm storyteller, normal pitch (anime look)
     "ana_kid": ("en-US-AnaNeural", "+10%", "+0Hz", 1.0),
     "ana_squeak": ("en-US-AnaNeural", "+8%", "+10Hz", 1.15),
 }
-VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET", "guy_high")]
+_LOOK0 = os.environ.get("LOOK", "roblox").strip().lower()
+VOICE, RATE, PITCH, SHIFT = VOICES[os.environ.get("VOICE_PRESET") or ("andrew_story" if _LOOK0 == "anime" else "guy_high")]
 EDGE_SR = 24000  # edge-tts mp3 sample rate
 CHANNEL_ID = "UCczRwdCgEiEsXG-6Ji2mWew"  # Lil Bro Chaos (monkey connection); abort if Maton points elsewhere
 GW = "https://gateway.maton.ai/youtube"
@@ -45,6 +47,7 @@ if LOOK == "anime":
              "expressive anime eyes with highlights, realistic human proportions, speed lines and dramatic held frames on big "
              "moments. All characters are ordinary human people drawn in that retro anime style (not Roblox, not blocky, not "
              "chibi, not modern anime). Not 3D, not CGI. No channel logos, no watermark, no subtitles.")
+CAP_ALIGN, CAP_MARGIN = (8, 330) if LOOK == "anime" else (2, 700)   # anime: captions at the top (below Shorts' top UI)
 _ANIME_SUBS = [  # applied to every LLM prompt in anime mode, longest phrases first
     ("told over real 3D ROBLOX gameplay footage", "told as a retro 1990s Japanese TV anime episode"),
     ("kids and teens (8-16) who play Roblox", "teens and young adults (13-30) who love anime"),
@@ -52,6 +55,7 @@ _ANIME_SUBS = [  # applied to every LLM prompt in anime mode, longest phrases fi
     ("a FIXED look as Roblox avatar", "a FIXED look as an ordinary human drawn in retro 1990s anime style"),
     ("11-year-old Roblox boy, messy black hair", "16-year-old Japanese high-school boy, messy black hair"),
     ("#roblox #shorts #robloxstory #robloxanimation", "#anime #shorts #animestory #retroanime"),
+    ('(no "In this world" filler, no stock moral', '(the "In this world" opener is the channel format and fine; no stock moral'),
     ("viral Roblox story Shorts", "viral animated story Shorts"),
     ("Roblox story videos", "retro anime story videos"),
     ("Roblox story Short", "anime story Short"),
@@ -619,7 +623,7 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Word,{FONT},66,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,6,2,2,90,90,700,1
+Style: Word,{FONT},66,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,6,2,{CAP_ALIGN},90,90,{CAP_MARGIN},1
 Style: Hook,{FONT},120,&H0000E5FF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,2,0,1,12,6,8,60,60,230,1
 
 [Events]
@@ -702,13 +706,13 @@ def main():
         if a.script:
             s = jload(a.script, None); fmt = {"id": s.get("format", "test")}; why = "manual"
         else:
-            pool = [f for f in formats if f.get("style") != "original" and "roblox" not in f["id"]] if LOOK == "anime" else formats
+            pool = [f for f in formats if f.get("look") == "anime"] if LOOK == "anime" else [f for f in formats if f.get("look") != "anime"]
             fmt, why = pick_format(pool, hist)
             forced = [f for f in formats if f["id"] == os.environ.get("FORCE_FORMAT", "").strip()]
             if forced:
                 fmt, why = forced[0], "forced"
             if fmt is None:
-                fmt = invent_format(formats, hist); formats.append(fmt)
+                fmt = invent_format(pool, hist); fmt["look"] = LOOK if LOOK == "anime" else fmt.get("look"); formats.append(fmt)
             s = quality_script(fmt, hist)
         s["format"] = fmt["id"]; s["look"] = LOOK; result["look"] = LOOK
         result.update(format=fmt["id"], why=why, title=s["title"], quality=s.get("quality"))

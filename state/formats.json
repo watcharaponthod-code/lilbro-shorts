@@ -91,5 +91,50 @@
   ],
   "idea": "Narrator = Lil Bro. He takes an impossible odd job inside the Roblox world for exactly 1 Robux (babysit the final boss, mop the lobby after 10,000 players, deliver pizza into the void, be the bodyguard of a noob with 0 health, fix the lag by hand) and takes it far too seriously.",
   "title_pattern": "I Babysat The Final Boss For 1 Robux"
+ },
+ {
+  "id": "anime_feelings_visible",
+  "look": "anime",
+  "idea": "A rule that makes feelings or secrets visible as a physical thing that follows people (every lie becomes a paper crane, every unsaid 'I love you' becomes a petal), told through one high-school girl or boy whom everyone misjudges, with a heartwarming twist.",
+  "title_pattern": "In This World Every Lie Becomes A Paper Crane",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "anime_life_counters",
+  "look": "anime",
+  "idea": "Everyone sees a number or timer above other people's heads (days until they meet their soulmate, words left to speak, how many people will miss them), and one teen's number is shockingly wrong.",
+  "title_pattern": "In This World You Can See How Many People Will Miss You",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "anime_town_spirits",
+  "look": "anime",
+  "idea": "A small seaside town where ordinary life follows one strange supernatural rule (the moon takes one memory a night, shadows go home on their own, the last train carries the dead), seen through one kid who breaks it.",
+  "title_pattern": "In This World The Moon Takes One Memory Every Night",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "anime_impossible_physics",
+  "look": "anime",
+  "idea": "A surreal physics rule rewrites daily life (gravity follows whoever you love most, rain falls upward on sad days, time freezes when you cry) and one teen uses it to save someone.",
+  "title_pattern": "In This World Gravity Pulls You Toward The Person You Love",
+  "scenes": [
+   6
+  ]
+ },
+ {
+  "id": "anime_price_of_wishes",
+  "look": "anime",
+  "idea": "A world where everything costs something strange instead of money (wishes cost a memory, years cost songs, a phone call costs one heartbeat), and one teen pays far too much for someone else.",
+  "title_pattern": "In This World Every Wish Costs You A Memory",
+  "scenes": [
+   6
+  ]
  }
 ]
