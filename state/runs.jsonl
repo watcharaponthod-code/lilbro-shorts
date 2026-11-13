@@ -76,3 +76,4 @@
 {"t": 1794560265.5972676, "stamp": "20261113-0857", "note": "uploaded/limited from queue, no new episode this run"}
 {"t": 1794567535.740178, "stamp": "20261113-1058", "look": "anime", "format": "anime_impossible_physics", "why": "queued-script", "title": "In This World It Only Rains On Sad People", "quality": null, "clips": 6, "dur": 56.4, "id": "riz8UaKHckc", "url": "https://youtube.com/shorts/riz8UaKHckc"}
 {"t": 1794575093.8688505, "stamp": "20261113-1304", "look": "anime", "format": "true_accidental_inventions", "why": "queued-script", "title": "Sticky Notes Came From A Glue That Failed", "quality": null, "clips": 6, "dur": 57.744, "id": "qfBpON5OFb0", "url": "https://youtube.com/shorts/qfBpON5OFb0"}
+{"t": 1794585002.9084318, "stamp": "20261113-1550", "look": "anime", "format": "anime_price_of_wishes", "why": "queued-script", "title": "In This World You Pay With Your Memories", "quality": null, "clips": 6, "error": "RuntimeError: edge tts failed"}

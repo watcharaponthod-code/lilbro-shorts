@@ -10,14 +10,10 @@
    "Kenji",
    "Grandma"
   ],
-  "views": 243,
+  "views": 294,
   "likes": 11,
-  "age_min": 1656,
+  "age_min": 1821,
   "checks": [
-   [
-    79,
-    12
-   ],
    [
     90,
     12
@@ -61,6 +57,10 @@
    [
     1656,
     243
+   ],
+   [
+    1821,
+    294
    ]
   ]
  },
@@ -75,9 +75,9 @@
    "Sora",
    "Kenta"
   ],
-  "views": 243,
+  "views": 268,
   "likes": 4,
-  "age_min": 1505,
+  "age_min": 1670,
   "checks": [
    [
     63,
@@ -118,6 +118,10 @@
    [
     1505,
     243
+   ],
+   [
+    1670,
+    268
    ]
   ]
  },
@@ -131,9 +135,9 @@
    "Ren",
    "Aoi"
   ],
-  "views": 100,
-  "likes": 4,
-  "age_min": 1417,
+  "views": 121,
+  "likes": 6,
+  "age_min": 1582,
   "checks": [
    [
     5,
@@ -166,6 +170,10 @@
    [
     1417,
     100
+   ],
+   [
+    1582,
+    121
    ]
   ]
  },
@@ -179,9 +187,9 @@
    "Hachi",
    "Hidesaburo Ueno"
   ],
-  "views": 4,
+  "views": 9,
   "likes": 1,
-  "age_min": 1408,
+  "age_min": 1573,
   "checks": [
    [
     2,
@@ -210,6 +218,10 @@
    [
     1408,
     4
+   ],
+   [
+    1573,
+    9
    ]
   ]
  },
@@ -223,9 +235,9 @@
    "Natsu",
    "Grandma"
   ],
-  "views": 3,
-  "likes": 0,
-  "age_min": 1386,
+  "views": 8,
+  "likes": 1,
+  "age_min": 1551,
   "checks": [
    [
     1,
@@ -250,6 +262,10 @@
    [
     1386,
     3
+   ],
+   [
+    1551,
+    8
    ]
   ]
  },
@@ -264,9 +280,9 @@
    "Teo",
    "Goro"
   ],
-  "views": 5,
-  "likes": 0,
-  "age_min": 1380,
+  "views": 13,
+  "likes": 1,
+  "age_min": 1545,
   "checks": [
    [
     1,
@@ -287,6 +303,10 @@
    [
     1380,
     5
+   ],
+   [
+    1545,
+    13
    ]
   ]
  },
@@ -296,9 +316,9 @@
   "format": "anime_life_counters",
   "title": "In This World You Can See Who Would Miss You",
   "why": "queued-script+queued",
-  "views": 50,
+  "views": 72,
   "likes": 1,
-  "age_min": 247,
+  "age_min": 412,
   "checks": [
    [
     121,
@@ -307,6 +327,10 @@
    [
     247,
     50
+   ],
+   [
+    412,
+    72
    ]
   ]
  },
@@ -320,13 +344,17 @@
    "Sora",
    "Mei"
   ],
-  "views": 2,
-  "likes": 1,
-  "age_min": 122,
+  "views": 107,
+  "likes": 6,
+  "age_min": 287,
   "checks": [
    [
     122,
     2
+   ],
+   [
+    287,
+    107
    ]
   ]
  },
@@ -340,6 +368,15 @@
    "Spencer Silver",
    "Art Fry",
    "Linda"
+  ],
+  "views": 28,
+  "likes": 3,
+  "age_min": 160,
+  "checks": [
+   [
+    160,
+    28
+   ]
   ]
  }
 ]
