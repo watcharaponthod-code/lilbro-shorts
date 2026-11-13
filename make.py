@@ -640,16 +640,30 @@ def tts_cf(text, out):
 
 
 def tts(text, out):
+    cache = Path(out).with_suffix(".words.json")      # main() pre-renders narration before spending meta.ai clips
+    if cache.exists() and Path(out).exists() and Path(out).stat().st_size > 2000:
+        c = json.loads(cache.read_text(encoding="utf-8"))
+        if c.get("text") == text:
+            return c["words"]
+    w = _tts_any(text, out)
+    cache.write_text(json.dumps({"text": text, "words": w}), encoding="utf-8")
+    return w
+
+
+def _tts_any(text, out):
     if os.environ.get("TTS", "edge") == "cf":
         w = tts_cf(text, out)
         if w is not None:
             return w
         print("Cloudflare TTS unavailable -> Edge fallback")
-    for a in range(6):
+    for a in range(12):      # Edge has short outages (NoAudioReceived for a few minutes); ~5 min total
         try:
-            return asyncio.run(_tts(text, out))
+            w = asyncio.run(_tts(text, out))
+            if Path(out).stat().st_size > 2000:
+                return w
+            raise RuntimeError("empty audio")
         except Exception as e:
-            print("tts retry", a, type(e).__name__); time.sleep(3 * (a + 1))
+            print("tts retry", a, type(e).__name__); time.sleep(min(40, 4 * (a + 1)))
     raise RuntimeError("edge tts failed")
 
 
@@ -850,6 +864,8 @@ def main():
         result.update(format=fmt["id"], why=why, title=s["title"], quality=s.get("quality"))
         print("format", fmt["id"], why, "|", s["title"])
         (work / "script.json").write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")
+        for i, sc in enumerate(s["scenes"]):                   # narration first: an Edge outage must not waste meta.ai clips
+            tts(sc["say"], work / f"vo{i}.mp3")
         if a.clips:
             clips = [Path(a.clips) / f"clip{i + 1}.mp4" for i in range(5)]
         else:
@@ -900,7 +916,7 @@ def main():
         if not a.no_upload and result.get("error"):   # meta.ai / LLM out of quota usually fails twice in a row: pause instead of burning runs
             prev = [json.loads(l) for l in (STATE / "runs.jsonl").read_text(encoding="utf-8").splitlines()[-1:] if l.strip()] \
                 if (STATE / "runs.jsonl").exists() else []
-            if prev and prev[-1].get("error") and result.get("error"):
+            if prev and prev[-1].get("error") and result.get("error") and "edge tts" not in result["error"]:   # TTS outages are short: retry next tick, never pause
                 mark_limited("2 failed runs in a row: " + result["error"])
     finally:
         (STATE / "history.json").write_text(json.dumps(hist[-500:], ensure_ascii=False, indent=1), encoding="utf-8")
