@@ -239,7 +239,7 @@ def upload(final, s):
          ["roblox", "roblox story", "roblox animation", "roblox shorts", "in this world"])
     meta = {"snippet": {"title": en(s["title"])[:100], "description": desc[:4900], "tags": tags,
                         "categoryId": "1", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
-            "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False, "containsSyntheticMedia": False}}
+            "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}}
     cr = requests.get(f"{GW}/youtube/v3/channels", params={"part": "id", "mine": "true"}, headers=maton_h(), timeout=60)
     if cr.status_code == 429 or "quota" in cr.text.lower():
         raise UploadLimit(f"maton quota ({cr.status_code}): {cr.text[:160]}")
