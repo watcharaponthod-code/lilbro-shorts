@@ -99,7 +99,9 @@
   "title_pattern": "In This World Every Lie Becomes A Paper Crane",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "high",
+  "note": "2026-11-13: Red Thread 100 views/24h; Paper Crane lie test 243. Surreal-rule emotional stories are the channel winner."
  },
  {
   "id": "anime_life_counters",
@@ -108,7 +110,9 @@
   "title_pattern": "In This World You Can See How Many People Will Miss You",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "mid",
+  "note": "2026-11-13: Who Would Miss You 72 views/14h."
  },
  {
   "id": "anime_town_spirits",
@@ -117,7 +121,9 @@
   "title_pattern": "In This World The Moon Takes One Memory Every Night",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "low",
+  "note": "2026-11-13: Shadow Walks Off 7 views/24h."
  },
  {
   "id": "anime_impossible_physics",
@@ -126,7 +132,9 @@
   "title_pattern": "In This World Gravity Pulls You Toward The Person You Love",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "high",
+  "note": "2026-11-13: Only Rains On Sad People 105 views in 2.5h."
  },
  {
   "id": "anime_price_of_wishes",
@@ -154,7 +162,9 @@
   "title_pattern": "Last One On The Dragon's Back Wins Its Castle",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "high",
+  "note": "2026-11-13: Ferris Wheel v2 268 views/24h (v1 same script 2 views, so early luck matters)."
  },
  {
   "id": "beast_giveaway_strangers",
@@ -224,7 +234,9 @@
   "title_pattern": "A Melted Chocolate Bar Gave Us The Microwave",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "mid",
+  "note": "2026-11-13: Sticky Notes 28 views in 1.2h."
  },
  {
   "id": "true_animal_stories",
@@ -234,7 +246,9 @@
   "title_pattern": "This Penguin Swims 8,000 km Every Year For One Man",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "low",
+  "note": "2026-11-13: Hachiko 9 views/24h; famous story, too familiar."
  },
  {
   "id": "true_mysteries",
@@ -264,7 +278,9 @@
   "title_pattern": "100 People Must Survive One Night In A Living Maze",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "low",
+  "note": "2026-11-13: Living Maze 13 views/24h."
  },
  {
   "id": "beast_impossible_auction",
