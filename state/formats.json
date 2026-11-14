@@ -293,5 +293,14 @@
   "scenes": [
    6
   ]
+ },
+ {
+  "id": "anime_broken_mends",
+  "look": "anime",
+  "idea": "Objects obey a surreal emotional rule (broken things heal when you tell the truth, lost things walk home to whoever misses them most, clocks stop for people who are waiting) and one family secret comes out.",
+  "title_pattern": "In This World Broken Things Heal When You Tell The Truth",
+  "scenes": [
+   6
+  ]
  }
 ]
