@@ -112,7 +112,7 @@
    6
   ],
   "weight": "mid",
-  "note": "2026-11-13: Who Would Miss You 72 views/14h."
+  "note": "2026-11-13: Who Would Miss You 72 views/14h. | 2026-11-14: Meet Someone counter 23 views/8h; Who Would Miss You now 472. Floating counter digits render (e.g. \"02\"); describe counters as glow, not numbers."
  },
  {
   "id": "anime_town_spirits",
@@ -154,7 +154,8 @@
   "title_pattern": "In This World Unsent Letters Arrive Ten Years Late",
   "scenes": [
    6
-  ]
+  ],
+  "note": "2026-11-14: Word Echoes Back A Year Later 21 views/13h."
  },
  {
   "id": "beast_last_to_leave",
@@ -270,7 +271,8 @@
   "title_pattern": "He Paid A Stranger's Bill And Got A Letter 20 Years Later",
   "scenes": [
    6
-  ]
+  ],
+  "note": "2026-11-14: Homeless Man Returned $42,000 10 views/10h. Frames show cash bills and a garbled street sign; keep money in envelopes, no storefronts."
  },
  {
   "id": "beast_survive_magic_night",
