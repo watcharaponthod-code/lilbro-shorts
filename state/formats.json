@@ -101,7 +101,7 @@
    6
   ],
   "weight": "high",
-  "note": "2026-11-13: Red Thread 100 views/24h; Paper Crane lie test 243. Surreal-rule emotional stories are the channel winner."
+  "note": "2026-11-13: Red Thread 100 views/24h; Paper Crane lie test 243. Surreal-rule emotional stories are the channel winner. | 2026-11-14: Sneeze When Someone Thinks Of You 1230 views/6h, channel best. Small everyday body-reaction rule + loyal pet + quiet school/home settings."
  },
  {
   "id": "anime_life_counters",
@@ -143,7 +143,9 @@
   "title_pattern": "In This World Every Wish Costs You A Memory",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "low",
+  "note": "2026-11-14: Pay With Your Memories 4 views/21h (same premise as older strange_currency, also 0)."
  },
  {
   "id": "anime_echoes_messages",
@@ -163,8 +165,8 @@
   "scenes": [
    6
   ],
-  "weight": "high",
-  "note": "2026-11-13: Ferris Wheel v2 268 views/24h (v1 same script 2 views, so early luck matters)."
+  "weight": "mid",
+  "note": "2026-11-13: Ferris Wheel v2 268 views/24h (v1 same script 2 views, so early luck matters). | 2026-11-14: Sleeping Dragon 8 views/19h; Ferris Wheel v2 487. Fantasy creature version did worse than grounded one."
  },
  {
   "id": "beast_giveaway_strangers",
