@@ -101,7 +101,7 @@
    6
   ],
   "weight": "high",
-  "note": "2026-11-13: Red Thread 100 views/24h; Paper Crane lie test 243. Surreal-rule emotional stories are the channel winner. | 2026-11-14: Sneeze When Someone Thinks Of You 1230 views/6h, channel best. Small everyday body-reaction rule + loyal pet + quiet school/home settings. | 2026-11-15: Sneeze When Someone Thinks Of You 1304 views/31h (channel best); Dogs Speak One Sentence 4 views/13h."
+  "note": "2026-11-13: Red Thread 100 views/24h; Paper Crane lie test 243. Surreal-rule emotional stories are the channel winner. | 2026-11-14: Sneeze When Someone Thinks Of You 1230 views/6h, channel best. Small everyday body-reaction rule + loyal pet + quiet school/home settings. | 2026-11-15: Sneeze When Someone Thinks Of You 1304 views/31h (channel best); Dogs Speak One Sentence 4 views/13h. | 2026-11-15: Sneeze When Someone Thinks Of You 1304 views (channel best); Dogs Speak One Sentence 4 views (animal-centred premise weaker than human feelings)."
  },
  {
   "id": "anime_life_counters",
@@ -112,7 +112,7 @@
    6
   ],
   "weight": "high",
-  "note": "2026-11-13: Who Would Miss You 72 views/14h. | 2026-11-14: Meet Someone counter 23 views/8h; Who Would Miss You now 472. Floating counter digits render (e.g. \"02\"); describe counters as glow, not numbers. | 2026-11-15: Who Would Miss You 752, Meet Someone 221."
+  "note": "2026-11-13: Who Would Miss You 72 views/14h. | 2026-11-14: Meet Someone counter 23 views/8h; Who Would Miss You now 472. Floating counter digits render (e.g. \"02\"); describe counters as glow, not numbers. | 2026-11-15: Who Would Miss You 752, Meet Someone 221. | 2026-11-15: Wrist Words Left 13 views/16h; Who Would Miss You now 752."
  },
  {
   "id": "anime_town_spirits",
@@ -218,7 +218,9 @@
   "title_pattern": "This Dog Waited 9 Years At One Train Station",
   "scenes": [
    6
-  ]
+  ],
+  "note": "2026-11-15: Stray Cat Station Master 0 views after ~21h. Weight low.",
+  "weight": "low"
  },
  {
   "id": "true_history_weird",
@@ -307,7 +309,8 @@
   "title_pattern": "In This World Broken Things Heal When You Tell The Truth",
   "scenes": [
    6
-  ]
+  ],
+  "note": "2026-11-15: Broken Things Heal 25 views/18h."
  },
  {
   "id": "anime_time_rules",
