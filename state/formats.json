@@ -308,5 +308,14 @@
   "scenes": [
    6
   ]
+ },
+ {
+  "id": "anime_time_rules",
+  "look": "anime",
+  "idea": "Time obeys one gentle surreal rule (everyone gets one 10-second rewind in life, you can gift an hour of your day, clocks stop for people who are waiting) and a small family secret about how someone spent their time comes out.",
+  "title_pattern": "In This World Everyone Gets One 10 Second Rewind",
+  "scenes": [
+   6
+  ]
  }
 ]

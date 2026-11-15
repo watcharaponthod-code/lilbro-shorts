@@ -1,0 +1,63 @@
+{
+ "format": "anime_time_rules",
+ "title": "In This World Everyone Gets One 10 Second Rewind",
+ "description": "Everyone gets one ten second rewind in life, and Grandpa has saved his for seventy years. What would you spend yours on? #anime #shorts #animestory #retroanime",
+ "music_mood": "emotional",
+ "tags": [
+  "anime",
+  "retro anime",
+  "90s anime",
+  "anime story",
+  "in this world",
+  "rewind",
+  "time travel",
+  "grandparents",
+  "love story",
+  "proposal",
+  "emotional story",
+  "wholesome",
+  "anime shorts",
+  "plot twist",
+  "story time"
+ ],
+ "characters": {
+  "Grandpa Haruo": "70-year-old Japanese man, short white hair, bushy white eyebrows, warm wrinkled face, brown knitted cardigan over a cream collared shirt, gray trousers, gray socks, no hat, no glasses",
+  "Grandma Kimiko": "68-year-old Japanese woman, silver hair in a neat low bun, soft smile, dusty-rose cardigan over a white blouse, long navy skirt, white socks, no hat, no glasses",
+  "Riku": "10-year-old Japanese boy, short spiky black hair, green and white striped T-shirt, khaki shorts, white socks, no hat",
+  "Little Riku": "6-year-old Japanese boy, round face, short black bowl-cut hair, yellow T-shirt, blue shorts, white sneakers, no hat",
+  "Young Haruo": "28-year-old Japanese man, neat short black hair, nervous face, plain white short-sleeve shirt, dark gray trousers, black shoes, no hat, no glasses",
+  "Young Kimiko": "26-year-old Japanese woman, shoulder-length black hair with soft curls, light blue sleeveless summer dress with a white collar, white sandals, no hat"
+ },
+ "scenes": [
+  {
+   "say": "In this world, everyone gets one rewind in life, ten seconds back. Grandpa Haruo is seventy and still hasn't used his. He's saving it for an emergency.",
+   "video": "[0-4s] In a small 1990s Japanese living room with tatami mats and a low wooden table, Grandpa Haruo taps his chest proudly while talking to Riku. [4-7s] Close-up of Grandpa Haruo at the low table, grinning and wagging one finger. [7-10s] Medium shot: Riku rolls his eyes at the table while Grandma Kimiko pours green tea behind them, smiling quietly to herself.",
+   "sfx": []
+  },
+  {
+   "say": "Riku used his at six, on a dropped ice cream. Only the person who rewinds remembers the lost ten seconds. To everyone else, nothing ever happened.",
+   "video": "[0-4s] On a quiet tree-lined park path on a sunny summer day, Little Riku's vanilla ice cream scoop slides off the cone and falls toward the ground. [4-7s] Close-up of Little Riku on the park path squeezing his eyes shut as one soft ripple of light spreads around him. [7-10s] Same park path: the ice cream is back on the cone and Little Riku hugs it, grinning, while Grandma Kimiko walks beside him unaware.",
+   "sfx": []
+  },
+  {
+   "say": "Tonight is their fortieth anniversary, and Grandpa tells the proposal story again. By the river, on one knee. 'She said yes before I even finished asking.'",
+   "video": "[0-4s] Evening in the small tatami living room: Grandpa Haruo, Grandma Kimiko and Riku sit at the low wooden table with bowls of red bean rice, Grandpa talking with big hand gestures. [4-7s] Flashback on a stone river embankment at dusk: Young Haruo kneels on one knee holding a small open ring box up to Young Kimiko. [7-10s] Close-up on the river embankment of Young Kimiko nodding quickly, hand over her mouth.",
+   "sfx": []
+  },
+  {
+   "say": "So Riku asks what he'd rewind if he could. Grandpa thinks hard. 'Nothing. Forty years, I wouldn't change a second.' Grandma quietly puts down her chopsticks.",
+   "video": "[0-4s] At the low table in the tatami living room, Riku leans forward on his elbows asking his grandfather a question. [4-7s] Close-up of Grandpa Haruo at the table, rubbing his chin, then shaking his head with a soft smile. [7-10s] Close-up of Grandma Kimiko at the table slowly setting her chopsticks down on her bowl, eyes lowered.",
+   "sfx": []
+  },
+  {
+   "say": "Then she laughs. That night by the river, she heard him ask twice. The first time, scared, she said no. She saw his face fall, and rewound ten seconds.",
+   "video": "[0-4s] Flashback on the stone river embankment at dusk: Young Kimiko steps back shaking her head while Young Haruo kneels with the ring box. [4-7s] Close-up on the embankment of Young Haruo's face falling, and Young Kimiko closing her eyes as one soft ripple of light spreads around her. [7-10s] Same river embankment: Young Haruo kneels again and Young Kimiko nods before he finishes speaking.",
+   "sfx": []
+  },
+  {
+   "say": "Grandpa stares at her. Then he laughs too, wiping his eyes. In this world, everyone gets one ten second rewind. Grandpa's still saving his. Grandma spent hers on him.",
+   "video": "[0-4s] Close-up at the low table in the tatami living room: Grandpa Haruo stares at Grandma Kimiko, mouth open. [4-7s] Medium shot at the table: Grandpa Haruo laughs and wipes his eyes while Grandma Kimiko takes his hand. [7-10s] Riku smiles at his grandparents across the low wooden table in warm lamplight.",
+   "sfx": []
+  }
+ ]
+}
