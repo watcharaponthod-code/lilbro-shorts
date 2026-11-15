@@ -263,6 +263,7 @@ def upload(final, s):
 
 
 UPLOAD_COST = 100            # Maton units per YouTube upload (daily budget 3000)
+META_PAUSE_H = 8             # meta.ai video quota exhausted: wait for it to refill
 LIMIT_PAUSE_H = 4            # after a limit (YouTube upload cap, or 2 failed runs in a row) pause uploads and new clips this long
 
 
@@ -279,8 +280,8 @@ def maton_budget():
         print("maton budget check failed", e); return None, None
 
 
-def mark_limited(reason):
-    (STATE / "limit.json").write_text(json.dumps({"until": time.time() + LIMIT_PAUSE_H * 3600, "reason": reason[:200]}), encoding="utf-8")
+def mark_limited(reason, hours=None):
+    (STATE / "limit.json").write_text(json.dumps({"until": time.time() + (hours or LIMIT_PAUSE_H) * 3600, "reason": reason[:200]}), encoding="utf-8")
 
 
 DAILY_MAX = int(os.environ.get("DAILY_MAX", "10"))        # user: 10 clips a day
@@ -315,6 +316,10 @@ def stop_reason():
     if left is not None and left < 2 * UPLOAD_COST + 20:
         return f"Maton quota low: {left} units left, resets in {round(reset / 3600, 1)}h"
     return None
+
+
+class MetaQuota(Exception):
+    """meta.ai said 'Video generation quota exhausted': pause, never park the script (it is fine)"""
 
 
 class UploadLimit(Exception):
@@ -874,6 +879,8 @@ def main():
             subprocess.run(["node.exe" if os.name == "nt" else "node", str(D / "gen_meta.mjs"), str(work / "prompts.json"), str(work / "clips")], check=False)
             clips = [work / "clips" / f"clip{i + 1}.mp4" for i in range(len(prompts))]
             miss = [i for i, c in enumerate(clips) if not (c.exists() and dur(c) > 3)]
+            if miss and jload(work / "clips" / "gen_result.json", {}).get("quota"):
+                raise MetaQuota(f"meta.ai video quota exhausted ({len(prompts) - len(miss)}/{len(prompts)} clips)")
             if miss and len(miss) <= len(prompts) // 2:          # one retry pass for the scenes that failed
                 (work / "retry.json").write_text(json.dumps([prompts[i] for i in miss]), encoding="utf-8")
                 subprocess.run(["node.exe" if os.name == "nt" else "node", str(D / "gen_meta.mjs"), str(work / "retry.json"), str(work / "clips_retry")], check=False)
@@ -906,6 +913,8 @@ def main():
                          "cast": list((s.get("characters") or {}).keys())[:6]})
     except QualityReject as e:
         result["note"] = f"quality reject, nothing made: {e}"; print(result["note"])
+    except MetaQuota as e:          # the script stays first in the queue; no new clips until the pause ends
+        mark_limited(str(e), hours=META_PAUSE_H); result["note"] = f"paused {META_PAUSE_H}h: {e}"; print(result["note"])
     except Exception as e:
         result["error"] = f"{type(e).__name__}: {e}"; print("ERROR", result["error"])
         uq = locals().get("used_q")

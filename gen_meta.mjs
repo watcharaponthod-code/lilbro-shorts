@@ -13,6 +13,7 @@ const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const CHROME = process.env.CHROME || ["/usr/bin/google-chrome", "/usr/bin/chromium-browser",
   "C:/Program Files/Google/Chrome/Application/chrome.exe"].find((p) => fs.existsSync(p));
 const DEADLINE = Date.now() + (+process.env.META_MAX_MIN || 16) * 60e3;
+let QUOTA = false;    // meta.ai 'Video generation quota exhausted': stop waiting, tell make.py to pause
 
 async function setInstant(p) {
   const pill = await p.$$eval("button,[role=button]", (bs) => {
@@ -64,6 +65,7 @@ async function collect(p, i) {
   const chat = p.url();
   let n = 0;
   while (Date.now() < DEADLINE) {
+    if (QUOTA) { log(`scene ${i} skipped: meta.ai video quota exhausted`); return false; }
     await sleep(15000); n++;
     let v = await videos(p);
     if (!v.length && n % 3 == 0) {          // finished videos sometimes only appear after a refresh
@@ -71,6 +73,7 @@ async function collect(p, i) {
       await sleep(6000); v = await videos(p);
     }
     const txt = await p.evaluate(() => document.body.innerText.slice(-600)).catch(() => "");
+    if (/quota exhausted|reached your (daily )?limit/i.test(txt) && !v.length && n > 2) { QUOTA = true; log(`scene ${i} QUOTA:`, txt.slice(-200).replace(/\s+/g, " ")); return false; }
     if (/limit|try again later|can't create|unable to/i.test(txt) && !v.length && n > 4) log(`scene ${i} page says:`, txt.slice(-200).replace(/\s+/g, " "));
     if (v.length) {
       const src = v[v.length - 1];
@@ -109,6 +112,6 @@ try {
     await sleep(2000);
   }
   const ok = await Promise.all(jobs);
-  fs.writeFileSync(path.join(outDir, "gen_result.json"), JSON.stringify({ ok, chats: pages.map((p) => p && p.url()) }));
+  fs.writeFileSync(path.join(outDir, "gen_result.json"), JSON.stringify({ ok, quota: QUOTA, chats: pages.map((p) => p && p.url()) }));
   log("done", ok);
 } finally { await b.close().catch(() => {}); }
