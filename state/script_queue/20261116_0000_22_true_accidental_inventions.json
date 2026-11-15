@@ -1,0 +1,60 @@
+{
+ "format": "true_accidental_inventions",
+ "title": "Velcro Exists Because A Dog Came Home Covered In Burrs",
+ "description": "In 1941 a Swiss engineer pulled burrs off his dog and ended up inventing Velcro. https://www.invent.org/blog/inventors/walk-in-the-woods-velcro What everyday thing would you study under a microscope? #anime #shorts #animestory #retroanime #truestory #history",
+ "music_mood": "funny",
+ "tags": [
+  "velcro",
+  "george de mestral",
+  "invention",
+  "true story",
+  "history",
+  "biomimicry",
+  "swiss inventor",
+  "dog story",
+  "accidental invention",
+  "retro anime",
+  "anime",
+  "anime story",
+  "90s anime",
+  "fun facts",
+  "anime shorts"
+ ],
+ "characters": {
+  "George de Mestral": "early-30s Swiss engineer in 1941, slim, neat side-parted dark brown hair, thin mustache, kind curious eyes, brown wool tweed jacket, cream wool sweater, grey wool hiking trousers, thick grey wool socks, brown leather hiking boots, no hat, no glasses",
+  "The Dog": "lean Irish Pointer hunting dog, glossy reddish-chestnut coat, floppy ears, brown leather collar, cheerful and restless",
+  "The Weaver": "50-year-old French textile weaver in Lyon in the late 1940s, grey hair combed back, round wire glasses, rolled-up white shirt sleeves, dark brown work vest, grey trousers, canvas apron, no hat"
+ },
+ "scenes": [
+  {
+   "say": "In 1941, a Swiss engineer named George de Mestral came home from a walk with his dog. Both of them were covered in sticky burrs.",
+   "video": "[0-4s] On a grassy forest path in the Jura mountains of Switzerland in summer 1941, George de Mestral walks with the Irish Pointer The Dog bounding through tall weeds. [4-7s] Medium shot at the wooden front door of a stone Swiss country house: George looks down at The Dog, its chestnut fur full of small brown burrs. [7-10s] Close-up of George's grey wool trouser leg covered in burrs, his face half annoyed, half amused.",
+   "sfx": []
+  },
+  {
+   "say": "Most people would just pull them off. George pulled them off, then put one under his microscope. The burr was covered in hundreds of tiny hooks.",
+   "video": "[0-4s] Inside a cozy wood-panelled study in the Swiss country house, George kneels and gently picks burrs from The Dog's fur while it sits patiently. [4-7s] Medium shot at a wooden desk in the study by lamplight: George leans over a brass microscope, one burr on a glass slide. [7-10s] Close-up of George's eye at the microscope eyepiece widening, then him sitting back slowly with a grin.",
+   "sfx": []
+  },
+  {
+   "say": "The hooks grabbed every little loop in his wool socks and the dog's fur. So he thought, why not make a fastener that works the same way?",
+   "video": "[0-4s] Close-up in the study of George pressing a burr onto his thick wool sock, then tugging it off with a little effort. [4-7s] Medium shot of George at the wooden desk sketching quickly in a notebook seen from the side, The Dog resting its chin on his knee. [7-10s] Close-up of George's excited face in warm lamplight, tapping his pencil against his lips.",
+   "sfx": []
+  },
+  {
+   "say": "But people laughed at him. He finally found a weaver in Lyon, France, who agreed to try. Their first version used cotton, and it wore out fast.",
+   "video": "[0-4s] In a quiet brick textile workshop in Lyon, France, the grey-haired Weaver chuckles and shakes his head while George holds up a burr. [4-7s] Medium shot beside a wooden hand loom in the Lyon workshop: the Weaver feeds plain white cotton thread while George watches closely. [7-10s] Close-up of two frayed white cotton strips coming apart limply in George's hands, his shoulders dropping.",
+   "sfx": []
+  },
+  {
+   "say": "So they switched to nylon. They wove tiny loops, then snipped some open with scissors to make hooks. It took about ten years to get right.",
+   "video": "[0-4s] In the brick Lyon textile workshop, the Weaver runs a shiny white nylon thread through the wooden loom as George leans in. [4-7s] Close-up of George's hands carefully snipping the tops of small nylon loops with small steel scissors. [7-10s] Medium shot of George, now a little greyer at the temples, pressing two plain white strips together, then ripping them apart with a satisfying pull and laughing.",
+   "sfx": []
+  },
+  {
+   "say": "He patented it in 1955 and named it Velcro, from the French for velvet and hook. Astronauts used it later. All because a dog came home covered in burrs.",
+   "video": "[0-4s] Inside the wood-panelled study of the Swiss country house, older George sits at his desk smiling at a small roll of plain white hook-and-loop tape. [4-7s] Close-up of a child's small shoe strap being pressed shut on the study floor rug while The Dog, grey around the muzzle, sniffs it curiously. [7-10s] Wide quiet shot of George and The Dog walking side by side on the grassy Jura mountain path at sunset, burrs on the weeds beside them.",
+   "sfx": []
+  }
+ ]
+}
