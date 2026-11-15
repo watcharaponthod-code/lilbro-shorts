@@ -101,7 +101,7 @@
    6
   ],
   "weight": "high",
-  "note": "2026-11-13: Red Thread 100 views/24h; Paper Crane lie test 243. Surreal-rule emotional stories are the channel winner. | 2026-11-14: Sneeze When Someone Thinks Of You 1230 views/6h, channel best. Small everyday body-reaction rule + loyal pet + quiet school/home settings."
+  "note": "2026-11-13: Red Thread 100 views/24h; Paper Crane lie test 243. Surreal-rule emotional stories are the channel winner. | 2026-11-14: Sneeze When Someone Thinks Of You 1230 views/6h, channel best. Small everyday body-reaction rule + loyal pet + quiet school/home settings. | 2026-11-15: Sneeze When Someone Thinks Of You 1304 views/31h (channel best); Dogs Speak One Sentence 4 views/13h."
  },
  {
   "id": "anime_life_counters",
@@ -111,8 +111,8 @@
   "scenes": [
    6
   ],
-  "weight": "mid",
-  "note": "2026-11-13: Who Would Miss You 72 views/14h. | 2026-11-14: Meet Someone counter 23 views/8h; Who Would Miss You now 472. Floating counter digits render (e.g. \"02\"); describe counters as glow, not numbers."
+  "weight": "high",
+  "note": "2026-11-13: Who Would Miss You 72 views/14h. | 2026-11-14: Meet Someone counter 23 views/8h; Who Would Miss You now 472. Floating counter digits render (e.g. \"02\"); describe counters as glow, not numbers. | 2026-11-15: Who Would Miss You 752, Meet Someone 221."
  },
  {
   "id": "anime_town_spirits",
@@ -134,7 +134,7 @@
    6
   ],
   "weight": "high",
-  "note": "2026-11-13: Only Rains On Sad People 105 views in 2.5h."
+  "note": "2026-11-13: Only Rains On Sad People 105 views in 2.5h. | 2026-11-15: Secret Weighs One Kilo 1 view/18h (Rains On Sad People 296)."
  },
  {
   "id": "anime_price_of_wishes",
@@ -155,7 +155,8 @@
   "scenes": [
    6
   ],
-  "note": "2026-11-14: Word Echoes Back A Year Later 21 views/13h."
+  "note": "2026-11-14: Word Echoes Back A Year Later 21 views/13h. | 2026-11-15: Word Echoes 50 views/25h.",
+  "weight": "low"
  },
  {
   "id": "beast_last_to_leave",
@@ -167,7 +168,7 @@
    6
   ],
   "weight": "mid",
-  "note": "2026-11-13: Ferris Wheel v2 268 views/24h (v1 same script 2 views, so early luck matters). | 2026-11-14: Sleeping Dragon 8 views/19h; Ferris Wheel v2 487. Fantasy creature version did worse than grounded one."
+  "note": "2026-11-13: Ferris Wheel v2 268 views/24h (v1 same script 2 views, so early luck matters). | 2026-11-14: Sleeping Dragon 8 views/19h; Ferris Wheel v2 487. Fantasy creature version did worse than grounded one. | 2026-11-15: Sleeping Dragon 11 views/37h."
  },
  {
   "id": "beast_giveaway_strangers",
@@ -272,7 +273,8 @@
   "scenes": [
    6
   ],
-  "note": "2026-11-14: Homeless Man Returned $42,000 10 views/10h. Frames show cash bills and a garbled street sign; keep money in envelopes, no storefronts."
+  "note": "2026-11-14: Homeless Man Returned $42,000 10 views/10h. Frames show cash bills and a garbled street sign; keep money in envelopes, no storefronts. | 2026-11-15: 14 views/22h.",
+  "weight": "low"
  },
  {
   "id": "beast_survive_magic_night",
@@ -294,7 +296,9 @@
   "title_pattern": "I Auctioned Off A Year Of My Life",
   "scenes": [
    6
-  ]
+  ],
+  "weight": "mid",
+  "note": "2026-11-15: 3 Strangers Bid Their Own Years 640 views/16h."
  },
  {
   "id": "anime_broken_mends",
